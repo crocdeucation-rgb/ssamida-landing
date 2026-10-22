@@ -61,9 +61,11 @@
 
   /* HERO */
   .hero{min-height:100vh;display:flex;align-items:center;overflow:hidden;border-top:0;padding:110px 0 70px;
-    position:sticky;top:0;z-index:1;
+    position:relative;z-index:1;
     background:var(--bg) radial-gradient(ellipse at 26% 45%, rgba(52,224,180,.12), transparent 55%)}
   .hero .wrap{will-change:transform,opacity}
+  /* 히어로 바로 다음 섹션이 히어로를 덮으며 올라옴 */
+  .hero + section{margin-top:-18vh;border-radius:28px 28px 0 0;box-shadow:0 -30px 60px rgba(0,0,0,.5);z-index:3}
   .cx{position:absolute;color:var(--mut);opacity:.18;font-weight:700;white-space:nowrap;pointer-events:none;user-select:none;
     animation:drift var(--t,15s) ease-in-out infinite alternate}
   @keyframes drift{from{transform:translate(0,0)}to{transform:translate(var(--dx,20px),var(--dy,-16px))}}
@@ -223,7 +225,7 @@
   .offer div span{color:var(--mut)}
 
   /* S10 form */
-  .final{background:radial-gradient(ellipse at 50% 30%, rgba(52,224,180,.16), transparent 60%);padding-bottom:104px}
+  .final{background:var(--bg) radial-gradient(ellipse at 50% 30%, rgba(52,224,180,.16), transparent 60%);padding-bottom:104px;z-index:4}
   .final .chips{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 6px}
   form{margin-top:26px;max-width:520px;display:grid;gap:10px}
   .fld{background:var(--bg2);border:1px solid var(--line);border-radius:12px;padding:0 14px;height:52px;color:var(--ink);font-size:15px;font-family:inherit;width:100%;outline:none}
@@ -755,9 +757,9 @@
       tick=false;
       var h=innerHeight;
       if(hw){
-        var p=Math.min(Math.max(scrollY/(h*0.9),0),1);
-        hw.style.transform='translateY('+(p*60)+'px) scale('+(1-p*0.07)+')';
-        hw.style.opacity=String(1-p*0.6);
+        var p=Math.min(Math.max(scrollY/(h*0.8),0),1);
+        hw.style.transform='translateY('+(p*40)+'px) scale('+(1-p*0.05)+')';
+        hw.style.opacity=String(1-p*0.55);
       }
       if(zs&&zn){
         var r=zs.getBoundingClientRect();
