@@ -248,8 +248,10 @@
   .foot b{color:var(--ink)}
 
   /* 인트로 — 로고 모션 */
-  #intro{position:fixed;inset:0;z-index:100;background:var(--bg);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:16px;transition:transform .8s var(--ease),opacity .8s var(--ease)}
-  #intro.done{transform:translateY(-100%);opacity:0;pointer-events:none}
+  #intro{position:fixed;inset:0;z-index:100;background:var(--bg);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:16px;transition:opacity .9s var(--ease)}
+  #intro .icore{display:flex;flex-direction:column;align-items:center;gap:16px;transition:transform 1s var(--ease),opacity .9s var(--ease)}
+  #intro.done{opacity:0;pointer-events:none}
+  #intro.done .icore{transform:scale(1.14);opacity:0}
   #intro .ilogo{font-size:clamp(54px,10vw,120px);font-weight:900;letter-spacing:-.05em;color:var(--mint);overflow:hidden;line-height:1.1;text-shadow:0 0 60px rgba(52,224,180,.35)}
   #intro .ilogo span{display:inline-block;transform:translateY(112%);animation:irise .85s var(--ease) forwards}
   #intro .ilogo span:nth-child(2){animation-delay:.1s}
@@ -404,9 +406,11 @@
 <div id="orb" aria-hidden="true"></div>
 
 <div id="intro" aria-hidden="true">
-  <div class="ilogo"><span>쌤</span><span>이</span><span>다</span></div>
-  <div class="ibeam"></div>
-  <div class="isub">과외는, 쌤이다</div>
+  <div class="icore">
+    <div class="ilogo"><span>쌤</span><span>이</span><span>다</span></div>
+    <div class="ibeam"></div>
+    <div class="isub">과외는, 쌤이다</div>
+  </div>
 </div>
 
 <nav>
@@ -768,9 +772,21 @@
 (function(){
   /* 인트로 */
   var it=document.getElementById('intro');
+  var introActive=false;
+  if(it&&!document.documentElement.classList.contains('no-intro')){introActive=true;}
+  window.__introActive=function(){return introActive;};
   if(it){
     if(document.documentElement.classList.contains('no-intro')){it.parentNode.removeChild(it);}
-    else{setTimeout(function(){it.classList.add('done');},1900);setTimeout(function(){if(it.parentNode)it.parentNode.removeChild(it);},2800);}
+    else{
+      // 히어로 리빌을 잠시 멈췄다가, 인트로가 걷히는 순간 함께 재생 → 전환이 이어짐
+      var hsec=document.querySelector('.hero');
+      setTimeout(function(){
+        introActive=false;
+        it.classList.add('done');
+        if(hsec){hsec.classList.add('in');hsec.querySelectorAll('.reveal,.kin').forEach(function(el){el.classList.add('in');});}
+      },1800);
+      setTimeout(function(){if(it.parentNode)it.parentNode.removeChild(it);},2900);
+    }
   }
 
   /* 목업 캐러셀 */
@@ -885,6 +901,8 @@
 
   var io=new IntersectionObserver(function(es){es.forEach(function(e){
     if(!e.isIntersecting)return;
+    // 인트로 재생 중엔 히어로 리빌을 미룸(전환과 함께 터지도록)
+    if(introActive&&(e.target.classList.contains('hero')||e.target.closest('.hero')))return;
     e.target.classList.add('in');
     e.target.querySelectorAll('[data-count]').forEach(function(c){
       if(c.dataset.done)return; c.dataset.done=1;
