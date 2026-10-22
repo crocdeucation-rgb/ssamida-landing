@@ -25,7 +25,7 @@
   @media(min-width:781px){.wrap{padding:0 28px}}
   .kick{font-size:11.5px;letter-spacing:.22em;color:var(--mint);font-weight:800;text-transform:uppercase}
   .hl{color:var(--mint)} .wm{color:var(--warm)} .gd{color:var(--gold)}
-  section{padding:88px 0;border-top:1px solid var(--line);position:relative}
+  section{padding:88px 0;border-top:1px solid var(--line);position:relative;z-index:2;background:var(--bg)}
   @media(max-width:780px){section{padding:64px 0}}
   h1,h2,.sub,.card,.rep,.offer,.diag,.tl{word-break:keep-all;overflow-wrap:anywhere}
   h2{font-size:clamp(32px,6.2vw,76px);font-weight:900;letter-spacing:-.04em;line-height:1.02;margin:14px 0 18px}
@@ -61,7 +61,9 @@
 
   /* HERO */
   .hero{min-height:100vh;display:flex;align-items:center;overflow:hidden;border-top:0;padding:110px 0 70px;
-    background:radial-gradient(ellipse at 26% 45%, rgba(52,224,180,.12), transparent 55%)}
+    position:sticky;top:0;z-index:1;
+    background:var(--bg) radial-gradient(ellipse at 26% 45%, rgba(52,224,180,.12), transparent 55%)}
+  .hero .wrap{will-change:transform,opacity}
   .cx{position:absolute;color:var(--mut);opacity:.18;font-weight:700;white-space:nowrap;pointer-events:none;user-select:none;
     animation:drift var(--t,15s) ease-in-out infinite alternate}
   @keyframes drift{from{transform:translate(0,0)}to{transform:translate(var(--dx,20px),var(--dy,-16px))}}
@@ -80,7 +82,15 @@
   /* S2 zero */
   .zero{display:grid;grid-template-columns:auto 1fr;gap:40px;align-items:center}
   @media(max-width:780px){.zero{grid-template-columns:1fr;gap:16px}}
-  .zero .n{font-size:clamp(140px,22vw,300px);font-weight:900;letter-spacing:-.06em;line-height:.85;color:var(--mint);text-shadow:0 0 60px rgba(52,224,180,.3)}
+  .zero .n{font-size:clamp(140px,22vw,300px);font-weight:900;letter-spacing:-.06em;line-height:.85;color:var(--mint);text-shadow:0 0 60px rgba(52,224,180,.3);transform-origin:left center;will-change:transform,opacity}
+  /* 마키 스트립 */
+  .marq{overflow:hidden;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:20px 0;background:var(--bg);position:relative;z-index:2}
+  .marq .tr{display:flex;width:max-content;animation:marq 26s linear infinite}
+  .marq .gp{display:flex;gap:44px;padding-right:44px;white-space:nowrap;align-items:center}
+  .marq span{font-size:clamp(18px,2.6vw,30px);font-weight:900;letter-spacing:-.02em;color:var(--dim)}
+  .marq span.m{color:var(--mint)}
+  .marq i{font-style:normal;color:var(--mint2);font-size:14px}
+  @keyframes marq{to{transform:translateX(-50%)}}
   .zero .nl{color:var(--mut);font-size:14px;margin-top:8px;text-align:center}
   .zero .lines p{font-size:clamp(16px,2vw,21px);margin-bottom:14px;color:var(--mut)}
   .zero .lines p b{color:var(--ink);font-weight:800}
@@ -243,12 +253,12 @@
   html.no-intro #intro{display:none}
 
   /* 브라우저 목업 캐러셀 */
-  .mock{max-width:880px;margin:34px auto 0;border:1px solid var(--line);border-radius:18px;overflow:hidden;background:var(--bg2);box-shadow:0 24px 70px rgba(0,0,0,.45),0 0 40px rgba(52,224,180,.07)}
+  .mock{max-width:900px;margin:34px auto 0;border:1px solid var(--line);border-radius:18px;overflow:hidden;background:var(--bg2);box-shadow:0 24px 70px rgba(0,0,0,.45),0 0 40px rgba(52,224,180,.07);transform-origin:center 65%;will-change:transform,opacity}
   .mock .bar{display:flex;align-items:center;gap:6px;padding:11px 14px;background:#0C2620;border-bottom:1px solid var(--line)}
   .mock .bar i{width:10px;height:10px;border-radius:50%;background:#2A4A41;display:inline-block}
   .mock .bar span{margin-left:10px;font-size:11.5px;color:var(--dim);background:var(--bg);border-radius:6px;padding:3px 12px;letter-spacing:.02em}
-  .mock .stage{position:relative;aspect-ratio:16/10;background:#0C2620;overflow:hidden}
-  .mock .sl{position:absolute;inset:0;opacity:0;transform:translateX(26px);transition:opacity .7s var(--ease),transform .7s var(--ease);display:flex;align-items:center;justify-content:center;padding:10px}
+  .mock .stage{position:relative;height:384px;background:#0C2620;overflow:hidden}
+  .mock .sl{position:absolute;inset:0;opacity:0;transform:translateX(26px);transition:opacity .7s var(--ease),transform .7s var(--ease);display:flex;align-items:center;justify-content:center;padding:20px}
   .mock .sl img{max-width:100%;max-height:100%;object-fit:contain;border-radius:6px}
   .mock .sl.on{opacity:1;transform:none}
   .mock .cap{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:13px 16px;border-top:1px solid var(--line)}
@@ -257,29 +267,34 @@
   .mock .dots i{width:7px;height:7px;border-radius:100px;background:var(--dim);cursor:pointer;transition:background .3s,width .3s}
   .mock .dots i.on{background:var(--mint);width:18px}
   /* 코드 패널 슬라이드 + 내부 스태거 */
-  .mp{width:min(600px,94%);background:linear-gradient(160deg,var(--card),#0F2E26);border:1px solid var(--mint2);border-radius:16px;padding:20px 22px;text-align:left;font-size:13.5px;box-shadow:0 0 40px rgba(52,224,180,.1)}
-  .sl .mp>*{opacity:0;transform:translateY(12px);transition:opacity .5s var(--ease),transform .5s var(--ease)}
+  .mp{width:100%;align-self:stretch;background:linear-gradient(160deg,var(--card),#0F2E26);border:1px solid var(--mint2);border-radius:16px;padding:28px 32px;text-align:left;font-size:15.5px;box-shadow:0 0 50px rgba(52,224,180,.12);display:flex;flex-direction:column;justify-content:center}
+  .sl .mp>*{opacity:0;transform:translateY(16px) scale(.96);transition:opacity .55s var(--ease),transform .55s var(--ease)}
   .sl.on .mp>*{opacity:1;transform:none}
+  .mock:hover .mp{transform:translateY(-3px);transition:transform .4s var(--ease)}
   .sl.on .mp>*:nth-child(1){transition-delay:.15s}
   .sl.on .mp>*:nth-child(2){transition-delay:.3s}
   .sl.on .mp>*:nth-child(3){transition-delay:.45s}
   .sl.on .mp>*:nth-child(4){transition-delay:.6s}
   .sl.on .mp>*:nth-child(5){transition-delay:.75s}
-  .mph{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
-  .mph b{font-size:15px;font-weight:900;color:var(--ink)}
-  .mph span{font-size:10.5px;color:var(--mint);border:1px solid var(--mint2);border-radius:100px;padding:3px 10px;background:var(--bg2);font-weight:800}
-  .stu{display:flex;gap:12px;align-items:flex-start;margin-bottom:12px}
-  .stu .av{width:42px;height:42px;border-radius:50%;background:var(--mint);color:var(--btn);font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:16px}
-  .stu b{color:var(--ink)} .stu .gl{color:var(--mut);font-size:12.5px;margin-top:3px}
-  .bdg{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}
-  .bdg i{font-style:normal;font-size:11.5px;font-weight:800;color:var(--ink);background:var(--bg2);border:1px solid var(--line);border-radius:100px;padding:5px 11px}
-  .bdg i em{font-style:normal;color:var(--mint);margin-left:4px}
-  .memo{font-size:12px;color:var(--mut);background:rgba(52,224,180,.07);border:1px solid rgba(52,224,180,.25);border-radius:10px;padding:9px 12px}
-  .mrow{display:grid;grid-template-columns:62px 1fr;gap:10px;padding:7px 0;border-top:1px solid var(--line);font-size:13px}
+  .mph{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
+  .mph b{font-size:18px;font-weight:900;color:var(--ink)}
+  .mph span{font-size:11.5px;color:var(--mint);border:1px solid var(--mint2);border-radius:100px;padding:4px 12px;background:var(--bg2);font-weight:800}
+  .stu{display:flex;gap:14px;align-items:flex-start;margin-bottom:14px}
+  .stu .av{width:52px;height:52px;border-radius:50%;background:var(--mint);color:var(--btn);font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:19px}
+  .stu b{color:var(--ink);font-size:16px} .stu .gl{color:var(--mut);font-size:13.5px;margin-top:4px}
+  .info3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:14px}
+  .info3 div{background:var(--bg2);border:1px solid var(--line);border-radius:12px;padding:11px 13px}
+  .info3 b{display:block;font-size:10.5px;color:var(--mut);font-weight:700;margin-bottom:3px}
+  .info3 span{font-size:14px;font-weight:900;color:var(--ink)}
+  .bdg{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:14px}
+  .bdg i{font-style:normal;font-size:13px;font-weight:800;color:var(--ink);background:var(--bg2);border:1px solid var(--line);border-radius:100px;padding:7px 14px}
+  .bdg i em{font-style:normal;color:var(--mint);margin-left:5px}
+  .memo{font-size:13.5px;color:var(--mut);background:rgba(52,224,180,.07);border:1px solid rgba(52,224,180,.25);border-radius:12px;padding:12px 15px}
+  .mrow{display:grid;grid-template-columns:76px 1fr;gap:12px;padding:9px 0;border-top:1px solid var(--line);font-size:14.5px}
   .mrow:first-of-type{border-top:0}
-  .mrow b{color:var(--mint);font-weight:800;font-size:12px}
+  .mrow b{color:var(--mint);font-weight:800;font-size:13px}
   .mrow span{color:var(--mut)} .mrow .dt{color:var(--mint);letter-spacing:2px}
-  .hwb{border-radius:12px;padding:10px 13px;font-size:12.5px;margin-bottom:8px;max-width:92%}
+  .hwb{border-radius:14px;padding:13px 16px;font-size:14px;margin-bottom:10px;max-width:92%}
   .hwb.kid{background:var(--bg2);border:1px solid var(--line);color:var(--mut)}
   .hwb.tch{background:rgba(52,224,180,.1);border:1px solid rgba(52,224,180,.35);color:var(--ink);margin-left:auto}
   .hwb b{color:var(--mint)}
@@ -291,9 +306,17 @@
   .gmini{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0 2px}
   .gmini span{font-size:11px;font-weight:800;color:var(--mint);background:rgba(52,224,180,.08);border:1px solid rgba(52,224,180,.3);border-radius:100px;padding:4px 10px}
   @media(max-width:780px){
-    .mock .stage{aspect-ratio:auto;height:440px}
-    .mp{padding:16px 15px;font-size:12.5px}
-    .mph b{font-size:13.5px}
+    .mock .stage{height:470px}
+    .mp{padding:18px 16px;font-size:13px}
+    .mph b{font-size:15px}
+    .info3{grid-template-columns:1fr;gap:6px}
+    .info3 div{padding:8px 11px}
+    /* 모바일: 카드 그리드 → 가로 스와이프 */
+    .grid4,.tgrid{display:flex;overflow-x:auto;gap:10px;scroll-snap-type:x mandatory;margin:30px -20px 0;padding:0 20px 10px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+    .grid4::-webkit-scrollbar,.tgrid::-webkit-scrollbar{display:none}
+    .grid4 .card{flex:0 0 76%;scroll-snap-align:start}
+    .tgrid .card{flex:0 0 82%;scroll-snap-align:start}
+    html.js .grid4 .reveal,html.js .tgrid .reveal{opacity:1;transform:none;filter:none}
     .mock .cap b{font-size:11.5px}
     .mrow{grid-template-columns:56px 1fr}
     .tile3 span{font-size:15px}
@@ -333,12 +356,18 @@
   .pm .bb .dots2{color:#15A37F;letter-spacing:1px}
   .pm .bb .open{display:inline-block;margin-top:8px;background:#0B6B51;color:#fff;border-radius:8px;padding:6px 12px;font-size:11px;font-weight:800}
 
-  /* sticky CTA */
+  /* sticky CTA — 모바일: 하단 바 / 데스크톱: 플로팅 */
   .sticky{position:fixed;left:0;right:0;bottom:0;z-index:60;padding:12px 16px;background:linear-gradient(180deg,rgba(10,31,26,0),rgba(10,31,26,.96) 40%);display:flex;justify-content:center;transform:translateY(120%);transition:transform .5s var(--ease)}
   .sticky.on{transform:none}
   .sticky .btn{width:min(100%,520px);justify-content:center;padding:15px 20px;font-size:15.5px}
+  @media(min-width:781px){
+    .sticky{left:auto;right:28px;bottom:28px;padding:0;background:none;transform:translateY(160%)}
+    .sticky.on{transform:none}
+    .sticky .btn{width:auto;padding:17px 26px;font-size:15px;box-shadow:0 10px 40px rgba(0,0,0,.4),0 0 34px rgba(52,224,180,.35);animation:ctapulse 2.6s ease-in-out infinite}
+  }
+  @keyframes ctapulse{0%,100%{box-shadow:0 10px 40px rgba(0,0,0,.4),0 0 24px rgba(52,224,180,.3)}50%{box-shadow:0 10px 40px rgba(0,0,0,.4),0 0 48px rgba(52,224,180,.55)}}
 
-  @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html.js .reveal,html.js .kin .w,html.js .tl .ti{opacity:1;transform:none;clip-path:none;filter:none}.mapbox .pth,.spark .gl{stroke-dashoffset:0}.diag.in .gauge .pin{left:var(--pos,24%)}.diag.in .pbar .fl{width:var(--w,50%)}#intro{display:none}}
+  @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html.js .reveal,html.js .kin .w,html.js .tl .ti{opacity:1;transform:none;clip-path:none;filter:none}.mapbox .pth,.spark .gl{stroke-dashoffset:0}.diag.in .gauge .pin{left:var(--pos,24%)}.diag.in .pbar .fl{width:var(--w,50%)}#intro{display:none}.hero{position:relative}}
 </style>
 </head>
 <body>
@@ -387,7 +416,7 @@
 </section>
 
 <!-- ============ S2 왜 지금 ============ -->
-<section>
+<section id="zerosec" style="overflow:hidden">
   <div class="wrap">
     <div class="kick reveal">01 · 왜 지금인가</div>
     <h2 class="kin"><span class="w">'내신만 잘 받으면'은</span><br><span class="w wm" style="--d:.2s">끝났습니다.</span></h2>
@@ -401,6 +430,11 @@
     </div>
   </div>
 </section>
+
+<div class="marq" aria-hidden="true"><div class="tr">
+  <div class="gp"><span>수행평가</span><i>·</i><span>수능최저</span><i>·</i><span>학종</span><i>·</i><span>교과</span><i>·</i><span>세특</span><i>·</i><span>논술</span><i>·</i><span>정시</span><i>·</i><span>수시 6장</span><i>—</i><span class="m">복잡할수록, 길은 하나입니다.</span><i>—</i></div>
+  <div class="gp"><span>수행평가</span><i>·</i><span>수능최저</span><i>·</i><span>학종</span><i>·</i><span>교과</span><i>·</i><span>세특</span><i>·</i><span>논술</span><i>·</i><span>정시</span><i>·</i><span>수시 6장</span><i>—</i><span class="m">복잡할수록, 길은 하나입니다.</span><i>—</i></div>
+</div></div>
 
 <!-- ============ S3 결정의 순간들 ============ -->
 <section>
@@ -520,15 +554,16 @@
       <div class="card reveal" style="--d:.75s"><b>질문은 그날 안에</b><p>막히면 바로 질문, 선생님이 답합니다. Q&amp;A가 쌓여 아이만의 복습 자료가 됩니다.</p></div>
       <div class="card reveal" style="--d:.85s"><b>아이 전용 스터디룸</b><p>과목별 교재·진도·리포트·성적을 아이가 직접 보는, 자기만의 공간.</p></div>
     </div>
-    <p class="sub reveal" style="--d:.95s;margin-top:26px">말이 아니라 화면으로 — <b style="color:var(--ink)">실제 서비스 화면</b>입니다.</p>
-    <div class="mock reveal" style="--d:.5s">
-      <div class="bar"><i></i><i></i><i></i><span>ssamida.com — 쌤이다 시스템</span></div>
+    <p class="sub reveal" style="--d:.95s;margin-top:26px">말이 아니라 화면으로 — <b style="color:var(--ink)">쌤이다가 돌아가는 방식</b>입니다.</p>
+    <div class="mock reveal" id="mock" style="--d:.5s">
+      <div class="bar"><i></i><i></i><i></i><span>쌤이다 시스템 미리보기</span></div>
       <div class="stage" id="mockstage">
         <div class="sl on"><div class="mp">
           <div class="mph"><b>티칭룸 — 내 학생</b><span>선생님 화면</span></div>
-          <div class="stu"><div class="av">홍</div><div><b>홍길동</b> · 고2 · 영어 7/8회차<div class="gl">"영어 지문 읽는 속도 올리는 게 목표예요"</div></div></div>
+          <div class="stu"><div class="av">홍</div><div><b>홍길동</b> · 고2 · 영어 선택<div class="gl">"영어 지문 읽는 속도 올리는 게 목표예요. 내신 영어 1등급"</div></div></div>
+          <div class="info3"><div><b>회차 · 시간</b><span>7/8회차 · 월수 19:00</span></div><div><b>교재 · 진도</b><span>Reading Tutor · 5과</span></div><div><b>다음 수업</b><span>10/15 (수) 19:00</span></div></div>
           <div class="bdg"><i>리포트<em>1</em></i><i>숙제<em>1</em></i><i>질문<em>1</em></i><i>메시지<em>1</em></i><i>성적</i><i>학습 점검</i></div>
-          <div class="memo">특이사항 · 수업 시작 5분은 가벼운 대화로 — 어머님 요청: 발표 자주 시켜 주세요</div>
+          <div class="memo">아이의 목표·진도·요청사항이 선생님 화면에 늘 함께 — 수업이 끊기지 않고 이어집니다</div>
         </div></div>
         <div class="sl"><div class="mp">
           <div class="mph"><b>수업 리포트 작성</b><span>매 수업 후</span></div>
@@ -708,6 +743,44 @@
     var mk=document.querySelector('.mock');
     mk.addEventListener('mouseenter',function(){clearInterval(tm);});
     mk.addEventListener('mouseleave',rs);
+  }
+
+  /* 스크롤 연출 — 히어로 커버 + 숫자 줌 */
+  var prm2=false;try{prm2=window.matchMedia('(prefers-reduced-motion: reduce)').matches;}catch(e){}
+  if(!prm2){
+    var hw=document.querySelector('.hero .wrap');
+    var zs=document.getElementById('zerosec'),zn=document.querySelector('.zero .n');
+    var tick=false;
+    function fx(){
+      tick=false;
+      var h=innerHeight;
+      if(hw){
+        var p=Math.min(Math.max(scrollY/(h*0.9),0),1);
+        hw.style.transform='translateY('+(p*60)+'px) scale('+(1-p*0.07)+')';
+        hw.style.opacity=String(1-p*0.6);
+      }
+      if(zs&&zn){
+        var r=zs.getBoundingClientRect();
+        var q=Math.min(Math.max((h*0.92-r.top)/(h*0.72),0),1);
+        var s=2.4-1.4*q;if(s<1)s=1;
+        zn.style.transform='scale('+s+')';
+        zn.style.opacity=String(0.15+0.85*q);
+      }
+      var mk=document.getElementById('mock');
+      if(mk){
+        var mr=mk.getBoundingClientRect();
+        // 요소가 화면 아래에서 올라오는 구간: 작게 시작 → 중앙 지날 때 제자리
+        var center=mr.top+mr.height/2;
+        var d=Math.abs(center-h/2)/(h/2);          // 0 = 화면 중앙, 1+ = 가장자리
+        var e=Math.min(d,1);
+        var sc=1-0.12*e;                            // 중앙에서 1, 멀어질수록 0.88까지
+        var op=1-0.45*e;
+        mk.style.transform='scale('+sc.toFixed(3)+')';
+        mk.style.opacity=op.toFixed(3);
+      }
+    }
+    addEventListener('scroll',function(){if(!tick){tick=true;requestAnimationFrame(fx);}},{passive:true});
+    fx();
   }
 
   /* 폰 알림 플로우 — 순차 재생 + 반복 */
