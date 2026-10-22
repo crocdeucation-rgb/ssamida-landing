@@ -8,7 +8,7 @@
 <meta property="og:title" content="쌤이다 — 복잡할수록, 길은 하나입니다">
 <meta property="og:description" content="우리 아이 현재 위치 진단 + 30분 무료 수업. 신청은 5초.">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
-<script>document.documentElement.classList.add('js');</script>
+<script>document.documentElement.classList.add('js');try{if(sessionStorage.getItem('sdi'))document.documentElement.classList.add('no-intro');else sessionStorage.setItem('sdi','1');}catch(e){}</script>
 <!-- ▼ Meta Pixel: 발급받은 픽셀 코드를 이 자리에 붙여넣기 ▼ -->
 <!-- META PIXEL HERE -->
 <!-- ▲ Meta Pixel ▲ -->
@@ -228,15 +228,70 @@
   .foot{padding:40px 0 120px;color:var(--mut);font-size:12.5px;border-top:1px solid var(--line)}
   .foot b{color:var(--ink)}
 
+  /* 인트로 — 로고 모션 */
+  #intro{position:fixed;inset:0;z-index:100;background:var(--bg);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:16px;transition:transform .8s var(--ease),opacity .8s var(--ease)}
+  #intro.done{transform:translateY(-100%);opacity:0;pointer-events:none}
+  #intro .ilogo{font-size:clamp(54px,10vw,120px);font-weight:900;letter-spacing:-.05em;color:var(--mint);overflow:hidden;line-height:1.1;text-shadow:0 0 60px rgba(52,224,180,.35)}
+  #intro .ilogo span{display:inline-block;transform:translateY(112%);animation:irise .85s var(--ease) forwards}
+  #intro .ilogo span:nth-child(2){animation-delay:.1s}
+  #intro .ilogo span:nth-child(3){animation-delay:.2s}
+  #intro .ibeam{width:min(60vw,420px);height:3px;background:linear-gradient(90deg,transparent,var(--mint),transparent);transform:scaleX(0);animation:ibeam .7s var(--ease) .55s forwards;box-shadow:0 0 24px rgba(52,224,180,.5)}
+  #intro .isub{font-size:13px;color:var(--mut);letter-spacing:.34em;opacity:0;animation:ifade .6s var(--ease) .85s forwards}
+  @keyframes irise{to{transform:none}}
+  @keyframes ibeam{to{transform:scaleX(1)}}
+  @keyframes ifade{to{opacity:1}}
+  html.no-intro #intro{display:none}
+
+  /* 브라우저 목업 캐러셀 */
+  .mock{max-width:880px;margin:34px auto 0;border:1px solid var(--line);border-radius:18px;overflow:hidden;background:var(--bg2);box-shadow:0 24px 70px rgba(0,0,0,.45),0 0 40px rgba(52,224,180,.07)}
+  .mock .bar{display:flex;align-items:center;gap:6px;padding:11px 14px;background:#0C2620;border-bottom:1px solid var(--line)}
+  .mock .bar i{width:10px;height:10px;border-radius:50%;background:#2A4A41;display:inline-block}
+  .mock .bar span{margin-left:10px;font-size:11.5px;color:var(--dim);background:var(--bg);border-radius:6px;padding:3px 12px;letter-spacing:.02em}
+  .mock .stage{position:relative;aspect-ratio:16/10;background:#0C2620;overflow:hidden}
+  .mock .sl{position:absolute;inset:0;opacity:0;transform:translateX(26px);transition:opacity .7s var(--ease),transform .7s var(--ease);display:flex;align-items:center;justify-content:center;padding:10px}
+  .mock .sl img{max-width:100%;max-height:100%;object-fit:contain;border-radius:6px}
+  .mock .sl.on{opacity:1;transform:none}
+  .mock .cap{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:13px 16px;border-top:1px solid var(--line)}
+  .mock .cap b{font-size:13.5px;color:var(--ink);font-weight:800}
+  .mock .dots{display:flex;gap:6px;flex-shrink:0}
+  .mock .dots i{width:7px;height:7px;border-radius:100px;background:var(--dim);cursor:pointer;transition:background .3s,width .3s}
+  .mock .dots i.on{background:var(--mint);width:18px}
+
+  /* 폰 목업 — 알림 플로우 모션 */
+  .pwrap{display:flex;justify-content:center}
+  .phone{width:min(330px,100%);border-radius:40px;border:1px solid rgba(255,255,255,.14);background:#061B15;padding:16px 12px 18px;box-shadow:0 30px 80px rgba(0,0,0,.5),0 0 50px rgba(52,224,180,.08)}
+  .phone .pnotch{width:110px;height:22px;background:#04120E;border-radius:100px;margin:0 auto 10px}
+  .phone .ptime{text-align:center;font-size:11px;color:var(--dim);margin-bottom:12px;letter-spacing:.06em}
+  .pchat{display:flex;flex-direction:column;gap:9px;min-height:520px}
+  .pm{opacity:0;transform:translateY(16px) scale(.97);transition:opacity .5s var(--ease),transform .5s var(--ease)}
+  .pm.show{opacity:1;transform:none}
+  .pm .chip{display:block;margin:2px auto;font-size:10.5px;color:var(--dim);background:rgba(255,255,255,.05);border-radius:100px;padding:3px 12px;width:max-content}
+  .pm .bb{background:#F6F1E3;color:#1A2B24;border-radius:4px 16px 16px 16px;padding:11px 13px;font-size:12.5px;line-height:1.5;max-width:88%;box-shadow:0 2px 10px rgba(0,0,0,.25);word-break:keep-all}
+  .pm .bb .ch{display:flex;align-items:center;gap:6px;font-size:10.5px;font-weight:900;color:#0B6B51;margin-bottom:5px}
+  .pm .bb .ch i{width:14px;height:14px;border-radius:4px;background:var(--mint);display:inline-block;font-style:normal;color:#06231C;font-size:9px;font-weight:900;text-align:center;line-height:14px}
+  .pm.right{display:flex;justify-content:flex-end}
+  .pm.right .bb{background:#FFE86B;border-radius:16px 4px 16px 16px;color:#231A00}
+  .pm .bb .rrow{display:grid;grid-template-columns:52px 1fr;gap:6px;padding:4px 0;border-top:1px solid rgba(0,0,0,.08);font-size:11.5px}
+  .pm .bb .rrow:first-of-type{border-top:0}
+  .pm .bb .rrow b{color:#0B6B51;font-weight:800}
+  .pm .bb .dots2{color:#15A37F;letter-spacing:1px}
+  .pm .bb .open{display:inline-block;margin-top:8px;background:#0B6B51;color:#fff;border-radius:8px;padding:6px 12px;font-size:11px;font-weight:800}
+
   /* sticky CTA */
   .sticky{position:fixed;left:0;right:0;bottom:0;z-index:60;padding:12px 16px;background:linear-gradient(180deg,rgba(10,31,26,0),rgba(10,31,26,.96) 40%);display:flex;justify-content:center;transform:translateY(120%);transition:transform .5s var(--ease)}
   .sticky.on{transform:none}
   .sticky .btn{width:min(100%,520px);justify-content:center;padding:15px 20px;font-size:15.5px}
 
-  @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html.js .reveal,html.js .kin .w,html.js .tl .ti{opacity:1;transform:none;clip-path:none;filter:none}.mapbox .pth,.spark .gl{stroke-dashoffset:0}.diag.in .gauge .pin{left:var(--pos,24%)}.diag.in .pbar .fl{width:var(--w,50%)}}
+  @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html.js .reveal,html.js .kin .w,html.js .tl .ti{opacity:1;transform:none;clip-path:none;filter:none}.mapbox .pth,.spark .gl{stroke-dashoffset:0}.diag.in .gauge .pin{left:var(--pos,24%)}.diag.in .pbar .fl{width:var(--w,50%)}#intro{display:none}}
 </style>
 </head>
 <body>
+
+<div id="intro" aria-hidden="true">
+  <div class="ilogo"><span>쌤</span><span>이</span><span>다</span></div>
+  <div class="ibeam"></div>
+  <div class="isub">과외는, 쌤이다</div>
+</div>
 
 <nav>
   <div class="brand">쌤이다<span>초·중·고 1:1 화상과외</span></div>
@@ -409,7 +464,18 @@
       <div class="card reveal" style="--d:.75s"><b>질문은 그날 안에</b><p>막히면 바로 질문, 선생님이 답합니다. Q&amp;A가 쌓여 아이만의 복습 자료가 됩니다.</p></div>
       <div class="card reveal" style="--d:.85s"><b>아이 전용 스터디룸</b><p>과목별 교재·진도·리포트·성적을 아이가 직접 보는, 자기만의 공간.</p></div>
     </div>
-    <p class="sub reveal" style="--d:.95s;margin-top:22px">선생님은 '티칭룸'에서 — 반 전체가 아니라, <b style="color:var(--ink)">우리 아이 한 명</b>을 깊이 봅니다.</p>
+    <p class="sub reveal" style="--d:.95s;margin-top:26px">말이 아니라 화면으로 — <b style="color:var(--ink)">실제 서비스 화면</b>입니다.</p>
+    <div class="mock reveal" style="--d:.5s">
+      <div class="bar"><i></i><i></i><i></i><span>ssamida.com — 실제 서비스 화면</span></div>
+      <div class="stage" id="mockstage">
+        <div class="sl on"><img src="shot-teachingroom.jpg" alt="티칭룸 — 학생 상세 화면" loading="lazy"></div>
+        <div class="sl"><img src="shot-report.jpg" alt="수업 리포트 요약 카드" loading="lazy"></div>
+        <div class="sl"><img src="shot-homework.jpg" alt="숙제 사진 피드백" loading="lazy"></div>
+        <div class="sl"><img src="shot-qna.jpg" alt="질문 Q&A" loading="lazy"></div>
+        <div class="sl"><img src="shot-studyroom.jpg" alt="아이 스터디룸 홈" loading="lazy"></div>
+      </div>
+      <div class="cap"><b id="mockcap">티칭룸 — 우리 아이의 모든 것이 선생님 한 화면에</b><div class="dots" id="mockdots"></div></div>
+    </div>
   </div>
 </section>
 
@@ -444,15 +510,29 @@
     </div>
 
     <div class="two" style="margin-top:34px;align-items:start">
-      <div class="rep reveal" style="--d:.3s">
-        <div class="h"><b>3회차 수업 리포트 · 영어</b><span>자동 발송</span></div>
-        <div class="row"><b>이해도</b><span class="dots">●●●●○</span></div>
-        <div class="row"><b>참여도</b><span class="dots">●●●●●</span></div>
-        <div class="row"><b>오늘 한 것</b><span>관계대명사 which·that 구분, 교재 p.42–48</span></div>
-        <div class="row"><b>잘한 점</b><span>지난 시간 오답을 스스로 찾아 교정했어요</span></div>
-        <div class="row"><b>보완할 점</b><span>긴 문장은 끊어 읽기 연습이 필요해요</span></div>
-        <div class="row"><b>숙제</b><span>워크북 p.20–22 · 사진으로 제출</span></div>
-        <div class="row"><b>어머님 한마디</b><span>답장을 남기면 선생님에게 바로 전달돼요</span></div>
+      <div class="pwrap reveal" style="--d:.3s">
+        <div class="phone">
+          <div class="pnotch"></div>
+          <div class="ptime">어머님의 하루 — 수업이 있는 날</div>
+          <div class="pchat" id="pchat">
+            <div class="pm"><span class="chip">오후 6:30 · 수업 30분 전</span></div>
+            <div class="pm"><div class="bb"><div class="ch"><i>쌤</i>쌤이다 알림</div>오늘 19:00 영어 수업이 있어요. 아이 접속만 챙겨 주세요 🙂</div></div>
+            <div class="pm"><span class="chip">오후 7:00</span></div>
+            <div class="pm"><div class="bb"><div class="ch"><i>쌤</i>쌤이다 알림</div>수업이 시작됐습니다 · 영어 3회차</div></div>
+            <div class="pm"><span class="chip">오후 8:00 · 수업 종료</span></div>
+            <div class="pm"><div class="bb"><div class="ch"><i>쌤</i>쌤이다 알림</div>수업이 끝났어요. 선생님이 리포트를 쓰고 있어요…</div></div>
+            <div class="pm"><div class="bb">
+              <div class="ch"><i>쌤</i>3회차 수업 리포트 · 영어</div>
+              <div class="rrow"><b>이해도</b><span class="dots2">●●●●○</span></div>
+              <div class="rrow"><b>참여도</b><span class="dots2">●●●●●</span></div>
+              <div class="rrow"><b>잘한 점</b><span>오답을 스스로 찾아 교정했어요</span></div>
+              <div class="rrow"><b>숙제</b><span>워크북 p.20–22 · 사진 제출</span></div>
+              <span class="open">리포트 전체 보기</span>
+            </div></div>
+            <div class="pm right"><div class="bb">숙제 양 적당해요. 감사합니다 선생님 🙏</div></div>
+            <div class="pm"><div class="bb"><div class="ch"><i>쌤</i>쌤이다 알림</div>어머님 한마디가 선생님께 전달됐어요 ✓</div></div>
+          </div>
+        </div>
       </div>
       <div class="types">
         <div class="card reveal" style="--d:.4s"><b>무료 수업 리포트</b><p>첫 무료 수업 직후 — 우리 아이 현재 상태를 먼저 진단해 보내드립니다.</p></div>
@@ -519,6 +599,54 @@
 
 <script>
 (function(){
+  /* 인트로 */
+  var it=document.getElementById('intro');
+  if(it){
+    if(document.documentElement.classList.contains('no-intro')){it.parentNode.removeChild(it);}
+    else{setTimeout(function(){it.classList.add('done');},1900);setTimeout(function(){if(it.parentNode)it.parentNode.removeChild(it);},2800);}
+  }
+
+  /* 목업 캐러셀 */
+  var slides=[].slice.call(document.querySelectorAll('#mockstage .sl'));
+  if(slides.length){
+    var caps=[
+      "티칭룸 — 우리 아이의 모든 것이 선생님 한 화면에",
+      "매 수업 리포트 — 이해도·참여도·보완점까지 기록",
+      "숙제 — 사진으로 내면, 쌤이 하나하나 피드백",
+      "질문 — 막힌 그날, 바로 답합니다",
+      "스터디룸 — 아이가 매일 여는 자기만의 공간"
+    ];
+    var dots=document.getElementById('mockdots'),cap=document.getElementById('mockcap'),cur=0,tm;
+    slides.forEach(function(_,i){var d=document.createElement('i');if(!i)d.className='on';d.addEventListener('click',function(){go(i);rs();});dots.appendChild(d);});
+    function go(n){slides[cur].classList.remove('on');dots.children[cur].classList.remove('on');cur=(n+slides.length)%slides.length;slides[cur].classList.add('on');dots.children[cur].classList.add('on');cap.textContent=caps[cur];}
+    function rs(){clearInterval(tm);tm=setInterval(function(){go(cur+1);},4200);}
+    rs();
+    var mk=document.querySelector('.mock');
+    mk.addEventListener('mouseenter',function(){clearInterval(tm);});
+    mk.addEventListener('mouseleave',rs);
+  }
+
+  /* 폰 알림 플로우 — 순차 재생 + 반복 */
+  var pc=document.getElementById('pchat');
+  if(pc){
+    var pms=[].slice.call(pc.children),pt=null,pvis=false,prm=false;
+    try{prm=window.matchMedia('(prefers-reduced-motion: reduce)').matches;}catch(e){}
+    function pplay(){
+      if(prm){pms.forEach(function(m){m.classList.add('show');});return;}
+      pms.forEach(function(m){m.classList.remove('show');});
+      var i=0;
+      clearInterval(pt);
+      pt=setInterval(function(){
+        if(i<pms.length){pms[i].classList.add('show');i++;}
+        else{clearInterval(pt);setTimeout(function(){if(pvis)pplay();},3200);}
+      },850);
+    }
+    new IntersectionObserver(function(es){es.forEach(function(e){
+      if(e.isIntersecting&&!pvis){pvis=true;pplay();}
+      else if(!e.isIntersecting&&pvis){pvis=false;clearInterval(pt);}
+    });},{threshold:.3}).observe(pc);
+  }
+
   /* ▼ 구글시트 연동: Apps Script 웹앱 URL을 여기 입력 (배포 가이드 참고). 비워두면 접수 메시지만 표시 ▼ */
   var FORM_ENDPOINT = "";
   /* ▲ ▲ */
