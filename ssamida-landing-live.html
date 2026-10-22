@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>쌤이다 — 복잡할수록, 길은 하나입니다</title>
+<meta name="description" content="초·중·고 전과목 1:1 화상과외 쌤이다. 무료 입시진단부터 전담 과외, 매 수업 리포트까지.">
+<meta property="og:title" content="쌤이다 — 복잡할수록, 길은 하나입니다">
+<meta property="og:description" content="우리 아이 현재 위치 진단 + 30분 무료 수업. 신청은 5초.">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+<script>document.documentElement.classList.add('js');</script>
+<!-- ▼ Meta Pixel: 발급받은 픽셀 코드를 이 자리에 붙여넣기 ▼ -->
+<!-- META PIXEL HERE -->
+<!-- ▲ Meta Pixel ▲ -->
+<style>
+  :root{
+    --bg:#0A1F1A; --bg2:#0E2A23; --card:#12332B; --ink:#E9F4EF; --mint:#34E0B4; --mint2:#1FB89A;
+    --mut:#7D9A90; --dim:#4E6A60; --gold:#E4BC5A; --warm:#E8935C; --line:rgba(255,255,255,.10);
+    --ease:cubic-bezier(.2,.8,.2,1); --btn:#06231C;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--ink);font-family:'Pretendard',-apple-system,BlinkMacSystemFont,sans-serif;line-height:1.45;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+  @media(min-width:781px){.wrap{padding:0 28px}}
+  .kick{font-size:11.5px;letter-spacing:.22em;color:var(--mint);font-weight:800;text-transform:uppercase}
+  .hl{color:var(--mint)} .wm{color:var(--warm)} .gd{color:var(--gold)}
+  section{padding:88px 0;border-top:1px solid var(--line);position:relative}
+  @media(max-width:780px){section{padding:64px 0}}
+  h1,h2,.sub,.card,.rep,.offer,.diag,.tl{word-break:keep-all;overflow-wrap:anywhere}
+  h2{font-size:clamp(32px,6.2vw,76px);font-weight:900;letter-spacing:-.04em;line-height:1.02;margin:14px 0 18px}
+  .sub{color:var(--mut);font-size:clamp(15px,1.7vw,19px);max-width:640px}
+  .two{display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:center}
+  @media(max-width:780px){.two{grid-template-columns:1fr;gap:28px}}
+
+  /* reveal + kinetic */
+  html.js .reveal{opacity:0;transform:translateY(26px);filter:blur(8px)}
+  html.js .reveal.in{opacity:1;transform:none;filter:blur(0);transition:opacity .9s var(--ease) var(--d,0s),transform .9s var(--ease) var(--d,0s),filter .9s var(--ease) var(--d,0s)}
+  .kin .w{display:inline-block}
+  html.js .kin .w{clip-path:inset(0 0 100% 0);transform:translateY(45%)}
+  html.js .kin.in .w{clip-path:inset(-10% 0 -10% 0);transform:none;transition:clip-path 1s var(--ease) var(--d,0s),transform 1s var(--ease) var(--d,0s)}
+
+  /* buttons */
+  .btn{display:inline-flex;align-items:center;gap:10px;background:var(--mint);color:var(--btn);font-weight:900;padding:15px 26px;border-radius:100px;font-size:15.5px;text-decoration:none;border:0;cursor:pointer;box-shadow:0 0 34px rgba(52,224,180,.28);transition:transform .2s var(--ease)}
+  .btn:hover{transform:translateY(-1px)}
+  .micro{display:block;margin-top:10px;font-size:12px;color:var(--mut)}
+  .ghost{display:inline-block;padding:8px 14px;border:1px solid var(--line);border-radius:100px;font-size:12.5px;color:var(--mut);margin-right:6px;margin-bottom:6px}
+  .ghost.g{color:var(--gold);border-color:rgba(228,188,90,.5)} .ghost.m{color:var(--mint);border-color:rgba(52,224,180,.5)}
+
+  /* placeholders (asset slots) */
+  .slot{border:1px dashed var(--mint2);border-radius:16px;background:var(--bg2);min-height:260px;display:flex;align-items:center;justify-content:center;text-align:center;color:var(--mut);font-size:13px;padding:24px;line-height:1.5}
+  .slot b{display:block;color:var(--mint);font-size:12px;letter-spacing:.14em;margin-bottom:6px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 20px}
+
+  /* nav */
+  nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:14px 20px;background:linear-gradient(180deg,rgba(10,31,26,.95),rgba(10,31,26,0));pointer-events:none}
+  nav .brand{font-weight:900;color:var(--mint);font-size:18px;letter-spacing:-.02em;pointer-events:auto}
+  nav .brand span{color:var(--mut);font-weight:600;font-size:12px;margin-left:10px;letter-spacing:.02em}
+  nav .btn{padding:10px 18px;font-size:13px;box-shadow:none;pointer-events:auto}
+  @media(max-width:780px){nav .btn{display:none}}
+
+  /* HERO */
+  .hero{min-height:100vh;display:flex;align-items:center;overflow:hidden;border-top:0;padding:110px 0 70px;
+    background:radial-gradient(ellipse at 26% 45%, rgba(52,224,180,.12), transparent 55%)}
+  .cx{position:absolute;color:var(--mut);opacity:.18;font-weight:700;white-space:nowrap;pointer-events:none;user-select:none;
+    animation:drift var(--t,15s) ease-in-out infinite alternate}
+  @keyframes drift{from{transform:translate(0,0)}to{transform:translate(var(--dx,20px),var(--dy,-16px))}}
+  .hero .wrap{position:relative;z-index:2}
+  .lockup{display:flex;align-items:center;gap:12px;font-size:14px;color:var(--ink);font-weight:700}
+  .lockup b{color:var(--mint);font-size:22px;font-weight:900;letter-spacing:-.02em}
+  .hero .two{grid-template-columns:1.28fr .72fr}
+  @media(max-width:780px){.hero .two{grid-template-columns:1fr}}
+  .hero h1{font-size:clamp(44px,7.2vw,100px);font-weight:900;letter-spacing:-.045em;line-height:.98;margin:22px 0 18px}
+  .hero .sub{font-size:clamp(15px,1.8vw,20px)}
+  .beam{width:min(100%,640px);height:3px;margin:30px 0 26px;background:linear-gradient(90deg,var(--mint),transparent);transform-origin:left;transform:scaleX(0);transition:transform 1.4s var(--ease) .7s}
+  .hero.in .beam{transform:scaleX(1)}
+  .hero .slot{min-height:340px}
+  @media(max-width:780px){.hero{min-height:auto;padding:96px 0 56px}.hero .slot{min-height:220px}}
+
+  /* S2 zero */
+  .zero{display:grid;grid-template-columns:auto 1fr;gap:40px;align-items:center}
+  @media(max-width:780px){.zero{grid-template-columns:1fr;gap:16px}}
+  .zero .n{font-size:clamp(140px,22vw,300px);font-weight:900;letter-spacing:-.06em;line-height:.85;color:var(--mint);text-shadow:0 0 60px rgba(52,224,180,.3)}
+  .zero .nl{color:var(--mut);font-size:14px;margin-top:8px;text-align:center}
+  .zero .lines p{font-size:clamp(16px,2vw,21px);margin-bottom:14px;color:var(--mut)}
+  .zero .lines p b{color:var(--ink);font-weight:800}
+  .zero .lines .punch{font-size:clamp(20px,2.6vw,28px);color:var(--ink);font-weight:900;margin-top:22px;letter-spacing:-.02em}
+
+  /* S3 timeline — 결정의 순간들 */
+  .tl{position:relative;padding-left:26px;margin-top:6px}
+  .tl::before{content:"";position:absolute;left:7px;top:6px;bottom:6px;width:2px;background:var(--line)}
+  .tl .prog{position:absolute;left:7px;top:6px;width:2px;height:0;background:linear-gradient(180deg,var(--mint),var(--mint2));box-shadow:0 0 12px rgba(52,224,180,.5);transition:height 1.6s var(--ease) .2s}
+  .tl.in .prog{height:calc(100% - 12px)}
+  .tl .ti{position:relative;padding:12px 0 14px}
+  .tl .ti::before{content:"";position:absolute;left:-26px;top:19px;width:12px;height:12px;border-radius:50%;background:var(--bg);border:2px solid var(--dim);transition:border-color .4s var(--ease) var(--d,0s),box-shadow .4s var(--ease) var(--d,0s)}
+  .tl.in .ti::before{border-color:var(--mint);box-shadow:0 0 10px rgba(52,224,180,.5)}
+  html.js .tl .ti{opacity:0;transform:translateX(14px)}
+  html.js .tl.in .ti{opacity:1;transform:none;transition:opacity .7s var(--ease) var(--d,0s),transform .7s var(--ease) var(--d,0s)}
+  .tl .ti b{display:block;color:var(--mint);font-size:13px;letter-spacing:.06em;font-weight:900;margin-bottom:3px}
+  .tl .ti span{color:var(--mut);font-size:14.5px}
+  .tl .ti span i{font-style:normal;color:var(--ink);font-weight:700}
+  .tl .cap{margin-top:16px;font-size:15px;color:var(--ink);font-weight:800}
+
+  /* S4 diag — 진단 미리보기 카드 */
+  .diag{background:linear-gradient(160deg,var(--card),#0F2E26);border:1px solid var(--mint2);border-radius:20px;padding:24px 24px 20px;box-shadow:0 0 50px rgba(52,224,180,.14);position:relative;overflow:hidden}
+  .diag::after{content:"";position:absolute;top:0;left:-60%;width:40%;height:100%;background:linear-gradient(100deg,transparent,rgba(52,224,180,.08),transparent);transform:skewX(-12deg)}
+  .diag.in::after{animation:sheen 2.4s var(--ease) .8s 1}
+  @keyframes sheen{to{left:130%}}
+  .diag .dh{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}
+  .diag .dh b{font-size:16px;font-weight:900}
+  .diag .dh span{font-size:11px;color:var(--mint);border:1px solid var(--mint2);border-radius:100px;padding:4px 10px;background:var(--bg2);font-weight:800}
+  .diag .lab{font-size:12px;letter-spacing:.12em;color:var(--mint);font-weight:800;margin-bottom:8px}
+  .diag .blockk{padding:14px 0;border-top:1px solid var(--line)}
+  .diag .blockk:first-of-type{border-top:0;padding-top:0}
+  .gauge{position:relative;height:10px;border-radius:100px;background:linear-gradient(90deg,rgba(52,224,180,.45),rgba(228,188,90,.35),rgba(232,147,92,.3));margin:10px 0 6px}
+  .gauge .pin{position:absolute;top:50%;left:0;width:18px;height:18px;border-radius:50%;background:var(--ink);border:3px solid var(--mint);transform:translate(-50%,-50%);box-shadow:0 0 16px rgba(52,224,180,.6);transition:left 1.4s var(--ease) .3s}
+  .diag.in .gauge .pin{left:var(--pos,24%)}
+  .gauge-n{display:flex;justify-content:space-between;font-size:10.5px;color:var(--dim)}
+  .diag .big{font-size:26px;font-weight:900;letter-spacing:-.02em}
+  .diag .big small{font-size:13px;color:var(--mut);font-weight:600;margin-left:8px}
+  .pbar{display:grid;grid-template-columns:52px 1fr 30px;gap:10px;align-items:center;margin:8px 0;font-size:13.5px}
+  .pbar b{color:var(--mut);font-weight:700}
+  .pbar .tr{height:9px;border-radius:100px;background:var(--bg2);overflow:hidden}
+  .pbar .fl{height:100%;width:0;border-radius:100px;background:linear-gradient(90deg,var(--mint2),var(--mint));transition:width 1.2s var(--ease) var(--d,.3s)}
+  .pbar.gold .fl{background:linear-gradient(90deg,#9c7f35,var(--gold))}
+  .diag.in .pbar .fl{width:var(--w,50%)}
+  .pbar .ct{text-align:right;font-weight:900;color:var(--ink)}
+  .diag .todo{margin-top:4px;padding:12px 14px;border-radius:12px;background:rgba(52,224,180,.09);border:1px solid rgba(52,224,180,.4);font-size:14px}
+  .diag .todo b{color:var(--mint)}
+  .diag .src{margin-top:12px;font-size:11px;color:var(--dim)}
+
+  /* S5 map — 길이 보이는 지도 */
+  .mapbox{background:var(--bg2);border:1px solid var(--line);border-radius:20px;padding:10px 6px 2px;overflow:hidden}
+  .mapbox svg{width:100%;height:auto;display:block}
+  .mapbox .pth{fill:none;stroke-width:2.5;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:1}
+  .mapbox.in .pth{transition:stroke-dashoffset 1.6s var(--ease) var(--d,.2s);stroke-dashoffset:0}
+  .mapbox .open{stroke:var(--mint);filter:drop-shadow(0 0 6px rgba(52,224,180,.6))}
+  .mapbox .dimp{stroke:var(--dim);stroke-dasharray:.02 .015;opacity:.6}
+  .mapbox.in .dimp{transition:stroke-dashoffset 1.6s var(--ease) var(--d,.2s)}
+  .mapbox .newp{stroke:var(--gold);filter:drop-shadow(0 0 6px rgba(228,188,90,.5))}
+  .mapbox text{font-family:'Pretendard',sans-serif}
+  .mapbox .nd{opacity:0;transition:opacity .6s var(--ease) var(--d,1s)}
+  .mapbox.in .nd{opacity:1}
+  .maplegend{display:flex;gap:16px;flex-wrap:wrap;margin-top:14px;font-size:12.5px;color:var(--mut)}
+  .maplegend i{display:inline-block;width:18px;height:3px;border-radius:3px;margin-right:6px;vertical-align:middle}
+  .maplegend .l1 i{background:var(--mint);box-shadow:0 0 8px rgba(52,224,180,.6)}
+  .maplegend .l2 i{background:var(--gold);box-shadow:0 0 8px rgba(228,188,90,.5)}
+  .maplegend .l3 i{background:var(--dim)}
+  .flow{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:26px 0 0}
+  .flow .f{padding:13px 17px;border-radius:12px;background:var(--card);border:1px solid var(--line);font-weight:800;font-size:14.5px}
+  .flow .f.last{border-color:var(--mint);color:var(--mint)}
+  .flow .ar{color:var(--mint2);font-size:20px}
+
+  /* S6 cards */
+  .grid4{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:30px}
+  @media(max-width:780px){.grid4{grid-template-columns:1fr}}
+  .grid4 .card b{display:block;color:var(--mint);font-size:16px;font-weight:900;margin-bottom:6px}
+  .grid4 .card p{color:var(--mut);font-size:14px}
+  .vs{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:22px}
+  @media(max-width:780px){.vs{grid-template-columns:1fr}}
+  .vs div{padding:16px 18px;border-radius:12px;border:1px solid var(--line);font-size:14px}
+  .vs .a{color:var(--mut);background:var(--bg2)} .vs .b{color:var(--ink);background:rgba(52,224,180,.08);border-color:rgba(52,224,180,.4)}
+  .vs b{display:block;font-size:11.5px;letter-spacing:.14em;margin-bottom:6px}
+  .vs .a b{color:var(--mut)} .vs .b b{color:var(--mint)}
+
+  /* S7 teachers */
+  .tgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:30px}
+  @media(max-width:780px){.tgrid{grid-template-columns:1fr}}
+  .tgrid .card .slot{min-height:150px;margin-bottom:12px}
+  .tgrid .card b{display:block;font-size:16px;font-weight:900}
+  .tgrid .card p{color:var(--mut);font-size:13px;margin-top:4px}
+  .tgrid .card i{display:inline-block;margin-top:10px;font-style:normal;font-size:11px;color:var(--mint);letter-spacing:.1em;font-weight:800}
+
+  /* S8 report + cycle + growth */
+  .rep{background:var(--card);border:1px solid var(--mint2);border-radius:18px;padding:22px 22px 18px;box-shadow:0 0 40px rgba(52,224,180,.12)}
+  .rep .h{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
+  .rep .h b{font-size:16px;font-weight:900}
+  .rep .h span{font-size:11px;color:var(--mint);border:1px solid var(--mint2);border-radius:100px;padding:4px 10px;background:var(--bg2);font-weight:800}
+  .rep .row{display:grid;grid-template-columns:96px 1fr;gap:12px;padding:9px 0;border-top:1px solid var(--line);font-size:14px}
+  .rep .row:first-of-type{border-top:0}
+  .rep .row b{color:var(--mint);font-weight:800;font-size:13px}
+  .rep .row span{color:var(--mut)} .rep .row .dots{color:var(--mint);letter-spacing:2px}
+  .types{display:flex;flex-direction:column;gap:10px}
+  .types .card b{display:block;color:var(--mint);font-weight:900;font-size:15px;margin-bottom:4px}
+  .types .card p{color:var(--mut);font-size:13.5px}
+  .cycle{display:grid;grid-template-columns:repeat(5,1fr);gap:0;margin:34px 0 8px;position:relative}
+  @media(max-width:780px){.cycle{grid-template-columns:1fr;gap:14px}}
+  .cycle::before{content:"";position:absolute;top:21px;left:10%;right:10%;height:2px;background:var(--line)}
+  .cycle .cl{position:absolute;top:21px;left:10%;height:2px;width:0;background:linear-gradient(90deg,var(--mint2),var(--mint));box-shadow:0 0 10px rgba(52,224,180,.5);transition:width 1.8s var(--ease) .3s}
+  .cycle.in .cl{width:80%}
+  @media(max-width:780px){.cycle::before,.cycle .cl{display:none}}
+  .cycle .st{text-align:center;position:relative;padding:0 8px}
+  @media(max-width:780px){.cycle .st{text-align:left;display:grid;grid-template-columns:44px 1fr;gap:12px;align-items:start}}
+  .cycle .st .no{width:44px;height:44px;border-radius:50%;background:var(--bg2);border:2px solid var(--dim);color:var(--mut);font-weight:900;display:flex;align-items:center;justify-content:center;margin:0 auto 12px;position:relative;z-index:1;font-size:15px;transition:border-color .5s var(--ease) var(--d,.5s),color .5s var(--ease) var(--d,.5s),box-shadow .5s var(--ease) var(--d,.5s)}
+  @media(max-width:780px){.cycle .st .no{margin:0}}
+  .cycle.in .st .no{border-color:var(--mint);color:var(--mint);box-shadow:0 0 14px rgba(52,224,180,.35)}
+  .cycle .st b{display:block;font-size:14.5px;font-weight:900;margin-bottom:4px}
+  .cycle .st p{font-size:12.5px;color:var(--mut)}
+  .spark{margin-top:8px}
+  .spark svg{width:100%;height:auto;display:block}
+  .spark .gl{fill:none;stroke:var(--mint);stroke-width:2.5;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:1;filter:drop-shadow(0 0 5px rgba(52,224,180,.5))}
+  .spark.in .gl{transition:stroke-dashoffset 1.8s var(--ease) .3s;stroke-dashoffset:0}
+  .spark .gdot{fill:var(--mint);opacity:0;transition:opacity .4s var(--ease) var(--d,1.4s)}
+  .spark.in .gdot{opacity:1}
+  .spark .ga{fill:url(#ggrad);opacity:0;transition:opacity 1s var(--ease) 1.2s}
+  .spark.in .ga{opacity:1}
+
+  /* S9 offer */
+  .offer{display:flex;flex-direction:column;gap:14px;margin:28px 0 30px;max-width:720px}
+  .offer div{display:flex;gap:14px;align-items:flex-start;font-size:16px}
+  .offer div i{color:var(--mint);font-style:normal;font-weight:900}
+  .offer div b{color:var(--ink);font-weight:900;margin-right:8px}
+  .offer div span{color:var(--mut)}
+
+  /* S10 form */
+  .final{background:radial-gradient(ellipse at 50% 30%, rgba(52,224,180,.16), transparent 60%);padding-bottom:104px}
+  .final .chips{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 6px}
+  form{margin-top:26px;max-width:520px;display:grid;gap:10px}
+  .fld{background:var(--bg2);border:1px solid var(--line);border-radius:12px;padding:0 14px;height:52px;color:var(--ink);font-size:15px;font-family:inherit;width:100%;outline:none}
+  .fld:focus{border-color:var(--mint2)}
+  select.fld{appearance:none}
+  .agree{display:flex;gap:8px;align-items:flex-start;font-size:12.5px;color:var(--mut);margin-top:4px}
+  .agree input{margin-top:3px}
+  .ferr{display:none;margin-top:4px;padding:12px 14px;border-radius:12px;border:1px solid rgba(232,147,92,.5);background:rgba(232,147,92,.08);color:var(--warm);font-size:13.5px}
+  .ferr.on{display:block}
+  .thanks{display:none;margin-top:14px;padding:14px 16px;border-radius:12px;border:1px solid rgba(52,224,180,.4);background:rgba(52,224,180,.08);color:var(--ink);font-size:14px}
+  .thanks.on{display:block}
+  .foot{padding:40px 0 120px;color:var(--mut);font-size:12.5px;border-top:1px solid var(--line)}
+  .foot b{color:var(--ink)}
+
+  /* sticky CTA */
+  .sticky{position:fixed;left:0;right:0;bottom:0;z-index:60;padding:12px 16px;background:linear-gradient(180deg,rgba(10,31,26,0),rgba(10,31,26,.96) 40%);display:flex;justify-content:center;transform:translateY(120%);transition:transform .5s var(--ease)}
+  .sticky.on{transform:none}
+  .sticky .btn{width:min(100%,520px);justify-content:center;padding:15px 20px;font-size:15.5px}
+
+  @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html.js .reveal,html.js .kin .w,html.js .tl .ti{opacity:1;transform:none;clip-path:none;filter:none}.mapbox .pth,.spark .gl{stroke-dashoffset:0}.diag.in .gauge .pin{left:var(--pos,24%)}.diag.in .pbar .fl{width:var(--w,50%)}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="brand">쌤이다<span>초·중·고 1:1 화상과외</span></div>
+  <a class="btn" href="#apply">무료 입시진단</a>
+</nav>
+
+<!-- ============ S1 HERO ============ -->
+<section class="hero" id="top">
+  <span class="cx" style="left:4%;top:16%;font-size:20px;--t:16s;--dx:28px;--dy:-18px">수행평가</span>
+  <span class="cx" style="left:20%;top:9%;font-size:30px;--t:13s;--dx:-22px;--dy:16px">수능최저</span>
+  <span class="cx" style="left:46%;top:12%;font-size:16px;--t:18s;--dx:18px;--dy:20px">학생부종합</span>
+  <span class="cx" style="left:68%;top:8%;font-size:26px;--t:15s;--dx:-28px;--dy:-14px">교과추천</span>
+  <span class="cx" style="left:88%;top:22%;font-size:18px;--t:12s;--dx:-16px;--dy:24px">논술</span>
+  <span class="cx" style="left:6%;top:50%;font-size:14px;--t:17s;--dx:24px;--dy:12px">지역균형</span>
+  <span class="cx" style="left:80%;top:44%;font-size:36px;--t:14s;--dx:-22px;--dy:-24px">정시</span>
+  <span class="cx" style="left:58%;top:34%;font-size:14px;--t:19s;--dx:14px;--dy:-18px">면접</span>
+  <span class="cx" style="left:10%;top:78%;font-size:28px;--t:15s;--dx:-18px;--dy:-20px">수시</span>
+  <span class="cx" style="left:40%;top:84%;font-size:16px;--t:16s;--dx:26px;--dy:14px">가·나·다군</span>
+  <span class="cx" style="left:66%;top:74%;font-size:20px;--t:13s;--dx:-24px;--dy:20px">백분위</span>
+  <span class="cx" style="left:90%;top:68%;font-size:14px;--t:18s;--dx:16px;--dy:-22px">선택과목</span>
+  <span class="cx" style="left:30%;top:94%;font-size:24px;--t:14s;--dx:22px;--dy:-16px">학종</span>
+  <span class="cx" style="left:52%;top:60%;font-size:18px;--t:16s;--dx:20px;--dy:-20px">세특</span>
+
+  <div class="wrap two">
+    <div>
+      <div class="lockup reveal">입시를 아는 1:1 화상과외 <b>쌤이다</b></div>
+      <h1 class="kin"><span class="w" style="--d:.1s">복잡할수록,</span><br><span class="w hl" style="--d:.4s">길은 하나입니다.</span></h1>
+      <p class="sub reveal" style="--d:.7s">수행·수능·수시·정시·교과·학종… 복잡한 입시,<br>우리 아이가 갈 길은 쌤이다가 냅니다.</p>
+      <div class="beam"></div>
+      <div class="reveal" style="--d:.9s">
+        <a class="btn" href="#apply">우리 아이 위치 확인하기 →</a>
+        <span class="micro">5초 신청으로 — 우리 아이 위치 진단 + 30분 무료 수업까지</span>
+      </div>
+    </div>
+    <div class="slot reveal" style="--d:.5s"><div><b>HERO FILM</b>브랜드 필름 '뚫어본 쌤'<br>자동재생 · 무음 · 썸네일</div></div>
+  </div>
+</section>
+
+<!-- ============ S2 왜 지금 ============ -->
+<section>
+  <div class="wrap">
+    <div class="kick reveal">01 · 왜 지금인가</div>
+    <h2 class="kin"><span class="w">'내신만 잘 받으면'은</span><br><span class="w wm" style="--d:.2s">끝났습니다.</span></h2>
+    <div class="zero">
+      <div class="reveal" style="--d:.3s"><div class="n">0</div><div class="nl">서울 주요 10개 대학 중<br>내신만 보는 전형</div></div>
+      <div class="lines">
+        <p class="reveal" style="--d:.4s"><b>10곳 전부 수능최저가 붙습니다.</b> 서울대는 교과전형조차 없습니다.</p>
+        <p class="reveal" style="--d:.5s">인서울 전체로 넓혀도 손에 꼽고, 그마저 대부분 지역균형·추천 전형입니다.</p>
+        <p class="punch reveal" style="--d:.6s">위를 보는 순간, 내신만으로 가는 문은 닫힙니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ S3 결정의 순간들 ============ -->
+<section>
+  <div class="wrap two" style="align-items:start">
+    <div>
+      <div class="kick reveal">02 · 그래서</div>
+      <h2 class="kin"><span class="w">대학도 못 정했는데,</span><br><span class="w" style="--d:.2s">결정은 이미 시작됩니다.</span></h2>
+      <p class="sub reveal" style="--d:.4s">뭐부터 해야 할지 몰라서, 일단 눈앞의 내신과 학원만 봅니다.<br><b style="color:var(--ink)">그 사이, 되돌릴 수 없는 결정의 순간들이 그냥 지나갑니다.</b></p>
+      <p class="sub reveal" style="--d:.5s;margin-top:14px;font-size:14.5px">몰라도 지나가고, 알면 잡을 수 있는 순간들입니다.</p>
+    </div>
+    <div class="tl reveal" style="--d:.3s">
+      <i class="prog"></i>
+      <div class="ti" style="--d:.4s"><b>고1 · 3월</b><span>첫 내신 — <i>교과·학종의 출발선</i>이 여기서 그어집니다</span></div>
+      <div class="ti" style="--d:.6s"><b>고1 · 여름</b><span>선택과목 수요조사 — 고2·고3에 뭘 배울지 적어 내는 종이 한 장이, <i>사실상 전형의 방향</i>을 정합니다</span></div>
+      <div class="ti" style="--d:.8s"><b>고2</b><span>세특·활동 — <i>학종의 재료</i>가 쌓이거나, 비어 가거나</span></div>
+      <div class="ti" style="--d:1s"><b>고3 · 9월</b><span>수시 원서 6장 — 3년이 <i>여섯 번의 선택</i>으로 접힙니다. 되돌릴 수 없습니다</span></div>
+      <div class="cap reveal" style="--d:1.2s">지나고 나서야 보이는 순간들을, 미리 보여드립니다.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ S4 진단 ============ -->
+<section>
+  <div class="wrap two" style="align-items:start">
+    <div>
+      <div class="kick reveal">03 · 무료 입시진단</div>
+      <h2 class="kin"><span class="w">네 위치가</span><br><span class="w hl" style="--d:.2s">어디인지부터.</span></h2>
+      <p class="sub reveal" style="--d:.4s"><b style="color:var(--ink)">성적표는 매달 오는데, 입시는 아무도 번역해주지 않죠.</b><br>쌤이다는 대교협 공시 입결로 우리 아이의 현재 위치와 열려 있는 길을 — 추측 없이, 정확히. 무료 수업에서 가장 먼저 하는 일입니다.</p>
+      <div class="reveal" style="--d:.5s;margin-top:18px">
+        <span class="ghost g">오픈 런칭 100명 한정</span><span class="ghost m">진단 무료</span><span class="ghost">수업 30분 포함</span>
+      </div>
+      <div class="reveal" style="--d:.6s;margin-top:22px"><a class="btn" href="#apply">우리 아이 위치 확인하기 →</a><span class="micro">5초 신청으로 — 우리 아이 위치 진단 + 30분 무료 수업까지</span></div>
+    </div>
+    <div class="diag reveal" style="--d:.4s">
+      <div class="dh"><b>입시 진단 리포트</b><span>예시 화면</span></div>
+      <div class="blockk">
+        <div class="lab">현재 위치</div>
+        <div class="big">내신 환산 2.9<small>9등급 잣대로 번역</small></div>
+        <div class="gauge"><i class="pin" style="--pos:23.8%"></i></div>
+        <div class="gauge-n"><span>1</span><span>3</span><span>5</span><span>7</span><span>9</span></div>
+      </div>
+      <div class="blockk">
+        <div class="lab">지금 열려 있는 길</div>
+        <div class="pbar"><b>교과</b><div class="tr"><div class="fl" style="--w:40%;--d:.4s"></div></div><div class="ct" data-count="2">0</div></div>
+        <div class="pbar"><b>학종</b><div class="tr"><div class="fl" style="--w:60%;--d:.55s"></div></div><div class="ct" data-count="3">0</div></div>
+        <div class="pbar"><b>정시</b><div class="tr"><div class="fl" style="--w:20%;--d:.7s"></div></div><div class="ct" data-count="1">0</div></div>
+        <div class="pbar gold"><b>논술</b><div class="tr"><div class="fl" style="--w:30%;--d:.85s"></div></div><div class="ct" style="color:var(--gold)">NEW</div></div>
+      </div>
+      <div class="blockk">
+        <div class="lab">지금 할 일</div>
+        <div class="todo"><b>수학 1단계 상향</b> 시 교과 전형 <b>3곳이 추가로 열립니다</b></div>
+      </div>
+      <div class="src">기준 · 대교협 공시 입결 2021~2025 — 단정 없이, 위치와 분포만</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ S5 지도 ============ -->
+<section>
+  <div class="wrap">
+    <div class="kick reveal">04 · 위치 → 길</div>
+    <h2 class="kin"><span class="w">성적표는 점수를 주고,</span><br><span class="w hl" style="--d:.2s">진단은 지도를 줍니다.</span></h2>
+    <p class="sub reveal" style="--d:.4s">갈 길을 정한 아이에겐 그 길의 확인을. 아직 못 정한 아이에겐 — <b style="color:var(--ink)">몰라서 지나칠 뻔한 길까지 미리 펼쳐 보여주는 지도</b>를.</p>
+    <div class="two" style="margin-top:30px;align-items:center">
+      <div class="mapbox reveal" style="--d:.3s">
+        <svg viewBox="0 0 640 340" aria-label="진단 지도 — 한 아이에서 전형별 길이 갈라지는 다이어그램">
+          <defs>
+            <radialGradient id="ndg" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#34E0B4" stop-opacity=".9"/>
+              <stop offset="100%" stop-color="#34E0B4" stop-opacity="0"/>
+            </radialGradient>
+          </defs>
+          <circle cx="80" cy="170" r="34" fill="url(#ndg)" opacity=".5"/>
+          <circle cx="80" cy="170" r="10" fill="#34E0B4"/>
+          <text x="80" y="218" text-anchor="middle" fill="#E9F4EF" font-size="14" font-weight="800">우리 아이</text>
+          <path class="pth open" pathLength="1" style="--d:.2s" d="M92,164 C220,120 330,80 520,60"/>
+          <path class="pth open" pathLength="1" style="--d:.45s" d="M94,170 C240,160 360,140 520,130"/>
+          <path class="pth dimp" pathLength="1" style="--d:.7s" d="M94,176 C240,190 360,200 520,205"/>
+          <path class="pth newp" pathLength="1" style="--d:.95s" d="M92,180 C210,230 340,265 520,280"/>
+          <g class="nd" style="--d:1s"><circle cx="528" cy="60" r="6" fill="#34E0B4"/><text x="544" y="65" fill="#E9F4EF" font-size="13.5" font-weight="800">교과</text></g>
+          <g class="nd" style="--d:1.15s"><circle cx="528" cy="130" r="6" fill="#34E0B4"/><text x="544" y="135" fill="#E9F4EF" font-size="13.5" font-weight="800">학종</text></g>
+          <g class="nd" style="--d:1.3s"><circle cx="528" cy="205" r="6" fill="#4E6A60"/><text x="544" y="210" fill="#7D9A90" font-size="13.5" font-weight="700">정시</text></g>
+          <g class="nd" style="--d:1.5s"><circle cx="528" cy="280" r="6" fill="#E4BC5A"/><text x="544" y="285" fill="#E4BC5A" font-size="13.5" font-weight="800">논술</text></g>
+          <g class="nd" style="--d:1.7s"><text x="518" y="310" text-anchor="end" fill="#E4BC5A" font-size="11.5">← 몰랐던 길</text></g>
+        </svg>
+      </div>
+      <div>
+        <div class="maplegend reveal" style="--d:.5s">
+          <span class="l1"><i></i>지금 열려 있는 길</span>
+          <span class="l2"><i></i>진단이 새로 비추는 길</span>
+          <span class="l3"><i></i>아직 먼 길 — 조건까지 표시</span>
+        </div>
+        <p class="sub reveal" style="--d:.6s;margin-top:18px;font-size:15px">진단은 "너 지금 몇 등"에서 끝나지 않습니다. 길마다 <b style="color:var(--ink)">지금 갈 수 있는지, 가려면 뭐가 필요한지</b>까지 함께 보여줍니다.</p>
+        <div class="flow reveal" style="--d:.7s">
+          <div class="f">위치 확인</div><span class="ar">→</span>
+          <div class="f">길과 할 일</div><span class="ar">→</span>
+          <div class="f last">그 길을 아는 쌤의 1:1</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ S6 과외 ============ -->
+<section>
+  <div class="wrap">
+    <div class="kick reveal">05 · 과외</div>
+    <h2 class="kin"><span class="w">매칭이 아니라,</span><br><span class="w hl" style="--d:.2s">전담입니다.</span></h2>
+    <p class="sub reveal" style="--d:.4s">선생님을 연결해 주는 곳은 많습니다. 쌤이다는 <b style="color:var(--ink)">연결에서 시작</b>합니다 — 우리 아이 한 명에, 끝까지.<br>집중은 말이 아니라, 시스템으로 증명합니다.</p>
+    <div class="vs reveal" style="--d:.5s">
+      <div class="a"><b>연결까지</b>선생님 소개 → 그다음은 가정과 선생님이 각자 알아서.</div>
+      <div class="b"><b>연결부터</b>진단 → 전담 쌤 → 매 수업 리포트 → 성장 리포트. 끝까지 같이.</div>
+    </div>
+    <div class="grid4">
+      <div class="card reveal" style="--d:.55s"><b>매 수업 리포트</b><p>수업이 끝날 때마다 리포트가 카톡으로. 이해도·참여도·잘한 점·보완·숙제까지 빠짐없이.</p></div>
+      <div class="card reveal" style="--d:.65s"><b>숙제, 사진으로</b><p>아이가 숙제를 사진으로 올리면 선생님이 하나하나 확인하고 칭찬·보완 코멘트를 답니다.</p></div>
+      <div class="card reveal" style="--d:.75s"><b>질문은 그날 안에</b><p>막히면 바로 질문, 선생님이 답합니다. Q&amp;A가 쌓여 아이만의 복습 자료가 됩니다.</p></div>
+      <div class="card reveal" style="--d:.85s"><b>아이 전용 스터디룸</b><p>과목별 교재·진도·리포트·성적을 아이가 직접 보는, 자기만의 공간.</p></div>
+    </div>
+    <p class="sub reveal" style="--d:.95s;margin-top:22px">선생님은 '티칭룸'에서 — 반 전체가 아니라, <b style="color:var(--ink)">우리 아이 한 명</b>을 깊이 봅니다.</p>
+  </div>
+</section>
+
+<!-- ============ S7 가본 쌤 ============ -->
+<section>
+  <div class="wrap">
+    <div class="kick reveal">06 · 가본 쌤</div>
+    <h2 class="kin"><span class="w">입시를,</span> <span class="w hl" style="--d:.2s">몸으로 아는 쌤</span><span class="w" style="--d:.3s">입니다.</span></h2>
+    <p class="sub reveal" style="--d:.4s">책으로 배운 입시와 직접 치른 입시는 다릅니다. 수시 6장의 무게, 수능최저의 압박, 흔들리는 날들 — <b style="color:var(--ink)">그 길을 끝까지 가본 사람이 옆에 있다는 것.</b></p>
+    <div class="tgrid">
+      <div class="card reveal" style="--d:.5s"><div class="slot"><div><b>PHOTO</b>쌤 사진 + 합격증</div></div><b>리더십전형 → 동국대 행정</b><p>학교장추천 · 남들이 모르는 전형까지 찾아낸 케이스</p><i>깊이 앵커</i></div>
+      <div class="card reveal" style="--d:.6s"><div class="slot"><div><b>PHOTO</b>쌤 사진 + 합격증</div></div><b>학종 → 경희대 자유전공</b><p>내신 3.5에서 — 숫자보다 설계로 뚫은 케이스</p><i>중상위</i></div>
+      <div class="card reveal" style="--d:.7s"><div class="slot"><div><b>PHOTO</b>쌤 사진 + 합격증</div></div><b>교과 → OO대</b><p>내신으로 정면 돌파한 케이스</p><i>'내 얘기' 앵커</i></div>
+    </div>
+    <p class="sub reveal" style="--d:.8s;margin-top:20px;font-size:14.5px">우리 아이와 전형이 똑같지 않아도 괜찮습니다. <b style="color:var(--ink)">길을 끝까지 가본 사람은, 길 잃은 지점을 알아봅니다.</b></p>
+  </div>
+</section>
+
+<!-- ============ S8 리포트 ============ -->
+<section>
+  <div class="wrap">
+    <div class="kick reveal">07 · 리포트</div>
+    <h2 class="kin"><span class="w">매 수업이 끝나면,</span><br><span class="w hl" style="--d:.2s">카톡으로 리포트가 갑니다.</span></h2>
+
+    <div class="cycle reveal" style="--d:.3s">
+      <i class="cl"></i>
+      <div class="st"><div class="no" style="--d:.4s">1</div><div><b>수업</b><p>티칭룸에서 우리 아이 한 명에 집중</p></div></div>
+      <div class="st"><div class="no" style="--d:.6s">2</div><div><b>리포트 발송</b><p>끝나는 즉시 카톡으로 자동 발송</p></div></div>
+      <div class="st"><div class="no" style="--d:.8s">3</div><div><b>숙제 제출</b><p>아이가 사진으로 — 쌤이 하나하나 코멘트</p></div></div>
+      <div class="st"><div class="no" style="--d:1s">4</div><div><b>질문 Q&amp;A</b><p>막힌 건 그날 안에 — 쌓이면 복습 자료</p></div></div>
+      <div class="st"><div class="no" style="--d:1.2s">5</div><div><b>다음 수업</b><p>리포트·숙제·질문이 다음 수업의 출발점</p></div></div>
+    </div>
+
+    <div class="two" style="margin-top:34px;align-items:start">
+      <div class="rep reveal" style="--d:.3s">
+        <div class="h"><b>3회차 수업 리포트 · 영어</b><span>자동 발송</span></div>
+        <div class="row"><b>이해도</b><span class="dots">●●●●○</span></div>
+        <div class="row"><b>참여도</b><span class="dots">●●●●●</span></div>
+        <div class="row"><b>오늘 한 것</b><span>관계대명사 which·that 구분, 교재 p.42–48</span></div>
+        <div class="row"><b>잘한 점</b><span>지난 시간 오답을 스스로 찾아 교정했어요</span></div>
+        <div class="row"><b>보완할 점</b><span>긴 문장은 끊어 읽기 연습이 필요해요</span></div>
+        <div class="row"><b>숙제</b><span>워크북 p.20–22 · 사진으로 제출</span></div>
+        <div class="row"><b>어머님 한마디</b><span>답장을 남기면 선생님에게 바로 전달돼요</span></div>
+      </div>
+      <div class="types">
+        <div class="card reveal" style="--d:.4s"><b>무료 수업 리포트</b><p>첫 무료 수업 직후 — 우리 아이 현재 상태를 먼저 진단해 보내드립니다.</p></div>
+        <div class="card reveal" style="--d:.5s"><b>매 수업 리포트</b><p>정규 수업마다 자동으로 카톡. 빠지는 수업이 없습니다.</p></div>
+        <div class="card reveal" style="--d:.6s"><b>성장 리포트</b><p>몇 회마다 — 처음과 지금, 얼마나 달라졌는지 누적으로.</p>
+          <div class="spark reveal" style="--d:.7s">
+            <svg viewBox="0 0 280 80" aria-label="성장 추이 예시 그래프">
+              <defs><linearGradient id="ggrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#34E0B4" stop-opacity=".25"/><stop offset="100%" stop-color="#34E0B4" stop-opacity="0"/></linearGradient></defs>
+              <path class="ga" d="M10,62 L60,56 L110,58 L160,42 L210,34 L270,18 L270,78 L10,78 Z"/>
+              <path class="gl" pathLength="1" d="M10,62 L60,56 L110,58 L160,42 L210,34 L270,18"/>
+              <circle class="gdot" style="--d:1.2s" cx="10" cy="62" r="3.5"/>
+              <circle class="gdot" style="--d:1.4s" cx="110" cy="58" r="3.5"/>
+              <circle class="gdot" style="--d:1.6s" cx="210" cy="34" r="3.5"/>
+              <circle class="gdot" style="--d:1.8s" cx="270" cy="18" r="4.5"/>
+            </svg>
+          </div>
+        </div>
+        <p class="sub reveal" style="--d:.8s;font-size:14px;margin-top:6px"><b style="color:var(--ink)">믿어달라고 하지 않습니다. 보여드립니다.</b></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ S9 신청하면 받는 것 ============ -->
+<section>
+  <div class="wrap">
+    <div class="kick reveal">08 · 신청하면 받는 것</div>
+    <h2 class="kin"><span class="w">5초 신청으로,</span><br><span class="w hl" style="--d:.2s">이걸 다 받습니다.</span></h2>
+    <div class="offer">
+      <div class="reveal" style="--d:.3s"><i>—</i><div><b>우리 아이 입시 진단</b><span>공시 입결 기준 현재 위치와 열려 있는 길 — 수업에서 바로 확인합니다.</span></div></div>
+      <div class="reveal" style="--d:.4s"><i>—</i><div><b>무료 수업 30분</b><span>전담 쌤의 1:1 화상 수업 (Zoom). 수업 후 진단 리포트까지 카톡으로.</span></div></div>
+      <div class="reveal" style="--d:.5s"><i>—</i><div><b>오픈 런칭 100명 한정</b><span>선착순 마감됩니다.</span></div></div>
+    </div>
+    <div class="reveal" style="--d:.6s"><a class="btn" href="#apply">우리 아이 위치 확인하기 →</a><span class="micro">신청하면 전화로 수업 일정만 잡으면 됩니다</span></div>
+  </div>
+</section>
+
+<!-- ============ S10 CTA + FORM ============ -->
+<section class="final" id="apply">
+  <div class="wrap">
+    <div class="kick reveal">09 · 지금</div>
+    <h2 class="kin"><span class="w">지금, 우리 아이</span><br><span class="w hl" style="--d:.2s">위치부터 확인하세요.</span></h2>
+    <p class="sub reveal" style="--d:.35s">신청은 5초면 됩니다.<br>우리 아이 현재 위치 진단과 30분 무료 수업이 준비돼 있어요.</p>
+    <div class="chips reveal" style="--d:.45s">
+      <span class="ghost m">입시 진단 무료</span><span class="ghost">수업 30분</span><span class="ghost g">오픈 런칭 100명</span>
+    </div>
+    <form id="leadform" onsubmit="return false">
+      <select class="fld" id="grade" aria-label="학년"><option value="">학년 선택</option><option>초등</option><option>중1</option><option>중2</option><option>중3</option><option>고1</option><option>고2</option><option>고3</option></select>
+      <input class="fld" id="sname" type="text" placeholder="학생 이름" aria-label="학생 이름">
+      <input class="fld" id="phone" type="tel" placeholder="학부모 연락처 (010-0000-0000)" aria-label="학부모 연락처">
+      <label class="agree"><input type="checkbox" id="agree"> 개인정보 수집·이용에 동의합니다 (상담 목적, 만 14세 미만은 법정대리인 동의)</label>
+      <button class="btn" type="button" id="submit" style="justify-content:center;margin-top:6px">무료 입시진단 신청 →</button>
+      <div class="ferr" id="ferr"></div>
+      <div class="thanks" id="thanks">접수됐습니다. 전화로 진단·수업 일정을 잡아드릴게요.</div>
+    </form>
+  </div>
+</section>
+
+<div class="foot"><div class="wrap">
+  <b>쌤이다</b> · 초·중·고 전과목 1:1 화상과외 · 과외는, 쌤이다 &nbsp;·&nbsp; (주)아이스캔 &nbsp;·&nbsp; ssamida.com
+</div></div>
+
+<div class="sticky" id="sticky"><a class="btn" href="#apply">우리 아이 위치 확인하기 →</a></div>
+
+<script>
+(function(){
+  /* ▼ 구글시트 연동: Apps Script 웹앱 URL을 여기 입력 (배포 가이드 참고). 비워두면 접수 메시지만 표시 ▼ */
+  var FORM_ENDPOINT = "";
+  /* ▲ ▲ */
+
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){
+    if(!e.isIntersecting)return;
+    e.target.classList.add('in');
+    e.target.querySelectorAll('[data-count]').forEach(function(c){
+      if(c.dataset.done)return; c.dataset.done=1;
+      var end=+c.dataset.count,t0=null;
+      requestAnimationFrame(function step(ts){
+        if(!t0)t0=ts; var p=Math.min((ts-t0)/900,1);
+        c.textContent=Math.round(end*(1-Math.pow(1-p,3)));
+        if(p<1)requestAnimationFrame(step);
+      });
+    });
+  });},{threshold:.15});
+  document.querySelectorAll('.reveal,.kin,.hero,.tl,.diag,.mapbox,.cycle,.spark').forEach(function(el){io.observe(el);});
+
+  var hero=document.querySelector('.hero'),st=document.getElementById('sticky'),fin=document.getElementById('apply');
+  var ho=new IntersectionObserver(function(es){es.forEach(function(e){st.classList.toggle('on',!e.isIntersecting);});},{threshold:.1});
+  ho.observe(hero);
+  var fo=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)st.classList.remove('on');else if(hero.getBoundingClientRect().bottom<0)st.classList.add('on');});},{threshold:.25});
+  fo.observe(fin);
+
+  function err(msg){var f=document.getElementById('ferr');f.textContent=msg;f.classList.add('on');}
+  function clearErr(){document.getElementById('ferr').classList.remove('on');}
+
+  document.getElementById('submit').addEventListener('click',function(){
+    clearErr();
+    var grade=document.getElementById('grade').value;
+    var name=document.getElementById('sname').value.trim();
+    var phone=document.getElementById('phone').value.replace(/[^0-9]/g,'');
+    var agree=document.getElementById('agree').checked;
+    if(!grade){err('학년을 선택해 주세요.');return}
+    if(!name){err('학생 이름을 입력해 주세요.');return}
+    if(!/^01[016789][0-9]{7,8}$/.test(phone)){err('연락처를 확인해 주세요. (예: 010-1234-5678)');return}
+    if(!agree){err('개인정보 수집·이용 동의가 필요해요.');return}
+
+    var btn=this; btn.disabled=true; btn.textContent='접수 중…';
+    var data={ts:new Date().toISOString(),grade:grade,name:name,phone:phone,ref:document.referrer||'',ua:navigator.userAgent};
+
+    function done(){
+      document.getElementById('thanks').classList.add('on');
+      btn.textContent='접수 완료 ✓';
+      if(typeof fbq==='function'){fbq('track','Lead');}
+    }
+    if(FORM_ENDPOINT){
+      fetch(FORM_ENDPOINT,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain'},body:JSON.stringify(data)})
+        .then(done).catch(function(){done();});
+    }else{done();}
+  });
+})();
+</script>
+</body>
+</html>
