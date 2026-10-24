@@ -81,9 +81,10 @@
   .hero .wrap{position:relative;z-index:2}
   .lockup{display:flex;align-items:center;gap:12px;font-size:14px;color:var(--ink);font-weight:700}
   .lockup b{color:var(--mint);font-size:22px;font-weight:900;letter-spacing:-.02em}
-  .hero .two{grid-template-columns:1.28fr .72fr}
+  .hero .two{grid-template-columns:1.1fr .9fr}
+  .hero .wrap{max-width:1300px}
   @media(max-width:780px){.hero .two{grid-template-columns:1fr}}
-  .hero h1{font-size:clamp(44px,7.2vw,100px);font-weight:900;letter-spacing:-.045em;line-height:.98;margin:22px 0 18px}
+  .hero h1{font-size:clamp(44px,6.6vw,92px);font-weight:900;letter-spacing:-.045em;line-height:.99;margin:22px 0 18px}
   .hero .sub{font-size:clamp(15px,1.8vw,20px)}
   .beam{width:min(100%,640px);height:3px;margin:30px 0 26px;background:linear-gradient(90deg,var(--mint),transparent);transform-origin:left;transform:scaleX(0);transition:transform 1.4s var(--ease) .7s}
   .hero.in .beam{transform:scaleX(1)}
@@ -105,7 +106,8 @@
   .vclass .board .pen{position:absolute;right:30px;bottom:34px;font-size:11px;color:var(--mint);background:rgba(var(--mint-rgb),.1);border:1px solid rgba(var(--mint-rgb),.4);border-radius:100px;padding:4px 10px;font-weight:700}
   .vclass .cams{position:absolute;top:14px;right:14px;display:flex;flex-direction:column;gap:8px}
   .vclass .cam{width:84px;height:58px;border-radius:9px;border:1px solid var(--line);background:var(--bg2);display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;overflow:hidden}
-  .vclass .cam .av{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:13px}
+  .vclass .cam img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+  .vclass .cam .av{width:30px;height:30px;border-radius:50%;display:none;align-items:center;justify-content:center;font-weight:900;font-size:13px}
   .vclass .cam.t .av{background:var(--mint);color:#06231C}
   .vclass .cam.s .av{background:#2A4A41;color:var(--ink)}
   .vclass .cam label{position:absolute;bottom:4px;left:6px;font-size:9px;color:var(--mut);background:rgba(10,31,26,.75);border-radius:4px;padding:1px 5px}
@@ -421,11 +423,16 @@
   @media(max-width:780px){.flow3 .ar{display:none}.flow3 .f{min-width:100%}}
 
   /* 가격 투명성 섹션 */
-  .price{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:30px;max-width:720px}
+  .price{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:30px;max-width:860px}
   @media(max-width:780px){.price{grid-template-columns:1fr}}
   .price .pc{background:linear-gradient(160deg,var(--card),var(--bg2));border:1px solid var(--mint2);border-radius:18px;padding:24px 26px;position:relative;overflow:hidden}
   .price .pc .lvl{font-size:13px;font-weight:800;color:var(--mint);letter-spacing:.08em;margin-bottom:12px}
-  .price .pc .amt{font-size:34px;font-weight:900;letter-spacing:-.02em;color:var(--ink)}
+  .price .pc .amt{display:flex;flex-direction:column;gap:2px}
+  .price .pc .amt s{font-size:14px;color:var(--mut);font-weight:600;text-decoration:line-through}
+  .price .pc .amt b{font-size:30px;font-weight:900;letter-spacing:-.02em;color:var(--ink)}
+  .price .pc .pc-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
+  .price .pc .pc-top .lvl{margin:0}
+  .price .pc .save{font-size:10.5px;font-weight:800;color:var(--btn);background:var(--mint);border-radius:6px;padding:3px 8px;letter-spacing:.02em}
   .price .pc .amt small{font-size:14px;color:var(--mut);font-weight:600}
   .price .pc .per{font-size:13.5px;color:var(--mut);margin-top:6px}
   .price .pc .per b{color:var(--ink);font-weight:800}
@@ -743,8 +750,8 @@
             <span class="pen">✎ 선생님이 짚어주는 중</span>
           </div>
           <div class="cams">
-            <div class="cam t"><div class="av">쌤</div><label>선생님</label></div>
-            <div class="cam s"><div class="av">학</div><label>우리 아이</label></div>
+            <div class="cam t"><img src="teacher-cgb.jpg" alt="최광백 선생님" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="av">쌤</div><label>국어 최광백</label></div>
+            <div class="cam s"><img src="student-1.jpg" alt="우리 아이" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="av">학</div><label>유채리 · 고1</label></div>
           </div>
         </div>
         <div class="foot"><span class="dot"></span><span>1:1 화상 수업 · 수업 끝나면 카톡으로 리포트</span><span class="rt">30분 무료</span></div>
@@ -1063,14 +1070,19 @@
 
     <div class="price reveal" style="--d:.5s">
       <div class="pc">
-        <div class="lvl">중등 · 주 1회 60분</div>
-        <div class="amt">월 18만원</div>
-        <div class="per"><b>회당 4.5만원</b> · 전담 1:1 화상</div>
+        <div class="pc-top"><span class="lvl">초4 – 중2</span><span class="save">할인</span></div>
+        <div class="amt"><s>월 20만</s><b>월 18만원</b></div>
+        <div class="per">주 1회 60분 · 전담 1:1 화상</div>
       </div>
       <div class="pc">
-        <div class="lvl">고등 · 주 1회 60분</div>
-        <div class="amt">월 20만원</div>
-        <div class="per"><b>회당 5만원</b> · 전담 1:1 화상</div>
+        <div class="pc-top"><span class="lvl">중3 – 고1</span><span class="save">할인</span></div>
+        <div class="amt"><s>월 23만</s><b>월 20만원</b></div>
+        <div class="per">주 1회 60분 · 전담 1:1 화상</div>
+      </div>
+      <div class="pc">
+        <div class="pc-top"><span class="lvl">고2 – 고3</span><span class="save">할인</span></div>
+        <div class="amt"><s>월 25만</s><b>월 22만원</b></div>
+        <div class="per">주 1회 60분 · 전담 1:1 화상</div>
       </div>
     </div>
     <div class="incl reveal" style="--d:.6s">
