@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>쌤이다 · 입시컨설팅 (딥 플럼+골드)</title>
+<title>쌤이다 · 입시 컨설팅 버전 (블루퍼플)</title>
 <meta name="description" content="초·중·고 전과목 1:1 화상과외 쌤이다. 무료 입시진단부터 전담 과외, 매 수업 리포트까지.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="쌤이다 — 복잡할수록, 길은 하나입니다">
@@ -23,9 +23,9 @@
 <!-- ▲ Meta Pixel ▲ -->
 <style>
   :root{
-    --bg:#1A0F1A; --bg2:#241320; --card:#2A1626; --ink:#F6ECF2; --mint:#E8C877; --mint2:#D4A94E;
-    --mut:#C9A9BE; --dim:#8E6C82; --gold:#E8C877; --warm:#E8C877; --line:rgba(255,255,255,.10);
-    --ease:cubic-bezier(.2,.8,.2,1); --btn:#2a1620; --mint-rgb:232,200,119; --gold-rgb:232,200,119; --warm-rgb:232,200,119; --panel:#271528;
+    --bg:#0A0E27; --bg2:#0F1538; --card:#141B45; --ink:#EAF1FF; --mint:#22E0FF; --mint2:#B14BFF;
+    --mut:#8595C4; --dim:#4C5A96; --gold:#FF4FD8; --warm:#FF4FD8; --line:rgba(255,255,255,.10);
+    --ease:cubic-bezier(.2,.8,.2,1); --btn:#041018; --mint-rgb:34,224,255; --gold-rgb:255,79,216; --warm-rgb:255,79,216; --panel:#101845;
   }
   *{margin:0;padding:0;box-sizing:border-box}
   html{scroll-behavior:smooth}
@@ -74,16 +74,17 @@
     background:var(--bg) radial-gradient(ellipse at 26% 45%, rgba(var(--mint-rgb),.12), transparent 55%)}
   .hero .wrap{will-change:transform,opacity}
   /* 히어로 바로 다음 섹션이 히어로를 덮으며 올라옴 */
-  .hero + section{margin-top:-18vh;border-radius:28px 28px 0 0;box-shadow:0 -30px 60px rgba(0,0,0,.5);z-index:3}
+  .hero + section{margin-top:-12vh;border-radius:28px 28px 0 0;box-shadow:0 -30px 60px rgba(0,0,0,.5);z-index:3}
   .cx{position:absolute;color:var(--mut);opacity:.18;font-weight:700;white-space:nowrap;pointer-events:none;user-select:none;
     animation:drift var(--t,15s) ease-in-out infinite alternate}
   @keyframes drift{from{transform:translate(0,0)}to{transform:translate(var(--dx,20px),var(--dy,-16px))}}
   .hero .wrap{position:relative;z-index:2}
   .lockup{display:flex;align-items:center;gap:12px;font-size:14px;color:var(--ink);font-weight:700}
   .lockup b{color:var(--mint);font-size:22px;font-weight:900;letter-spacing:-.02em}
-  .hero .two{grid-template-columns:1.28fr .72fr}
+  .hero .two{grid-template-columns:1.1fr .9fr}
+  .hero .wrap{max-width:1300px}
   @media(max-width:780px){.hero .two{grid-template-columns:1fr}}
-  .hero h1{font-size:clamp(44px,7.2vw,100px);font-weight:900;letter-spacing:-.045em;line-height:.98;margin:22px 0 18px}
+  .hero h1{font-size:clamp(40px,5.4vw,74px);font-weight:900;letter-spacing:-.045em;line-height:1.04;margin:20px 0 18px}
   .hero .sub{font-size:clamp(15px,1.8vw,20px)}
   .beam{width:min(100%,640px);height:3px;margin:30px 0 26px;background:linear-gradient(90deg,var(--mint),transparent);transform-origin:left;transform:scaleX(0);transition:transform 1.4s var(--ease) .7s}
   .hero.in .beam{transform:scaleX(1)}
@@ -105,7 +106,8 @@
   .vclass .board .pen{position:absolute;right:30px;bottom:34px;font-size:11px;color:var(--mint);background:rgba(var(--mint-rgb),.1);border:1px solid rgba(var(--mint-rgb),.4);border-radius:100px;padding:4px 10px;font-weight:700}
   .vclass .cams{position:absolute;top:14px;right:14px;display:flex;flex-direction:column;gap:8px}
   .vclass .cam{width:84px;height:58px;border-radius:9px;border:1px solid var(--line);background:var(--bg2);display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;overflow:hidden}
-  .vclass .cam .av{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:13px}
+  .vclass .cam img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+  .vclass .cam .av{width:30px;height:30px;border-radius:50%;display:none;align-items:center;justify-content:center;font-weight:900;font-size:13px}
   .vclass .cam.t .av{background:var(--mint);color:#06231C}
   .vclass .cam.s .av{background:#2A4A41;color:var(--ink)}
   .vclass .cam label{position:absolute;bottom:4px;left:6px;font-size:9px;color:var(--mut);background:rgba(10,31,26,.75);border-radius:4px;padding:1px 5px}
@@ -421,11 +423,16 @@
   @media(max-width:780px){.flow3 .ar{display:none}.flow3 .f{min-width:100%}}
 
   /* 가격 투명성 섹션 */
-  .price{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:30px;max-width:720px}
+  .price{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:30px;max-width:860px}
   @media(max-width:780px){.price{grid-template-columns:1fr}}
   .price .pc{background:linear-gradient(160deg,var(--card),var(--bg2));border:1px solid var(--mint2);border-radius:18px;padding:24px 26px;position:relative;overflow:hidden}
   .price .pc .lvl{font-size:13px;font-weight:800;color:var(--mint);letter-spacing:.08em;margin-bottom:12px}
-  .price .pc .amt{font-size:34px;font-weight:900;letter-spacing:-.02em;color:var(--ink)}
+  .price .pc .amt{display:flex;flex-direction:column;gap:2px}
+  .price .pc .amt s{font-size:14px;color:var(--mut);font-weight:600;text-decoration:line-through}
+  .price .pc .amt b{font-size:30px;font-weight:900;letter-spacing:-.02em;color:var(--ink)}
+  .price .pc .pc-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
+  .price .pc .pc-top .lvl{margin:0}
+  .price .pc .save{font-size:10.5px;font-weight:800;color:var(--btn);background:var(--mint);border-radius:6px;padding:3px 8px;letter-spacing:.02em}
   .price .pc .amt small{font-size:14px;color:var(--mut);font-weight:600}
   .price .pc .per{font-size:13.5px;color:var(--mut);margin-top:6px}
   .price .pc .per b{color:var(--ink);font-weight:800}
@@ -685,7 +692,7 @@
 
 <nav>
   <div class="brand">쌤이다<span>초·중·고 1:1 화상과외</span></div>
-  <a class="btn" href="#apply">무료 입시진단</a>
+  <a class="btn" href="#apply">무료 과외수업</a>
 </nav>
 
 <!-- ============ S1 HERO ============ -->
@@ -715,11 +722,11 @@
   <div class="wrap two">
     <div>
       <div class="lockup reveal"><b>쌤이다</b> · 초·중·고 전과목 <span style="color:var(--mint);font-weight:800">1:1 화상과외</span></div>
-      <h1 class="kin"><span class="w" style="--d:.1s">우리 아이 입시,</span><br><span class="w" style="--d:.4s"><span class="hl">쌤이다</span>가 먼저 분석합니다.</span></h1>
-      <p class="sub reveal" style="--d:.7s">지금 성적으로 열려 있는 전형이 어디까지인지 — <b style="color:var(--ink)">공시 입결로 진단</b>하고,<br>목표 대학까지의 길을 짜서, 그 전형을 아는 쌤이 1:1로 끌고 갑니다.</p>
+      <h1 class="kin"><span class="w" style="--d:.1s">진단으로 길을 찾고,</span><br><span class="w" style="--d:.4s;white-space:nowrap"><span class="hl">쌤이다</span> 과외로 갑니다.</span></h1>
+      <p class="sub reveal" style="--d:.7s">진단은 시작일 뿐입니다. <b style="color:var(--ink)">열려 있는 전형을 공시 입결로 확인</b>한 뒤,<br>그 길을 아는 전담 쌤이 1:1 화상 과외로 끝까지 끌고 갑니다.</p>
       <div class="beam"></div>
       <div class="reveal" style="--d:.9s">
-        <a class="btn" href="#apply">목표 대학까지, 내 위치 확인하기 →</a>
+        <a class="btn" href="#apply">지금, 무료 과외수업 신청하기 →</a>
         <span class="micro">5초 신청 — 무료 수업 30분 + 진로·진학 컨설팅</span>
       </div>
     </div>
@@ -734,8 +741,8 @@
             <span class="pen">✎ 선생님이 짚어주는 중</span>
           </div>
           <div class="cams">
-            <div class="cam t"><div class="av">쌤</div><label>선생님</label></div>
-            <div class="cam s"><div class="av">학</div><label>우리 아이</label></div>
+            <div class="cam t"><img src="teacher-cgb.jpg" alt="최광백 선생님" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="av">쌤</div><label>국어 최광백</label></div>
+            <div class="cam s"><img src="student-1.jpg" alt="우리 아이" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="av">학</div><label>유채리 · 고1</label></div>
           </div>
         </div>
         <div class="foot"><span class="dot"></span><span>1:1 화상 수업 · 수업 끝나면 카톡으로 리포트</span><span class="rt">30분 무료</span></div>
@@ -790,7 +797,7 @@
   <div class="wrap">
     <div class="kick reveal">정답은, 쌤이다</div>
     <div class="big kin"><span class="w">복잡해진 입시,</span> <span class="w hl" style="--d:.2s">정답은 쌤이다입니다.</span></div>
-    <p class="sub2 reveal" style="--d:.4s">혼자 풀면 길을 잃고, 늦으면 되돌릴 수 없습니다.<br><b>쌤이다는 이렇게 합니다</b> — 먼저 진단으로 길을 찾고, 그 전형을 아는 전담 쌤이 1:1로 끌고, 매 수업 숫자로 증명합니다.</p>
+    <p class="sub2 reveal" style="--d:.4s">진단은 길을 알려줄 뿐, 결국 그 길을 걷게 하는 건 수업입니다.<br><b>그래서 쌤이다는 전담 과외입니다</b> — 전형을 아는 쌤이 우리 아이 하나만 1:1로, 매 수업 끝까지 끌고 갑니다.</p>
     <div class="flow3 reveal" style="--d:.5s">
       <div class="f"><div class="n">01 · 진단</div><b>길을 찾습니다</b><p>지금 성적으로 열려 있는 전형을 공시 입결로 — 추측 없이, 정확히.</p></div>
       <span class="ar">→</span>
@@ -811,7 +818,7 @@
       <div class="reveal" style="--d:.5s;margin-top:18px">
         <span class="ghost g">오픈 런칭 100명 한정</span><span class="ghost m">진단 무료</span><span class="ghost">수업 30분 포함</span>
       </div>
-      <div class="reveal" style="--d:.6s;margin-top:22px"><a class="btn" href="#apply">목표 대학까지, 내 위치 확인하기 →</a><span class="micro">5초 신청 — 진로·진학 무료 컨설팅 + 수업 30분</span></div>
+      <div class="reveal" style="--d:.6s;margin-top:22px"><a class="btn" href="#apply">지금, 무료 과외수업 신청하기 →</a><span class="micro">5초 신청 — 진로·진학 무료 컨설팅 + 수업 30분</span></div>
     </div>
     <div class="diag reveal" style="--d:.4s">
       <div class="dh"><b>입시 진단 리포트</b><span>예시 화면</span></div>
@@ -1123,7 +1130,7 @@
       <div class="reveal" style="--d:.4s"><i>—</i><div><b>무료 수업 30분</b><span>전담 쌤의 1:1 화상 수업 (Zoom). 수업 후 진단 리포트까지 카톡으로.</span></div></div>
       <div class="reveal" style="--d:.5s"><i>—</i><div><b>오픈 런칭 100명 한정</b><span>선착순 마감됩니다.</span></div></div>
     </div>
-    <div class="reveal" style="--d:.6s"><a class="btn" href="#apply">목표 대학까지, 내 위치 확인하기 →</a><span class="micro">신청하면 전화로 수업 일정만 잡으면 됩니다</span></div>
+    <div class="reveal" style="--d:.6s"><a class="btn" href="#apply">지금, 무료 과외수업 신청하기 →</a><span class="micro">신청하면 전화로 수업 일정만 잡으면 됩니다</span></div>
   </div>
 </section>
 
@@ -1136,14 +1143,19 @@
 
     <div class="price reveal" style="--d:.5s">
       <div class="pc">
-        <div class="lvl">중등 · 주 1회 60분</div>
-        <div class="amt">월 18만원</div>
-        <div class="per"><b>회당 4.5만원</b> · 전담 1:1 화상</div>
+        <div class="pc-top"><span class="lvl">초4 – 중2</span><span class="save">할인</span></div>
+        <div class="amt"><s>월 20만</s><b>월 18만원</b></div>
+        <div class="per">주 1회 60분 · 전담 1:1 화상</div>
       </div>
       <div class="pc">
-        <div class="lvl">고등 · 주 1회 60분</div>
-        <div class="amt">월 20만원</div>
-        <div class="per"><b>회당 5만원</b> · 전담 1:1 화상</div>
+        <div class="pc-top"><span class="lvl">중3 – 고1</span><span class="save">할인</span></div>
+        <div class="amt"><s>월 23만</s><b>월 20만원</b></div>
+        <div class="per">주 1회 60분 · 전담 1:1 화상</div>
+      </div>
+      <div class="pc">
+        <div class="pc-top"><span class="lvl">고2 – 고3</span><span class="save">할인</span></div>
+        <div class="amt"><s>월 25만</s><b>월 22만원</b></div>
+        <div class="per">주 1회 60분 · 전담 1:1 화상</div>
       </div>
     </div>
     <div class="incl reveal" style="--d:.6s">
@@ -1184,7 +1196,7 @@
 <section class="final" id="apply" data-wm="10"><span class="swp"></span>
   <div class="wrap">
     <div class="kick reveal">10 · 지금</div>
-    <h2 class="kin"><span class="w">지금, 목표 대학까지</span><br><span class="w hl" style="--d:.2s">내 위치부터 확인하세요.</span></h2>
+    <h2 class="kin"><span class="w">지금, 전담 쌤과</span><br><span class="w hl" style="--d:.2s">무료 수업부터 받아보세요.</span></h2>
     <p class="sub reveal" style="--d:.35s">신청은 5초면 됩니다.<br>진로·진학 무료 컨설팅과 30분 무료 수업이 준비돼 있어요.</p>
     <div class="chips reveal" style="--d:.45s">
       <span class="ghost m">입시 진단 무료</span><span class="ghost">수업 30분</span><span class="ghost g">오픈 런칭 100명</span>
@@ -1194,7 +1206,7 @@
       <input class="fld" id="sname" type="text" placeholder="학생 이름" aria-label="학생 이름">
       <input class="fld" id="phone" type="tel" placeholder="학부모 연락처 (010-0000-0000)" aria-label="학부모 연락처">
       <label class="agree"><input type="checkbox" id="agree"> 개인정보 수집·이용에 동의합니다 (상담 목적, 만 14세 미만은 법정대리인 동의)</label>
-      <button class="btn" type="button" id="submit" style="justify-content:center;margin-top:6px">무료 입시진단 신청 →</button>
+      <button class="btn" type="button" id="submit" style="justify-content:center;margin-top:6px">무료 과외수업 신청 →</button>
       <div class="ferr" id="ferr"></div>
       <div class="thanks" id="thanks">접수됐습니다. 전화로 진단·수업 일정을 잡아드릴게요.</div>
     </form>
@@ -1205,7 +1217,7 @@
   <b>쌤이다</b> · 초·중·고 전과목 1:1 화상과외 · 과외는, 쌤이다 &nbsp;·&nbsp; (주)아이스캔 &nbsp;·&nbsp; ssamida.com
 </div></div>
 
-<div class="sticky" id="sticky"><a class="btn" href="#apply">목표 대학까지, 내 위치 확인하기 →</a></div>
+<div class="sticky" id="sticky"><a class="btn" href="#apply">지금, 무료 과외수업 신청하기 →</a></div>
 
 <script>
 (function(){
