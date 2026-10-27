@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>세특, 이렇게 준비하세요 · 쌤이다</title>
+<meta name="description" content="같은 수업을 들어도 세특이 달라지는 이유. 과목별 세특 준비법을 쉽게 정리했습니다. 복잡한 입시, 쌤이다가 쉽게.">
+<meta property="og:title" content="세특, 이렇게 준비하세요 · 쌤이다">
+<meta property="og:description" content="과목별 세특 준비법 완전 정리. 복잡한 입시, 쌤이다가 쉽게.">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@1.3.9/dist/web/static/pretendard.css">
+<style>
+  :root{
+    --bg:#0A0E27; --bg2:#0F1538; --card:#141B45; --panel:#101845;
+    --ink:#EAF1FF; --mint:#22E0FF; --purple:#B14BFF; --pink:#FF4FD8;
+    --mut:#8595C4; --dim:#4C5A96; --line:rgba(255,255,255,.10);
+    --mint-rgb:34,224,255; --ease:cubic-bezier(.2,.8,.2,1);
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--bg);color:var(--ink);font-family:Pretendard,-apple-system,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:720px;margin:0 auto;padding:0 24px;}
+  .sec{padding:84px 0;position:relative;}
+  .sec+.sec{border-top:1px solid var(--line);}
+
+  /* 배경 격자 질감 */
+  body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.5;
+    background-image:linear-gradient(rgba(34,224,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(34,224,255,.025) 1px,transparent 1px);
+    background-size:64px 64px;}
+  .wrap{position:relative;z-index:1;}
+
+  .eyebrow{display:inline-block;font-size:14px;font-weight:700;letter-spacing:1px;color:var(--mint);background:rgba(34,224,255,.08);border:1px solid rgba(34,224,255,.25);padding:7px 16px;border-radius:999px;margin-bottom:22px;}
+  h1{font-size:clamp(34px,6vw,56px);font-weight:900;letter-spacing:-2px;line-height:1.18;}
+  h1 .hl{color:var(--mint);}
+  h2{font-size:clamp(26px,4.5vw,38px);font-weight:900;letter-spacing:-1.5px;line-height:1.25;margin-bottom:16px;}
+  h2 .hl{color:var(--mint);}
+  h2 .hp{color:var(--pink);}
+  p.lead{font-size:clamp(17px,2.4vw,20px);color:var(--mut);margin-top:20px;word-break:keep-all;}
+  p.body{font-size:17px;color:#c3cde8;margin-top:14px;word-break:keep-all;}
+
+  /* HERO */
+  .hero{padding-top:110px;padding-bottom:70px;}
+  .hero .brand{font-size:22px;font-weight:800;color:var(--ink);margin-bottom:40px;display:flex;align-items:center;gap:10px;}
+  .hero .brand .dot{width:12px;height:12px;border-radius:50%;background:var(--pink);box-shadow:0 0 16px var(--pink);}
+  .hero .glow{position:absolute;top:-120px;right:-120px;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(177,75,255,.22),transparent 68%);filter:blur(10px);z-index:0;}
+  .hero .q{margin-top:28px;font-size:18px;color:var(--mut);}
+
+  /* 카드 */
+  .card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:30px 30px;margin-top:20px;}
+  .card.bad{border-left:4px solid var(--pink);}
+  .card.good{border-left:4px solid var(--mint);}
+  .card .tag{font-size:14px;font-weight:800;letter-spacing:.5px;margin-bottom:14px;}
+  .card.bad .tag{color:var(--pink);}
+  .card.good .tag{color:var(--mint);}
+  .card ul{list-style:none;}
+  .card li{font-size:17px;color:#d2daf0;padding:10px 0 10px 32px;position:relative;word-break:keep-all;}
+  .card li+li{border-top:1px solid rgba(255,255,255,.05);}
+  .card.bad li::before{content:"✕";position:absolute;left:0;color:var(--pink);font-weight:900;}
+  .card.good li::before{content:"✓";position:absolute;left:0;color:var(--mint);font-weight:900;}
+
+  /* 과목별 블록 */
+  .subj{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:26px 28px;margin-top:16px;}
+  .subj .name{font-size:22px;font-weight:900;color:var(--mint);letter-spacing:-.5px;margin-bottom:8px;}
+  .subj .desc{font-size:16px;color:#c3cde8;word-break:keep-all;}
+  .subj .desc b{color:var(--ink);font-weight:700;}
+
+  /* 3단계 */
+  .steps{counter-reset:s;margin-top:24px;}
+  .step{display:flex;gap:20px;padding:22px 0;border-top:1px solid var(--line);align-items:flex-start;}
+  .step:first-child{border-top:none;}
+  .step .n{counter-increment:s;flex:0 0 auto;width:48px;height:48px;border-radius:14px;background:rgba(34,224,255,.12);border:1px solid rgba(34,224,255,.3);color:var(--mint);font-weight:900;font-size:22px;display:flex;align-items:center;justify-content:center;}
+  .step .n::before{content:counter(s);}
+  .step .t{font-size:20px;font-weight:800;color:var(--ink);letter-spacing:-.5px;}
+  .step .d{font-size:16px;color:var(--mut);margin-top:6px;word-break:keep-all;}
+
+  /* CTA 섹션 */
+  .cta-sec{background:linear-gradient(160deg,var(--bg2),var(--bg));text-align:center;border-radius:24px;padding:60px 32px;margin:40px 0;border:1px solid var(--line);}
+  .cta-sec h2{margin-bottom:14px;}
+  .cta-sec p{color:var(--mut);font-size:17px;margin-bottom:30px;}
+  .cta-btn{display:inline-flex;align-items:center;gap:12px;background:var(--mint);color:#041018;font-size:19px;font-weight:900;padding:20px 44px;border-radius:999px;text-decoration:none;transition:transform .3s var(--ease),box-shadow .3s var(--ease);box-shadow:0 8px 30px rgba(34,224,255,.3);}
+  .cta-btn:hover{transform:translateY(-3px);box-shadow:0 14px 40px rgba(34,224,255,.45);}
+  .cta-sub{margin-top:18px;font-size:14px;color:var(--dim);}
+
+  footer{padding:50px 0 70px;text-align:center;border-top:1px solid var(--line);color:var(--dim);font-size:13px;line-height:1.8;}
+  footer .fb{font-weight:800;color:var(--mut);font-size:15px;margin-bottom:10px;}
+
+  /* ===== 모달 ===== */
+  .modal-bg{position:fixed;inset:0;z-index:100;background:rgba(5,8,20,.8);backdrop-filter:blur(6px);display:none;align-items:center;justify-content:center;padding:20px;}
+  .modal-bg.on{display:flex;}
+  .modal{background:var(--bg2);border:1px solid var(--line);border-radius:22px;max-width:460px;width:100%;padding:38px 34px;position:relative;max-height:92vh;overflow-y:auto;}
+  .modal .x{position:absolute;top:20px;right:22px;background:none;border:none;color:var(--mut);font-size:28px;cursor:pointer;line-height:1;}
+  .modal h3{font-size:26px;font-weight:900;letter-spacing:-1px;color:var(--ink);}
+  .modal .msub{font-size:15px;color:var(--mut);margin-top:10px;margin-bottom:26px;word-break:keep-all;}
+  .field{margin-bottom:18px;}
+  .field label{display:block;font-size:14px;font-weight:700;color:#b6c2e6;margin-bottom:8px;}
+  .field input,.field select,.field textarea{width:100%;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;color:var(--ink);font-family:inherit;font-size:16px;outline:none;transition:border-color .2s;}
+  .field input:focus,.field select:focus,.field textarea:focus{border-color:var(--mint);}
+  .field textarea{resize:vertical;min-height:72px;}
+  .field select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238595C4' stroke-width='2' fill='none'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 16px center;}
+  .agree{display:flex;align-items:flex-start;gap:10px;margin:20px 0 24px;font-size:13px;color:var(--mut);line-height:1.5;}
+  .agree input{width:18px;height:18px;flex:0 0 auto;margin-top:1px;accent-color:var(--mint);}
+  .submit{width:100%;background:var(--mint);color:#041018;font-size:17px;font-weight:900;border:none;border-radius:999px;padding:17px;cursor:pointer;transition:transform .2s,opacity .2s;}
+  .submit:hover{transform:translateY(-2px);}
+  .submit:disabled{opacity:.5;cursor:not-allowed;transform:none;}
+  .modal .done{text-align:center;padding:30px 0;}
+  .modal .done .ic{font-size:52px;margin-bottom:16px;}
+  .modal .done h3{margin-bottom:12px;}
+  .modal .done p{color:var(--mut);font-size:15px;}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="sec hero">
+  <div class="glow"></div>
+  <div class="wrap">
+    <div class="brand"><span class="dot"></span>쌤이다</div>
+    <span class="eyebrow">세특 완전 정복 가이드</span>
+    <h1>같은 수업을 들어도<br>세특이 <span class="hl">달라지는</span> 이유</h1>
+    <p class="lead">바뀐 입시에서 세특 한 줄이 당락을 가릅니다.<br>'성적'이 아니라 '준비 방식'의 차이예요.</p>
+    <p class="q">아래로 내려가면, 과목별 세특 준비법을 쉽게 정리해뒀어요 👇</p>
+  </div>
+</section>
+
+<!-- 왜 중요 -->
+<section class="sec">
+  <div class="wrap">
+    <span class="eyebrow">01 · 왜 세특인가</span>
+    <h2>내신이 같다면,<br><span class="hl">세특</span>으로 갈립니다</h2>
+    <p class="body">학생부종합전형에서 대학은 숫자(등급)만 보지 않습니다. 같은 1등급이라도 <b style="color:var(--ink)">'이 학생이 수업을 어떻게 소화했는지'</b>가 세특에 드러나고, 그게 합격을 가릅니다.</p>
+    <p class="body">문제는 — 세특은 선생님이 써주시지만, <b style="color:var(--ink)">무엇을 써줄 수 있게 만드는 건 학생</b>이라는 점입니다.</p>
+  </div>
+</section>
+
+<!-- 안 써주는 vs 잘 받는 -->
+<section class="sec">
+  <div class="wrap">
+    <span class="eyebrow">02 · 흔한 차이</span>
+    <h2>세특이 비는 아이 vs<br>꽉 차는 아이</h2>
+    <div class="card bad">
+      <div class="tag">✕ 세특이 비는 아이</div>
+      <ul>
+        <li>수업만 듣고 질문도, 활동 참여도 없이 넘어감</li>
+        <li>보고서를 인터넷 자료 그대로 베껴서 제출</li>
+        <li>모둠활동에서 '내가 뭘 했는지'가 안 드러남</li>
+      </ul>
+    </div>
+    <div class="card good">
+      <div class="tag">✓ 세특이 꽉 차는 아이</div>
+      <ul>
+        <li>수업 내용에 "왜?"를 붙여 질문거리를 만듦</li>
+        <li>배운 걸 진로·실생활과 연결해 보고서 주제로</li>
+        <li>모둠활동에서 맡은 역할을 구체적으로 남김</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 공통 3단계 -->
+<section class="sec">
+  <div class="wrap">
+    <span class="eyebrow">03 · 모든 과목 공통</span>
+    <h2>세특을 만드는<br><span class="hl">3단계</span></h2>
+    <div class="steps">
+      <div class="step"><div class="n"></div><div><div class="t">수업을 '질문'으로 바꾼다</div><div class="d">그냥 듣지 말고, "왜 그럴까" "그럼 이건?"을 메모해두세요. 이게 탐구 주제의 씨앗이 됩니다.</div></div></div>
+      <div class="step"><div class="n"></div><div><div class="t">질문을 '탐구'로 확장한다</div><div class="d">궁금했던 걸 자료 찾아 더 깊이 파고, 진로와 연결해 보고서로 정리하세요.</div></div></div>
+      <div class="step"><div class="n"></div><div><div class="t">'내 흔적'을 남긴다</div><div class="d">활동에서 내가 맡은 역할, 깨달은 점을 구체적으로. 선생님이 써줄 재료가 됩니다.</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 과목별 -->
+<section class="sec">
+  <div class="wrap">
+    <span class="eyebrow">04 · 과목별 포인트</span>
+    <h2>과목마다<br>이렇게 다릅니다</h2>
+    <div class="subj"><div class="name">국어</div><div class="desc">지문 주제를 <b>사회 이슈·진로와 연결</b>해 보고서로. "비문학 지문에서 본 개념을 ○○ 분야에 적용해봤다" 식의 확장이 좋습니다.</div></div>
+    <div class="subj"><div class="name">수학</div><div class="desc">개념이 <b>실제로 쓰이는 사례를 탐구</b>하세요. "미적분이 ○○에 어떻게 쓰이는지" 같은 탐구가 수학적 사고를 드러냅니다.</div></div>
+    <div class="subj"><div class="name">영어</div><div class="desc">관심 분야의 <b>원서·영어 아티클을 읽고 정리</b>. 진로 관련 영어 자료를 소화한 기록은 세특에서 강력합니다.</div></div>
+    <div class="subj"><div class="name">사회 · 과학</div><div class="desc"><b>수업 → 심화 탐구 → 보고서</b>로 이어지는 흐름을 만드세요. 교과 내용에서 출발한 자발적 탐구가 핵심입니다.</div></div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="sec" style="border-top:none;padding-top:30px;">
+  <div class="wrap">
+    <div class="cta-sec">
+      <span class="eyebrow">혼자 하기 막막하다면</span>
+      <h2>세특 방향,<br><span class="hp">같이 잡아드릴게요</span></h2>
+      <p>우리 아이 진로·성적에 맞는 세특 전략,<br>무료 진단으로 확인해보세요.</p>
+      <a class="cta-btn" href="#" onclick="openModal();return false;">무료 상담 신청하기 →</a>
+      <div class="cta-sub">복잡한 입시, 쌤이다가 쉽게.</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="fb">복잡한 입시, 쌤이다가 쉽게</div>
+    쌤이다 · (주)아이스캔<br>
+    @ssamidaedu · ssamida.com
+  </div>
+</footer>
+
+<!-- ===== 신청 모달 ===== -->
+<div class="modal-bg" id="modalBg">
+  <div class="modal">
+    <button class="x" onclick="closeModal()">×</button>
+    <div id="formView">
+      <h3>무료 세특 상담 신청</h3>
+      <p class="msub">우리 아이 세특 방향, 쌤이다가 같이 잡아드릴게요.<br>신청해주시면 빠르게 연락드립니다.</p>
+      <form id="applyForm" onsubmit="return submitForm(event)">
+        <div class="field">
+          <label>학생/학부모 이름</label>
+          <input type="text" name="name" required placeholder="이름을 입력하세요">
+        </div>
+        <div class="field">
+          <label>학년</label>
+          <select name="grade" required>
+            <option value="">선택해주세요</option>
+            <option>중1</option><option>중2</option><option>중3</option>
+            <option>고1</option><option>고2</option><option>고3</option>
+            <option>재수생/기타</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>연락처</label>
+          <input type="tel" name="phone" required placeholder="010-0000-0000" pattern="[0-9\-]{9,13}">
+        </div>
+        <div class="field">
+          <label>문의 내용 <span style="color:var(--dim);font-weight:400">(선택)</span></label>
+          <textarea name="message" placeholder="세특 관련 궁금한 점을 적어주세요"></textarea>
+        </div>
+        <label class="agree">
+          <input type="checkbox" name="agree" required>
+          <span>개인정보 수집·이용에 동의합니다. 상담 목적으로만 사용되며, 상담 후 파기됩니다.</span>
+        </label>
+        <button type="submit" class="submit" id="submitBtn">신청하기</button>
+      </form>
+    </div>
+    <div class="done" id="doneView" style="display:none;">
+      <div class="ic">✅</div>
+      <h3>신청 완료!</h3>
+      <p>빠르게 연락드릴게요.<br>복잡한 입시, 쌤이다가 쉽게 풀어드리겠습니다 😊</p>
+      <button class="submit" style="margin-top:24px" onclick="closeModal()">닫기</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  // ⚠️ 여기에 Google Apps Script 웹앱 URL을 붙여넣으세요
+  const GAS_URL = "https://script.google.com/macros/s/AKfycbwH-nwuwcXNWvBKH-D9JfaHAqL4g4G2Pfe2a3cncTVbb7a6NHJ-nMBntCCK1TOfJxw1/exec";
+
+  function openModal(){document.getElementById('modalBg').classList.add('on');document.body.style.overflow='hidden';}
+  function closeModal(){document.getElementById('modalBg').classList.remove('on');document.body.style.overflow='';
+    document.getElementById('formView').style.display='block';document.getElementById('doneView').style.display='none';document.getElementById('applyForm').reset();}
+  document.getElementById('modalBg').addEventListener('click',e=>{if(e.target.id==='modalBg')closeModal();});
+
+  async function submitForm(e){
+    e.preventDefault();
+    const btn=document.getElementById('submitBtn');
+    btn.disabled=true;btn.textContent='전송 중...';
+    const f=e.target;
+    const data={
+      name:f.name.value, grade:f.grade.value, phone:f.phone.value,
+      message:f.message.value, source:'세특랜딩',
+      time:new Date().toLocaleString('ko-KR',{timeZone:'Asia/Seoul'})
+    };
+    try{
+      await fetch(GAS_URL,{method:'POST',mode:'no-cors',
+        headers:{'Content-Type':'text/plain;charset=utf-8'},
+        body:JSON.stringify(data)});
+      document.getElementById('formView').style.display='none';
+      document.getElementById('doneView').style.display='block';
+    }catch(err){
+      alert('전송에 실패했어요. 잠시 후 다시 시도해주세요.');
+      btn.disabled=false;btn.textContent='신청하기';
+    }
+  }
+</script>
+
+</body>
+</html>
