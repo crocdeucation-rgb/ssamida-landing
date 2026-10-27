@@ -465,6 +465,42 @@
   }
   @keyframes ctapulse{0%,100%{box-shadow:0 10px 40px rgba(0,0,0,.4),0 0 24px rgba(var(--mint-rgb),.3)}50%{box-shadow:0 10px 40px rgba(0,0,0,.4),0 0 48px rgba(var(--mint-rgb),.55)}}
 
+  /* ===== 우측 고정 신청 위젯 (데스크톱) ===== */
+  .qwrap{position:fixed;top:0;left:0;right:0;bottom:0;z-index:70;pointer-events:none}
+  .qform{position:fixed;top:50%;right:28px;transform:translateY(-50%) translateX(140%);width:316px;background:linear-gradient(165deg,var(--card),var(--bg2));border:1px solid var(--mint2);border-radius:20px;padding:18px 18px 16px;box-shadow:0 24px 70px rgba(0,0,0,.55),0 0 46px rgba(var(--mint-rgb),.14);pointer-events:auto;transition:transform .6s var(--ease);z-index:71}
+  .qform.on{transform:translateY(-50%)}
+  .qform .qtag{display:flex;gap:6px;justify-content:center;flex-wrap:wrap;font-size:11px;font-weight:800;color:var(--mint);background:var(--bg2);border:1px solid rgba(var(--mint-rgb),.4);border-radius:100px;padding:7px 10px;margin-bottom:12px;letter-spacing:.01em}
+  .qform .qtag i{font-style:normal;color:var(--dim)}
+  .qform .qclose{position:absolute;top:10px;right:12px;color:var(--dim);font-size:18px;cursor:pointer;line-height:1;background:none;border:0;padding:4px}
+  .qform .qclose:hover{color:var(--mut)}
+  .timer{text-align:center;margin-bottom:12px}
+  .timer .tl2{font-size:11px;color:var(--mut);letter-spacing:.04em;margin-bottom:3px}
+  .timer .tv{font-size:26px;font-weight:900;letter-spacing:.02em;color:var(--warm);font-variant-numeric:tabular-nums;text-shadow:0 0 20px rgba(var(--warm-rgb),.35)}
+  .qform .qhd{text-align:center;font-size:15px;font-weight:900;color:var(--ink);margin-bottom:12px;line-height:1.3}
+  .qform .fld{height:46px;font-size:14px;margin-bottom:8px}
+  .qform select.fld{margin-bottom:8px}
+  .qform .btn{width:100%;justify-content:center;padding:14px;font-size:15px;margin-top:2px}
+  .qform .qagree{display:flex;gap:7px;align-items:flex-start;font-size:11px;color:var(--mut);margin-top:9px;line-height:1.4}
+  .qform .qagree input{margin-top:2px;flex-shrink:0}
+  .qform .qagree a{color:var(--mint);text-decoration:underline;cursor:pointer}
+  .qform .ferr{font-size:12px;padding:9px 11px;margin-top:8px}
+  .qform .thanks{font-size:13px;padding:11px 13px;margin-top:8px}
+  @media(max-width:980px){.qform{display:none}}
+
+  /* 모바일 하단 sticky 폼 */
+  .sform{position:fixed;left:0;right:0;bottom:0;z-index:70;background:linear-gradient(180deg,rgba(10,31,26,.0),var(--bg) 22%);padding:14px 16px calc(14px + env(safe-area-inset-bottom));border-top:1px solid var(--line);transform:translateY(130%);transition:transform .5s var(--ease);box-shadow:0 -14px 40px rgba(0,0,0,.5)}
+  .sform.on{transform:none}
+  .sform .stimer{display:flex;align-items:center;justify-content:center;gap:8px;font-size:12px;color:var(--mut);margin-bottom:9px}
+  .sform .stimer b{color:var(--warm);font-weight:900;font-variant-numeric:tabular-nums;font-size:14px}
+  .sform .srow{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:7px}
+  .sform .fld{height:44px;font-size:13.5px}
+  .sform .srow2{display:grid;grid-template-columns:1fr auto;gap:7px;align-items:stretch}
+  .sform .btn{padding:0 18px;font-size:14px;white-space:nowrap;box-shadow:none}
+  .sform .qagree{display:flex;gap:6px;align-items:center;font-size:10.5px;color:var(--mut);margin-top:8px}
+  .sform .ferr{font-size:11.5px;padding:8px 10px;margin-top:7px}
+  .sform .thanks{font-size:12.5px;padding:9px 11px;margin-top:7px;text-align:center}
+  @media(min-width:981px){.sform{display:none}}
+
   /* 커서 글로우 오브 */
   #orb{position:fixed;top:0;left:0;width:520px;height:520px;border-radius:50%;pointer-events:none;z-index:0;transform:translate(-50%,-50%);
     background:radial-gradient(circle,rgba(var(--mint-rgb),.14),rgba(var(--mint-rgb),.05) 40%,transparent 68%);
@@ -1027,23 +1063,23 @@
 <!-- ============ 투명성 — 숨기지 않습니다 ============ -->
 <section data-wm="07"><span class="swp"></span>
   <div class="wrap">
-    <div class="kick reveal">07 · 숨기지 않습니다</div>
-    <h2 class="kin"><span class="w">상담받아야</span><br><span class="w hl" style="--d:.2s">알려드리지 않습니다.</span></h2>
-    <p class="sub reveal" style="--d:.4s">가격도, 수업 방식도, 선생님 이력도 — 신청하기 전에 여기 다 적어뒀습니다. 비교해보고 오세요.</p>
+    <div class="kick reveal">07 · 오픈 런칭 이벤트</div>
+    <h2 class="kin"><span class="w">증명할 수 있어서,</span><br><span class="w hl" style="--d:.2s">먼저 적어둡니다.</span></h2>
+    <p class="sub reveal" style="--d:.4s">가격도, 수업 방식도, 선생님 이력도 — 자신 있는 곳만 먼저 꺼내 놓습니다.<br>오픈을 기념해, 지금 신청하는 분께 런칭 특별가로 드립니다.</p>
 
     <div class="price reveal" style="--d:.5s">
       <div class="pc">
-        <div class="pc-top"><span class="lvl">초4 – 중2</span><span class="save">할인</span></div>
+        <div class="pc-top"><span class="lvl">초4 – 중2</span><span class="save">런칭가</span></div>
         <div class="amt"><s>월 20만</s><b>월 18만원</b></div>
         <div class="per">주 1회 60분 · 전담 1:1 화상</div>
       </div>
       <div class="pc">
-        <div class="pc-top"><span class="lvl">중3 – 고1</span><span class="save">할인</span></div>
+        <div class="pc-top"><span class="lvl">중3 – 고1</span><span class="save">런칭가</span></div>
         <div class="amt"><s>월 23만</s><b>월 20만원</b></div>
         <div class="per">주 1회 60분 · 전담 1:1 화상</div>
       </div>
       <div class="pc">
-        <div class="pc-top"><span class="lvl">고2 – 고3</span><span class="save">할인</span></div>
+        <div class="pc-top"><span class="lvl">고2 – 고3</span><span class="save">런칭가</span></div>
         <div class="amt"><s>월 25만</s><b>월 22만원</b></div>
         <div class="per">주 1회 60분 · 전담 1:1 화상</div>
       </div>
@@ -1058,17 +1094,17 @@
 
     <div class="twocol reveal" style="--d:.7s">
       <div class="col open">
-        <h5>지금 이 페이지에서 다 봅니다</h5>
+        <h5>여기, 먼저 꺼내 놓았습니다</h5>
         <ul>
-          <li>가격 — 위에 공개</li>
+          <li>과목별 수업료 — 위 런칭가</li>
           <li>수업 방식 · 리포트 샘플</li>
           <li>선생님 전형 · 이력</li>
         </ul>
       </div>
       <div class="col talk">
-        <h5>상담에서 드립니다</h5>
+        <h5>상담에서 맞춰 드립니다</h5>
         <ul>
-          <li>전담 쌤 1:1 수업 안내</li>
+          <li>우리 아이 전담 쌤 매칭</li>
           <li>전형별 맞춤 커리큘럼</li>
           <li>첫 수업 일정 조율</li>
         </ul>
@@ -1076,8 +1112,7 @@
     </div>
 
     <div class="opencmp reveal" style="--d:.8s">
-      <div class="a">일반 과외는 "상담 오시면 알려드려요."</div>
-      <div class="b">쌤이다는 <span class="hl">"여기 다 적어놨어요. 보고 오세요."</span></div>
+      <div class="b" style="text-align:center;font-size:clamp(17px,2.4vw,24px);line-height:1.4">먼저 보여드릴 수 있다는 것, <span class="hl">그게 쌤이다의 자신감입니다.</span></div>
     </div>
   </div>
 </section>
@@ -1107,7 +1142,36 @@
   <b>쌤이다</b> · 초·중·고 전과목 1:1 화상과외 · 과외는, 쌤이다 &nbsp;·&nbsp; (주)아이스캔 &nbsp;·&nbsp; ssamida.com
 </div></div>
 
-<div class="sticky" id="sticky"><a class="btn" href="#apply">지금, 무료 과외수업 신청하기 →</a></div>
+<!-- ===== 우측 고정 신청폼 (데스크톱) ===== -->
+<div class="qform" id="qform">
+  <button class="qclose" id="qclose" aria-label="닫기">×</button>
+  <div class="qtag">무료 수업 30분 <i>·</i> 진로·진학 컨설팅 <i>·</i> 전액무료</div>
+  <div class="timer"><div class="tl2">오늘 상담 마감까지</div><div class="tv" id="qtv">00:00:00</div></div>
+  <div class="qhd">무료 과외수업<br>지금 신청하기</div>
+  <select class="fld q-grade" aria-label="학년"><option value="">학년 선택</option><option>초등</option><option>중1</option><option>중2</option><option>중3</option><option>고1</option><option>고2</option><option>고3</option></select>
+  <input class="fld q-name" type="text" placeholder="학생 이름" aria-label="학생 이름">
+  <input class="fld q-phone" type="tel" placeholder="학부모 연락처 (010-0000-0000)" aria-label="학부모 연락처">
+  <button class="btn q-submit" type="button">✦ 무료 과외수업 신청 →</button>
+  <label class="qagree"><input type="checkbox" class="q-agree"> [필수] 개인정보 수집·이용에 동의합니다 (상담 목적)</label>
+  <div class="ferr q-err"></div>
+  <div class="thanks q-thanks">접수됐습니다. 전화로 수업 일정을 잡아드릴게요.</div>
+</div>
+
+<!-- ===== 모바일 하단 sticky 폼 ===== -->
+<div class="sform" id="sform">
+  <div class="stimer">⏱ 오늘 상담 마감까지 <b id="stv">00:00:00</b></div>
+  <div class="srow">
+    <select class="fld q-grade" aria-label="학년"><option value="">학년</option><option>초등</option><option>중1</option><option>중2</option><option>중3</option><option>고1</option><option>고2</option><option>고3</option></select>
+    <input class="fld q-name" type="text" placeholder="학생 이름" aria-label="학생 이름">
+  </div>
+  <div class="srow2">
+    <input class="fld q-phone" type="tel" placeholder="학부모 연락처" aria-label="학부모 연락처">
+    <button class="btn q-submit" type="button">신청 →</button>
+  </div>
+  <label class="qagree"><input type="checkbox" class="q-agree"> [필수] 개인정보 수집·이용 동의</label>
+  <div class="ferr q-err"></div>
+  <div class="thanks q-thanks">접수됐습니다. 곧 연락드릴게요.</div>
+</div>
 
 <script>
 (function(){
@@ -1265,39 +1329,64 @@
   });},{threshold:.15});
   document.querySelectorAll('.reveal,.kin,.hero,.tl,.diag,.mapbox,.cycle,.spark').forEach(function(el){io.observe(el);});
 
-  var hero=document.querySelector('.hero'),st=document.getElementById('sticky'),fin=document.getElementById('apply');
-  var ho=new IntersectionObserver(function(es){es.forEach(function(e){st.classList.toggle('on',!e.isIntersecting);});},{threshold:.1});
-  ho.observe(hero);
-  var fo=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)st.classList.remove('on');else if(hero.getBoundingClientRect().bottom<0)st.classList.add('on');});},{threshold:.25});
-  fo.observe(fin);
+  /* ===== 자정까지 카운트다운 (매일 리셋) ===== */
+  var qtv=document.getElementById('qtv'),stv=document.getElementById('stv');
+  function tickTimer(){
+    var n=new Date();
+    var end=new Date(n.getFullYear(),n.getMonth(),n.getDate(),23,59,59);
+    var s=Math.max(0,Math.floor((end-n)/1000));
+    var h=String(Math.floor(s/3600)).padStart(2,'0');
+    var m=String(Math.floor(s%3600/60)).padStart(2,'0');
+    var ss=String(s%60).padStart(2,'0');
+    var t=h+':'+m+':'+ss;
+    if(qtv)qtv.textContent=t; if(stv)stv.textContent=t;
+  }
+  tickTimer(); setInterval(tickTimer,1000);
 
-  function err(msg){var f=document.getElementById('ferr');f.textContent=msg;f.classList.add('on');}
-  function clearErr(){document.getElementById('ferr').classList.remove('on');}
+  /* ===== 플로팅 폼 토글: 히어로 지나면 등장, #apply 보이면 숨김 ===== */
+  var hero=document.querySelector('.hero'),fin=document.getElementById('apply');
+  var qf=document.getElementById('qform'),sf=document.getElementById('sform');
+  var pastHero=false, inApply=false, qClosed=false;
+  function syncFloat(){
+    var show=pastHero&&!inApply&&!qClosed;
+    if(qf)qf.classList.toggle('on',show);
+    if(sf)sf.classList.toggle('on',show);
+  }
+  new IntersectionObserver(function(es){es.forEach(function(e){pastHero=!e.isIntersecting;syncFloat();});},{threshold:.1}).observe(hero);
+  new IntersectionObserver(function(es){es.forEach(function(e){inApply=e.isIntersecting;syncFloat();});},{threshold:.2}).observe(fin);
+  var qc=document.getElementById('qclose');
+  if(qc)qc.addEventListener('click',function(){qClosed=true;syncFloat();});
 
-  document.getElementById('submit').addEventListener('click',function(){
-    clearErr();
-    var grade=document.getElementById('grade').value;
-    var name=document.getElementById('sname').value.trim();
-    var phone=document.getElementById('phone').value.replace(/[^0-9]/g,'');
-    var agree=document.getElementById('agree').checked;
-    if(!grade){err('학년을 선택해 주세요.');return}
-    if(!name){err('학생 이름을 입력해 주세요.');return}
-    if(!/^01[016789][0-9]{7,8}$/.test(phone)){err('연락처를 확인해 주세요. (예: 010-1234-5678)');return}
-    if(!agree){err('개인정보 수집·이용 동의가 필요해요.');return}
-
-    var btn=this; btn.disabled=true; btn.textContent='접수 중…';
-    var data={time:new Date().toLocaleString('ko-KR',{timeZone:'Asia/Seoul'}),name:name,grade:grade,phone:phone,message:'',source:'메인랜딩'};
-
-    function done(){
-      document.getElementById('thanks').classList.add('on');
-      btn.textContent='접수 완료 ✓';
-      if(typeof fbq==='function'){fbq('track','Lead');}
-    }
-    if(FORM_ENDPOINT){
-      fetch(FORM_ENDPOINT,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain'},body:JSON.stringify(data)})
-        .then(done).catch(function(){done();});
-    }else{done();}
-  });
+  /* ===== 통합 submit: 본문 #apply + 우측폼 + 하단폼 ===== */
+  function handle(scope, srcLabel, map){
+    var btn=scope.querySelector(map.submit);
+    if(!btn)return;
+    btn.addEventListener('click',function(){
+      var errBox=scope.querySelector(map.err), okBox=scope.querySelector(map.thanks);
+      if(errBox)errBox.classList.remove('on');
+      var grade=scope.querySelector(map.grade).value;
+      var name=scope.querySelector(map.name).value.trim();
+      var phone=scope.querySelector(map.phone).value.replace(/[^0-9]/g,'');
+      var agree=scope.querySelector(map.agree).checked;
+      function e(msg){if(errBox){errBox.textContent=msg;errBox.classList.add('on');}}
+      if(!grade){e('학년을 선택해 주세요.');return}
+      if(!name){e('학생 이름을 입력해 주세요.');return}
+      if(!/^01[016789][0-9]{7,8}$/.test(phone)){e('연락처를 확인해 주세요. (예: 010-1234-5678)');return}
+      if(!agree){e('개인정보 수집·이용 동의가 필요해요.');return}
+      btn.disabled=true; var orig=btn.textContent; btn.textContent='접수 중…';
+      var data={time:new Date().toLocaleString('ko-KR',{timeZone:'Asia/Seoul'}),name:name,grade:grade,phone:phone,message:'',source:srcLabel};
+      function done(){if(okBox)okBox.classList.add('on');btn.textContent='접수 완료 ✓';if(typeof fbq==='function'){fbq('track','Lead');}}
+      if(FORM_ENDPOINT){
+        fetch(FORM_ENDPOINT,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain'},body:JSON.stringify(data)}).then(done).catch(done);
+      }else{done();}
+    });
+  }
+  // 본문 #apply 폼 (고유 id 기반)
+  handle(document.getElementById('apply'),'메인랜딩-본문',{submit:'#submit',grade:'#grade',name:'#sname',phone:'#phone',agree:'#agree',err:'#ferr',thanks:'#thanks'});
+  // 우측 고정폼
+  if(qf)handle(qf,'메인랜딩-우측',{submit:'.q-submit',grade:'.q-grade',name:'.q-name',phone:'.q-phone',agree:'.q-agree',err:'.q-err',thanks:'.q-thanks'});
+  // 하단 모바일폼
+  if(sf)handle(sf,'메인랜딩-하단',{submit:'.q-submit',grade:'.q-grade',name:'.q-name',phone:'.q-phone',agree:'.q-agree',err:'.q-err',thanks:'.q-thanks'});
 })();
 </script>
 </body>
