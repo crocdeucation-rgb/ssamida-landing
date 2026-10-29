@@ -107,7 +107,7 @@
   <div class="brandline"><span class="dot"></span><span>SSAM LOG</span></div>
   <h1>쌤로그 <span class="hl">·</span> 복잡한 입시를 쉽게</h1>
   <p class="sub">입시·세특·생기부, 학부모가 알아야 할 것만 — 쌤이다가 매일 정리합니다.</p>
-  <a class="topcta" href="https://ssamida.info/">쌤이다 알아보기 →</a>
+  <a class="topcta" href="https://ssamida.info/?utm_source=ssamlog&utm_medium=blog&utm_campaign=ssamlog_index&utm_content=home_cta">쌤이다 알아보기 →</a>
   <div class="swipehint">옆으로 넘기며 읽어보세요 <span class="ar">→</span></div>
 </div></header>
 
@@ -118,7 +118,7 @@
        ③ 텍스트만 교체 ═══ -->
 
   <!-- 10.29 — 2028 경쟁률 (테라) -->
-  <a class="post" href="#">
+  <a class="post" href="blog-2028.html">
     <div class="thumb th-terra">
       <div class="wm">83%</div>
       <div class="tag"><i></i>2028 입시세대 학부모 체크</div>
@@ -135,7 +135,7 @@
   </a>
 
   <!-- 10.28 — 내신 5등급제 (차콜) -->
-  <a class="post" href="#">
+  <a class="post" href="blog-5grade.html">
     <div class="thumb th-char">
       <div class="tag"><i></i>2028 내신 개편</div>
       <h3>내신 5등급제<br>한 번 미끄러지면<br><span class="hl">진짜 끝일까?</span></h3>
@@ -151,7 +151,7 @@
   </a>
 
   <!-- 10.27 — 세특 (아이보리) -->
-  <a class="post" href="#">
+  <a class="post" href="blog-setuk-diff.html">
     <div class="thumb th-ivory">
       <div class="tag"><i></i>세특 이야기</div>
       <h3>같은 수업 듣는데<br><span class="hl">세특이 다른 이유</span></h3>
@@ -171,7 +171,7 @@
 <div class="bottom"><div class="wrap">
   <h5>매일 쌓이는 입시 정리, <span class="hl">우리 아이에게 맞추고 싶다면</span></h5>
   <p>전담 쌤이 1:1로 — 세특·내신 방향을 같이 잡아드립니다.</p>
-  <a class="btn" href="https://ssamida.info/ssamida-setuk.html">무료 상담 신청하기 →</a>
+  <a class="btn" href="https://ssamida.info/ssamida-setuk.html?utm_source=ssamlog&utm_medium=blog&utm_campaign=ssamlog_index&utm_content=setuk_cta">무료 상담 신청하기 →</a>
 </div></div>
 
 <div class="foot2">쌤이다 · 초·중·고 전과목 1:1 화상과외 · (주)아이스캔 · ssamida.info</div>
@@ -185,7 +185,7 @@ try{
 var KEY='ss_attr',p=new URLSearchParams(location.search),UK=['utm_source','utm_medium','utm_campaign','utm_content','utm_term'];
 var cur={};try{cur=JSON.parse(sessionStorage.getItem(KEY)||'{}');}catch(e){}
 var fresh=UK.some(function(k){return p.get(k);});
-if(fresh||!cur._init){if(!cur._init)cur={referrer:document.referrer||'',landing:location.pathname+location.search,_init:1};UK.forEach(function(k){var v=p.get(k);if(v)cur[k]=v;});try{sessionStorage.setItem(KEY,JSON.stringify(cur));}catch(e){}}
+if(fresh||!cur._init){if(!cur._init)cur={referrer:document.referrer||'',landing:location.pathname+location.search,_init:1};UK.forEach(function(k){var v=p.get(k);if(v&&!cur[k])cur[k]=v;});try{sessionStorage.setItem(KEY,JSON.stringify(cur));}catch(e){}}
 window.__attr=function(){var a={};try{a=JSON.parse(sessionStorage.getItem(KEY)||'{}');}catch(e){}return a;};
 }catch(e){window.__attr=function(){return{};};}
 window.__gsend=function(o){try{
