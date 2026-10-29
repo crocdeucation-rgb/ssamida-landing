@@ -89,6 +89,37 @@
   .cta .lok{display:none;color:var(--mint);font-size:13.5px;margin-top:11px;text-align:center;font-weight:700} .cta .lok.on{display:block}
   .foota{background:var(--bg);border-top:1px solid var(--line);padding:26px 0;color:var(--dim);font-size:12px;line-height:1.8}
   .foota a{color:var(--mut)}
+
+  /* ===== 플로팅 신청폼 (홈 동일) ===== */
+  .qwrap{position:fixed;inset:0;z-index:70;pointer-events:none}
+  .qform{position:fixed;top:50%;right:28px;transform:translateY(-50%) translateX(150%);width:316px;background:linear-gradient(165deg,var(--card),var(--bg2));border:1px solid var(--mint2);border-radius:20px;padding:18px 18px 16px;box-shadow:0 24px 70px rgba(0,0,0,.55),0 0 46px rgba(52,224,180,.14);pointer-events:auto;transition:transform .6s cubic-bezier(.2,.8,.2,1);z-index:71}
+  .qform.on{transform:translateY(-50%)}
+  .qform .qtag{display:flex;gap:6px;justify-content:center;flex-wrap:wrap;font-size:11px;font-weight:800;color:var(--mint);background:var(--bg2);border:1px solid rgba(52,224,180,.4);border-radius:100px;padding:7px 10px;margin-bottom:12px}
+  .qform .qtag i{font-style:normal;color:var(--dim)}
+  .qclose{position:absolute;top:10px;right:12px;color:var(--dim);font-size:18px;cursor:pointer;line-height:1;background:none;border:0;padding:4px}
+  .qclose:hover{color:var(--mut)}
+  .qtimer{text-align:center;margin-bottom:12px}
+  .qtimer .tl{font-size:11px;color:var(--mut)}
+  .qtimer .tv{font-size:26px;font-weight:900;color:#E8935C;font-variant-numeric:tabular-nums;line-height:1.25}
+  .qhd{text-align:center;font-size:15px;font-weight:900;color:var(--fg);margin-bottom:12px;line-height:1.3}
+  .qfld{background:var(--bg2);border:1px solid var(--line);border-radius:12px;padding:0 14px;height:46px;color:var(--fg);font:inherit;font-size:14px;width:100%;outline:none;margin-bottom:8px;appearance:none;-webkit-appearance:none}
+  .qfld:focus{border-color:var(--mint2)}
+  .qbtn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;background:var(--mint);color:#06231C;font-weight:900;padding:14px;border-radius:100px;font-size:15px;border:0;cursor:pointer;margin-top:2px}
+  .qbtn:hover{background:#4fe9c2}.qbtn:disabled{opacity:.7}
+  .qagree{display:flex;gap:7px;align-items:flex-start;font-size:11px;color:var(--mut);margin-top:9px;line-height:1.4}.qagree input{margin-top:2px;flex:none}
+  .qerr{display:none;margin-top:8px;padding:9px 11px;border-radius:10px;border:1px solid rgba(232,147,92,.5);background:rgba(232,147,92,.08);color:#E8935C;font-size:12px}.qerr.on{display:block}
+  .qok{display:none;margin-top:8px;padding:11px 13px;border-radius:10px;border:1px solid rgba(52,224,180,.4);background:rgba(52,224,180,.08);color:var(--fg);font-size:13px}.qok.on{display:block}
+  @media(max-width:980px){.qform{display:none}}
+  .sform{position:fixed;left:0;right:0;bottom:0;z-index:70;background:linear-gradient(180deg,rgba(10,31,26,0),var(--bg) 22%);padding:14px 16px calc(14px + env(safe-area-inset-bottom,0px));border-top:1px solid var(--line);transform:translateY(140%);transition:transform .5s cubic-bezier(.2,.8,.2,1);box-shadow:0 -14px 40px rgba(0,0,0,.5)}
+  .sform.on{transform:none}
+  .sform .stimer{display:flex;align-items:center;justify-content:center;gap:8px;font-size:12px;color:var(--mut);margin-bottom:9px}
+  .sform .stimer b{color:#E8935C;font-weight:900;font-variant-numeric:tabular-nums;font-size:14px}
+  .sform .srow{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:7px}
+  .sform .qfld{height:44px;font-size:13.5px;margin-bottom:0}
+  .sform .srow2{display:grid;grid-template-columns:1fr auto;gap:7px;align-items:stretch}
+  .sform .qbtn{padding:0 18px;font-size:14px;white-space:nowrap;margin-top:0}
+  .sform .qagree{font-size:10.5px;margin-top:8px}
+  @media(min-width:981px){.sform{display:none}}
 </style>
 </head>
 <body>
@@ -152,7 +183,7 @@
     </details>
 
     <details class="qa"><summary><span class="q">Q</span><span class="tx">쌤이다는 입시를 얼마나 아나요?</span><span class="pl"></span></summary>
-      <div class="a">쌤이다는 입시를 ‘감’으로 보지 않습니다. 운영사 (주)아이스캔이 <b>실제 입결 데이터로 직접 만든 입시 진단 엔진 ‘대입지도’</b>를 보유·운영하고 있어요. 전국 대학의 최근 입결과 특별전형(지역인재·농어촌 등) 사례, 그리고 고입을 위한 고교 데이터까지 담고 있어 <b>대입은 물론 고입까지</b> 데이터에 근거해 봅니다. 무료 상담에서 이 진단으로 지금 성적 기준 지원 가능 라인과 자격을 확인하고, 뭘 준비하면 좋을지 방향을 짚어 드려요. 입시 데이터를 직접 운영하는 과외라, <b>입시를 보는 눈이 다릅니다.</b> (합격을 보장하는 서비스는 아닙니다.)</div>
+      <div class="a">쌤이다는 입시를 ‘감’으로 보지 않습니다. 운영사 (주)아이스캔이 <b>실제 입결 데이터로 직접 만든 입시 진단 엔진 ‘입시지도’</b>를 보유·운영하고 있어요. 전국 대학의 최근 입결과 특별전형(지역인재·농어촌 등) 사례, 그리고 고입을 위한 고교 데이터까지 담고 있어 <b>대입은 물론 고입까지</b> 데이터에 근거해 봅니다. 무료 상담에서 이 진단으로 지금 성적 기준 지원 가능 라인과 자격을 확인하고, 뭘 준비하면 좋을지 방향을 짚어 드려요. 입시 데이터를 직접 운영하는 과외라, <b>입시를 보는 눈이 다릅니다.</b> (합격을 보장하는 서비스는 아닙니다.)</div>
     </details>
   </div>
 
@@ -241,6 +272,65 @@
       if(typeof fbq==='function'){try{fbq('track','Lead');}catch(_){}}}
     fetch(EP,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain'},body:JSON.stringify(data)}).then(done).catch(done);
   });
+})();
+</script>
+
+<div class="qwrap"><div class="qform" id="qform">
+  <button class="qclose" id="qclose" aria-label="닫기" type="button">×</button>
+  <div class="qtag">무료 수업 30분 <i>·</i> 진로·진학 상담 <i>·</i> 전액무료</div>
+  <div class="qtimer"><div class="tl">오늘 상담 마감까지</div><div class="tv" id="qtv">00:00:00</div></div>
+  <div class="qhd">무료 과외수업<br>지금 신청하기</div>
+  <select class="qfld q-grade" aria-label="학년"><option value="">학년 선택</option><option>초등</option><option>중1</option><option>중2</option><option>중3</option><option>고1</option><option>고2</option><option>고3</option></select>
+  <input class="qfld q-name" type="text" placeholder="학생 이름" aria-label="학생 이름">
+  <input class="qfld q-phone" type="tel" placeholder="학부모 연락처 (010-0000-0000)" aria-label="학부모 연락처">
+  <button class="qbtn q-submit" type="button">✦ 무료 상담 신청 →</button>
+  <label class="qagree"><input type="checkbox" class="q-agree"> [필수] 개인정보 수집·이용에 동의합니다 (상담 목적)</label>
+  <div class="qerr q-err"></div>
+  <div class="qok q-ok">접수됐습니다. 전화로 수업 일정을 잡아드릴게요.</div>
+</div></div>
+
+<div class="sform" id="sform">
+  <div class="stimer">⏱ 오늘 상담 마감까지 <b id="stv">00:00:00</b></div>
+  <div class="srow">
+    <select class="qfld q-grade" aria-label="학년"><option value="">학년</option><option>초등</option><option>중1</option><option>중2</option><option>중3</option><option>고1</option><option>고2</option><option>고3</option></select>
+    <input class="qfld q-name" type="text" placeholder="학생 이름" aria-label="학생 이름">
+  </div>
+  <div class="srow2">
+    <input class="qfld q-phone" type="tel" placeholder="학부모 연락처" aria-label="학부모 연락처">
+    <button class="qbtn q-submit" type="button">신청 →</button>
+  </div>
+  <label class="qagree"><input type="checkbox" class="q-agree"> [필수] 개인정보 수집·이용 동의</label>
+  <div class="qerr q-err"></div>
+  <div class="qok q-ok">접수됐습니다. 곧 연락드릴게요.</div>
+</div>
+
+<script>
+(function(){
+  var EP="https://script.google.com/macros/s/AKfycbwH-nwuwcXNWvBKH-D9JfaHAqL4g4G2Pfe2a3cncTVbb7a6NHJ-nMBntCCK1TOfJxw1/exec";
+  var SRC="FAQ-플로팅";
+  var qtv=document.getElementById('qtv'),stv=document.getElementById('stv');
+  function tick(){var n=new Date(),end=new Date(n.getFullYear(),n.getMonth(),n.getDate(),23,59,59);var s=Math.max(0,Math.floor((end-n)/1000));var t=String(Math.floor(s/3600)).padStart(2,'0')+':'+String(Math.floor(s%3600/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0');if(qtv)qtv.textContent=t;if(stv)stv.textContent=t;}
+  tick();setInterval(tick,1000);
+  var qf=document.getElementById('qform'),sf=document.getElementById('sform'),fin=document.getElementById('apply');
+  var pastTop=false,inApply=false,closed=false;
+  function sync(){var show=pastTop&&!inApply&&!closed;if(qf)qf.classList.toggle('on',show);if(sf)sf.classList.toggle('on',show);}
+  window.addEventListener('scroll',function(){pastTop=window.scrollY>480;sync();},{passive:true});
+  if(fin&&'IntersectionObserver' in window){new IntersectionObserver(function(es){es.forEach(function(e){inApply=e.isIntersecting;sync();});},{threshold:.15}).observe(fin);}
+  var qc=document.getElementById('qclose');if(qc)qc.addEventListener('click',function(){closed=true;sync();});
+  function handle(scope){
+    var btn=scope.querySelector('.q-submit');if(!btn)return;
+    btn.addEventListener('click',function(){
+      var er=scope.querySelector('.q-err'),ok=scope.querySelector('.q-ok');er.classList.remove('on');
+      var g=scope.querySelector('.q-grade').value,n=scope.querySelector('.q-name').value.trim(),p=scope.querySelector('.q-phone').value.replace(/[^0-9]/g,''),a=scope.querySelector('.q-agree').checked;
+      function e(m){er.textContent=m;er.classList.add('on');}
+      if(!g)return e('학년을 선택해 주세요.');if(!n)return e('학생 이름을 입력해 주세요.');if(!/^01[016789][0-9]{7,8}$/.test(p))return e('연락처를 확인해 주세요. (예: 010-1234-5678)');if(!a)return e('개인정보 수집·이용 동의가 필요해요.');
+      btn.disabled=true;btn.textContent='접수 중…';
+      var d={time:new Date().toLocaleString('ko-KR',{timeZone:'Asia/Seoul'}),name:n,grade:g,phone:p,message:'',source:SRC};
+      function done(){ok.classList.add('on');btn.textContent='접수 완료 ✓';if(typeof window.karrotPixel!=='undefined'){try{window.karrotPixel.track('Lead');}catch(_){}}if(typeof fbq==='function'){try{fbq('track','Lead');}catch(_){}}}
+      fetch(EP,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain'},body:JSON.stringify(d)}).then(done).catch(done);
+    });
+  }
+  if(qf)handle(qf);if(sf)handle(sf);
 })();
 </script>
 </body>
