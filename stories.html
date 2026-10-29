@@ -600,7 +600,7 @@ try{
 var KEY='ss_attr',p=new URLSearchParams(location.search),UK=['utm_source','utm_medium','utm_campaign','utm_content','utm_term'];
 var cur={};try{cur=JSON.parse(sessionStorage.getItem(KEY)||'{}');}catch(e){}
 var fresh=UK.some(function(k){return p.get(k);});
-if(fresh||!cur._init){if(!cur._init)cur={referrer:document.referrer||'',landing:location.pathname+location.search,_init:1};UK.forEach(function(k){var v=p.get(k);if(v)cur[k]=v;});try{sessionStorage.setItem(KEY,JSON.stringify(cur));}catch(e){}}
+if(fresh||!cur._init){if(!cur._init)cur={referrer:document.referrer||'',landing:location.pathname+location.search,_init:1};UK.forEach(function(k){var v=p.get(k);if(v&&!cur[k])cur[k]=v;});try{sessionStorage.setItem(KEY,JSON.stringify(cur));}catch(e){}}
 window.__attr=function(){var a={};try{a=JSON.parse(sessionStorage.getItem(KEY)||'{}');}catch(e){}return a;};
 }catch(e){window.__attr=function(){return{};};}
 window.__gsend=function(o){try{
