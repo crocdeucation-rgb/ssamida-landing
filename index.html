@@ -1421,6 +1421,7 @@ document.querySelectorAll('#shmMenu a').forEach(function(a){a.addEventListener('
       if(!agree){e('개인정보 수집·이용 동의가 필요해요.');return}
       btn.disabled=true; var orig=btn.textContent; btn.textContent='접수 중…';
       var data={time:new Date().toLocaleString('ko-KR',{timeZone:'Asia/Seoul'}),name:name,grade:grade,phone:phone,message:'',source:srcLabel};
+      try{Object.assign(data,window.__attr&&window.__attr());}catch(_e){}
       function done(){if(okBox)okBox.classList.add('on');btn.textContent='접수 완료 ✓';if(typeof fbq==='function'){fbq('track','Lead');}}
       if(FORM_ENDPOINT){
         fetch(FORM_ENDPOINT,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain'},body:JSON.stringify(data)}).then(done).catch(done);
@@ -1434,6 +1435,21 @@ document.querySelectorAll('#shmMenu a').forEach(function(a){a.addEventListener('
   // 하단 모바일폼
   if(sf)handle(sf,'메인랜딩-하단',{submit:'.q-submit',grade:'.q-grade',name:'.q-name',phone:'.q-phone',agree:'.q-agree',err:'.q-err',thanks:'.q-thanks'});
 })();
+</script>
+<script>
+/* 유입 추적(UTM/referrer) 캡처 — 세션 유지, 폼 제출 시 함께 전송 */
+(function(){try{
+var KEY='ss_attr',p=new URLSearchParams(location.search),UK=['utm_source','utm_medium','utm_campaign','utm_content','utm_term'];
+var cur={};try{cur=JSON.parse(sessionStorage.getItem(KEY)||'{}');}catch(e){}
+var fresh=UK.some(function(k){return p.get(k);});
+if(fresh||!cur._init){
+ if(!cur._init)cur={referrer:document.referrer||'',landing:location.pathname+location.search,_init:1};
+ UK.forEach(function(k){var v=p.get(k);if(v)cur[k]=v;});
+ try{sessionStorage.setItem(KEY,JSON.stringify(cur));}catch(e){}
+}
+window.__attr=function(){var a={};try{a=JSON.parse(sessionStorage.getItem(KEY)||'{}');}catch(e){}
+ return{utm_source:a.utm_source||'',utm_medium:a.utm_medium||'',utm_campaign:a.utm_campaign||'',utm_content:a.utm_content||'',utm_term:a.utm_term||'',referrer:a.referrer||'',landing:a.landing||'',page:location.href};};
+}catch(e){window.__attr=function(){return{page:location.href};};}})();
 </script>
 </body>
 </html>
