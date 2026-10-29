@@ -1171,7 +1171,7 @@ document.querySelectorAll('#shmMenu a').forEach(function(a){a.addEventListener('
       <span class="ghost m">전담 과외 1:1</span><span class="ghost">무료 수업 30분</span><span class="ghost g">오픈 런칭 100명</span>
     </div>
     <form id="leadform" onsubmit="return false">
-      <select class="fld" id="grade" aria-label="학년"><option value="">학년 선택</option><option>초등</option><option>중1</option><option>중2</option><option>중3</option><option>고1</option><option>고2</option><option>고3</option></select>
+      <select class="fld" id="grade" aria-label="학년"><option value="">학년 선택</option><option>초1</option><option>초2</option><option>초3</option><option>초4</option><option>초5</option><option>초6</option><option>중1</option><option>중2</option><option>중3</option><option>고1</option><option>고2</option><option>고3</option></select>
       <input class="fld" id="sname" type="text" placeholder="학생 이름" aria-label="학생 이름">
       <input class="fld" id="phone" type="tel" placeholder="학부모 연락처 (010-0000-0000)" aria-label="학부모 연락처">
       <label class="agree"><input type="checkbox" id="agree"> 개인정보 수집·이용에 동의합니다 (상담 목적, 만 14세 미만은 법정대리인 동의)</label>
@@ -1192,7 +1192,7 @@ document.querySelectorAll('#shmMenu a').forEach(function(a){a.addEventListener('
   <div class="qtag">무료 수업 30분 <i>·</i> 진로·진학 컨설팅 <i>·</i> 전액무료</div>
   <div class="timer"><div class="tl2">오늘 상담 마감까지</div><div class="tv" id="qtv">00:00:00</div></div>
   <div class="qhd">무료 과외수업<br>지금 신청하기</div>
-  <select class="fld q-grade" aria-label="학년"><option value="">학년 선택</option><option>초등</option><option>중1</option><option>중2</option><option>중3</option><option>고1</option><option>고2</option><option>고3</option></select>
+  <select class="fld q-grade" aria-label="학년"><option value="">학년 선택</option><option>초1</option><option>초2</option><option>초3</option><option>초4</option><option>초5</option><option>초6</option><option>중1</option><option>중2</option><option>중3</option><option>고1</option><option>고2</option><option>고3</option></select>
   <input class="fld q-name" type="text" placeholder="학생 이름" aria-label="학생 이름">
   <input class="fld q-phone" type="tel" placeholder="학부모 연락처 (010-0000-0000)" aria-label="학부모 연락처">
   <button class="btn q-submit" type="button">✦ 무료 과외수업 신청 →</button>
@@ -1205,7 +1205,7 @@ document.querySelectorAll('#shmMenu a').forEach(function(a){a.addEventListener('
 <div class="sform" id="sform">
   <div class="stimer">⏱ 오늘 상담 마감까지 <b id="stv">00:00:00</b></div>
   <div class="srow">
-    <select class="fld q-grade" aria-label="학년"><option value="">학년</option><option>초등</option><option>중1</option><option>중2</option><option>중3</option><option>고1</option><option>고2</option><option>고3</option></select>
+    <select class="fld q-grade" aria-label="학년"><option value="">학년</option><option>초1</option><option>초2</option><option>초3</option><option>초4</option><option>초5</option><option>초6</option><option>중1</option><option>중2</option><option>중3</option><option>고1</option><option>고2</option><option>고3</option></select>
     <input class="fld q-name" type="text" placeholder="학생 이름" aria-label="학생 이름">
   </div>
   <div class="srow2">
@@ -1418,12 +1418,8 @@ document.querySelectorAll('#shmMenu a').forEach(function(a){a.addEventListener('
       if(!/^01[016789][0-9]{7,8}$/.test(phone)){e('연락처를 확인해 주세요. (예: 010-1234-5678)');return}
       if(!agree){e('개인정보 수집·이용 동의가 필요해요.');return}
       btn.disabled=true; var orig=btn.textContent; btn.textContent='접수 중…';
-      var data={time:new Date().toLocaleString('ko-KR',{timeZone:'Asia/Seoul'}),name:name,grade:grade,phone:phone,message:'',source:srcLabel};
-      try{Object.assign(data,window.__attr&&window.__attr());}catch(_e){}
-      function done(){if(okBox)okBox.classList.add('on');btn.textContent='접수 완료 ✓';if(typeof fbq==='function'){fbq('track','Lead');}}
-      if(FORM_ENDPOINT){
-        fetch(FORM_ENDPOINT,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain'},body:JSON.stringify(data)}).then(done).catch(done);
-      }else{done();}
+      function done(){if(okBox)okBox.classList.add('on');btn.textContent='접수 완료 ✓';if(typeof window.karrotPixel!=='undefined'){try{window.karrotPixel.track('Lead');}catch(_){}}if(typeof fbq==='function'){try{fbq('track','Lead');}catch(_){}}}
+      window.__gsend({name:name,grade:grade,phone:phone,source:srcLabel}).then(done).catch(done);
     });
   }
   // 본문 #apply 폼 (고유 id 기반)
@@ -1435,19 +1431,27 @@ document.querySelectorAll('#shmMenu a').forEach(function(a){a.addEventListener('
 })();
 </script>
 <script>
-/* 유입 추적(UTM/referrer) 캡처 — 세션 유지, 폼 제출 시 함께 전송 */
-(function(){try{
+/* 유입(UTM) 캡처 + 구글폼 전송 — 세션 유지 */
+(function(){
+var FORM="https://docs.google.com/forms/d/e/1FAIpQLSda6DIdCIIxTItf3AJuZCTm0rg1KaiuTB2SA_r6Rxfo93VCGA/formResponse";
+var E={name:"entry.325936465",phone:"entry.1068621225",grade:"entry.1422482810",src:"entry.246110714",utm:"entry.2012739844"};
+try{
 var KEY='ss_attr',p=new URLSearchParams(location.search),UK=['utm_source','utm_medium','utm_campaign','utm_content','utm_term'];
 var cur={};try{cur=JSON.parse(sessionStorage.getItem(KEY)||'{}');}catch(e){}
 var fresh=UK.some(function(k){return p.get(k);});
-if(fresh||!cur._init){
- if(!cur._init)cur={referrer:document.referrer||'',landing:location.pathname+location.search,_init:1};
- UK.forEach(function(k){var v=p.get(k);if(v)cur[k]=v;});
- try{sessionStorage.setItem(KEY,JSON.stringify(cur));}catch(e){}
-}
-window.__attr=function(){var a={};try{a=JSON.parse(sessionStorage.getItem(KEY)||'{}');}catch(e){}
- return{utm_source:a.utm_source||'',utm_medium:a.utm_medium||'',utm_campaign:a.utm_campaign||'',utm_content:a.utm_content||'',utm_term:a.utm_term||'',referrer:a.referrer||'',landing:a.landing||'',page:location.href};};
-}catch(e){window.__attr=function(){return{page:location.href};};}})();
+if(fresh||!cur._init){if(!cur._init)cur={referrer:document.referrer||'',landing:location.pathname+location.search,_init:1};UK.forEach(function(k){var v=p.get(k);if(v)cur[k]=v;});try{sessionStorage.setItem(KEY,JSON.stringify(cur));}catch(e){}}
+window.__attr=function(){var a={};try{a=JSON.parse(sessionStorage.getItem(KEY)||'{}');}catch(e){}return a;};
+}catch(e){window.__attr=function(){return{};};}
+window.__gsend=function(o){try{
+ var a=window.__attr(),u=[];
+ ['utm_source','utm_medium','utm_campaign','utm_content','utm_term'].forEach(function(k){if(a[k])u.push(k.replace('utm_','')+'='+a[k]);});
+ if(a.referrer)u.push('ref='+a.referrer);
+ u.push('page='+location.pathname);
+ var q=new URLSearchParams();
+ q.append(E.name,o.name||'');q.append(E.phone,o.phone||'');q.append(E.grade,o.grade||'');q.append(E.src,o.source||'');q.append(E.utm,u.join(' | '));
+ return fetch(FORM,{method:'POST',mode:'no-cors',body:q});
+}catch(e){return Promise.resolve();}};
+})();
 </script>
 </body>
 </html>
