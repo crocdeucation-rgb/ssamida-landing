@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>내 전형 라인 진단 · 쌤이다</title>
+<meta name="description" content="경쟁률 숫자에 흔들리기 전에, 내신·세특·수능최저로 내 전형 라인부터. 쌤이다 무료 전형 진단 신청.">
+<meta property="og:title" content="내 전형 라인 진단 · 쌤이다">
+<meta property="og:description" content="눈치가 아니라 설계입니다. 내 전형 라인부터 무료로 진단받으세요.">
+<meta property="og:url" content="https://ssamida.info/ssamida-jindan.html">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@1.3.9/dist/web/static/pretendard.css">
+<style>
+  :root{--char:#1A1C1A;--citron:#D9F24B;--ivory:#F0EDE4;--terra:#E8673C;--brown:#2A1206;}
+  *{margin:0;padding:0;box-sizing:border-box;-webkit-font-smoothing:antialiased;}
+  html{scroll-behavior:smooth;}
+  body{font-family:'Pretendard',sans-serif;background:var(--char);color:var(--ivory);line-height:1.6;}
+  .wrap{max-width:560px;margin:0 auto;}
+  .topbar{display:flex;align-items:center;justify-content:space-between;padding:16px 22px;border-bottom:1px solid rgba(240,237,228,.12);position:sticky;top:0;background:rgba(26,28,26,.92);backdrop-filter:blur(8px);z-index:20;}
+  .topbar .b{font-weight:800;font-size:17px;letter-spacing:-.5px;}
+  .topbar .s{font-size:12px;color:rgba(240,237,228,.6);}
+  .topbar a{font-size:13px;font-weight:800;color:var(--char);background:var(--citron);padding:8px 14px;border-radius:30px;text-decoration:none;}
+
+  section{padding:46px 22px;}
+  .eyebrow{display:inline-block;font-size:13px;font-weight:700;color:var(--terra);letter-spacing:.5px;margin-bottom:14px;}
+  .hero h1{font-size:34px;font-weight:900;line-height:1.22;letter-spacing:-1.6px;word-break:keep-all;}
+  .hero h1 em{font-style:normal;color:var(--citron);}
+  .hero .lead{margin-top:16px;font-size:17px;color:rgba(240,237,228,.82);word-break:keep-all;}
+  .btn{display:inline-flex;align-items:center;gap:8px;font-weight:800;font-size:16px;text-decoration:none;cursor:pointer;border:none;font-family:inherit;}
+  .btn-primary{background:var(--citron);color:var(--char);padding:16px 26px;border-radius:40px;}
+  .btn-full{width:100%;justify-content:center;padding:17px;font-size:17px;border-radius:14px;}
+  .hero .btn-primary{margin-top:26px;}
+
+  .s-ivory{background:var(--ivory);color:var(--char);}
+  .s-ivory .eyebrow{color:var(--terra);}
+  .h2{font-size:24px;font-weight:900;letter-spacing:-1px;line-height:1.3;word-break:keep-all;}
+  .p{margin-top:14px;font-size:16px;word-break:keep-all;}
+  .s-ivory .p{color:#3a3a37;}
+  .stat{display:flex;gap:14px;margin-top:22px;flex-wrap:wrap;}
+  .stat .c{flex:1 1 160px;background:#fff;border:1px solid rgba(26,28,26,.08);border-radius:16px;padding:18px;}
+  .stat .big{font-size:30px;font-weight:900;color:var(--terra);letter-spacing:-1px;}
+  .stat .lab{margin-top:6px;font-size:14px;color:#55544f;font-weight:600;word-break:keep-all;}
+  .src{margin-top:16px;font-size:12px;color:#8a897f;word-break:keep-all;}
+
+  .steps{margin-top:8px;display:flex;flex-direction:column;gap:16px;}
+  .step{display:flex;gap:16px;align-items:flex-start;background:rgba(240,237,228,.05);border:1px solid rgba(240,237,228,.1);border-radius:16px;padding:18px;}
+  .step .n{flex:0 0 36px;height:36px;border-radius:50%;background:var(--citron);color:var(--char);font-weight:900;display:flex;align-items:center;justify-content:center;font-size:17px;}
+  .step .t{font-size:16px;word-break:keep-all;}
+  .step .t b{color:var(--citron);font-weight:800;}
+
+  .s-apply{background:var(--terra);color:#fff;}
+  .s-apply .eyebrow{color:var(--brown);}
+  .s-apply .h2{color:#fff;}
+  .s-apply .p{color:rgba(255,255,255,.9);}
+  form{margin-top:22px;display:flex;flex-direction:column;gap:12px;}
+  .fld label{display:block;font-size:13px;font-weight:700;margin-bottom:6px;color:#fff;}
+  .fld input,.fld select,.fld textarea{width:100%;font-family:inherit;font-size:16px;padding:14px;border-radius:12px;border:none;background:#fff;color:var(--char);}
+  .fld textarea{resize:vertical;min-height:72px;}
+  .agree{display:flex;gap:10px;align-items:flex-start;font-size:13px;color:#fff;margin-top:4px;}
+  .agree input{margin-top:3px;flex:0 0 auto;width:18px;height:18px;}
+  .agree a{color:#fff;text-decoration:underline;}
+  .btn-submit{background:var(--char);color:var(--citron);margin-top:6px;}
+  .btn-submit:disabled{opacity:.6;}
+  .ok{display:none;text-align:center;padding:30px 10px;}
+  .ok .emoji{font-size:40px;}
+  .ok h3{font-size:22px;font-weight:900;margin-top:10px;color:#fff;}
+  .ok p{margin-top:8px;color:rgba(255,255,255,.9);font-size:15px;}
+  .subcta{text-align:center;margin-top:18px;font-size:15px;color:rgba(255,255,255,.95);}
+  .subcta a{color:#fff;font-weight:800;}
+
+  footer{background:#111311;padding:28px 22px 40px;font-size:12px;color:rgba(240,237,228,.5);line-height:1.7;}
+  footer b{color:rgba(240,237,228,.75);font-weight:700;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="topbar">
+    <div><div class="b">쌤이다</div><div class="s">초·중·고 1:1 화상과외</div></div>
+    <a href="#apply">무료 진단</a>
+  </div>
+
+  <section class="hero">
+    <span class="eyebrow">● 고1·고2 · 2028 대입</span>
+    <h1>경쟁률 숫자에 흔들리기 전에,<br><em>내 전형 라인</em>부터.</h1>
+    <p class="lead">눈치가 아니라 설계입니다. 내신·세특·수능최저 조합으로, 내 성적이 닿는 전형 라인을 먼저 잡아드려요.</p>
+    <a href="#apply" class="btn btn-primary">무료 전형 진단 신청 →</a>
+  </section>
+
+  <section class="s-ivory">
+    <span class="eyebrow">왜 지금이냐면</span>
+    <div class="h2">경쟁률이 내렸다고<br>유리해진 게 아니에요</div>
+    <p class="p">서울 주요 대학 수시 경쟁률이 내린 건 상위권이 안전 지원으로 몰려서 생긴 착시예요. 선배들은 이미 움직였고, 전형이 또렷한 집일수록 막판에 덜 흔들렸습니다.</p>
+    <div class="stat">
+      <div class="c"><div class="big">8.53→7.04</div><div class="lab">서울 주요 15개대 학생부교과 경쟁률(대 1)</div></div>
+      <div class="c"><div class="big">82.7%</div><div class="lab">선배가 지원 전략을 바꿨다고 응답</div></div>
+    </div>
+    <p class="src">출처 · 동아일보·진학사 2027학년도 수시 경쟁률 분석(서울 주요 15개대) / 진학사 설문(2027 수시 지원자 3,706명·복수응답, 2026.9.23)</p>
+  </section>
+
+  <section>
+    <span class="eyebrow">쌤이다 전형 진단이 하는 것</span>
+    <div class="h2">내 지원 라인부터<br>같이 정해둡니다</div>
+    <div class="steps">
+      <div class="step"><div class="n">1</div><div class="t"><b>진단</b> · 내신·세특·수능최저 조합으로 지금 내 성적이 닿는 전형 라인을 그려드려요</div></div>
+      <div class="step"><div class="n">2</div><div class="t"><b>설계</b> · 그 라인에 맞춰 남은 학기 수행·세특·독서를 뭐부터 할지 정합니다</div></div>
+      <div class="step"><div class="n">3</div><div class="t"><b>실행</b> · 1:1 화상과외로 수업과 관리까지 연결해 끝까지 끌고 갑니다</div></div>
+    </div>
+    <p class="src" style="color:rgba(240,237,228,.45);">내신·수행 기본은 그대로 유지하면서, 거기에 내 전형 설계를 일찍 얹는 방식이에요.</p>
+  </section>
+
+  <section class="s-apply" id="apply">
+    <div id="formView">
+      <span class="eyebrow">● 무료 전형 진단 신청</span>
+      <div class="h2">내 전형 라인,<br>무료로 진단받기</div>
+      <p class="p">신청하시면 전화로 진단 일정을 잡아드려요. 부담 없이 받아보고 방향만 잡으셔도 됩니다.</p>
+      <form id="applyForm" onsubmit="return submitForm(event)">
+        <div class="fld"><label>학생·학부모 이름</label><input type="text" name="name" required placeholder="이름"></div>
+        <div class="fld"><label>학년</label>
+          <select name="grade" required>
+            <option value="">학년 선택</option>
+            <option>중1</option><option>중2</option><option>중3</option>
+            <option>고1</option><option>고2</option><option>고3</option>
+            <option>재수생/기타</option>
+          </select>
+        </div>
+        <div class="fld"><label>연락처</label><input type="tel" name="phone" required placeholder="010-0000-0000" pattern="[0-9\-]{9,13}"></div>
+        <div class="fld"><label>지금 가장 고민되는 점 (선택)</label><textarea name="message" placeholder="예: 성적은 어중간한데 어떤 전형을 노려야 할지 모르겠어요"></textarea></div>
+        <label class="agree"><input type="checkbox" name="agree" required><span>개인정보 수집·이용에 동의합니다 (상담 목적, 만 14세 미만은 법정대리인 동의). <a href="/privacy.html" target="_blank">자세히</a></span></label>
+        <button type="submit" class="btn btn-full btn-submit" id="subBtn">무료 진단 신청하기</button>
+      </form>
+      <p class="subcta">바로 통화를 원하시면 <a href="tel:1899-7909">☎ 1899-7909</a></p>
+    </div>
+    <div class="ok" id="okView">
+      <div class="emoji">✅</div>
+      <h3>신청 완료!</h3>
+      <p>전화로 진단 일정을 잡아드릴게요.<br>조금만 기다려 주세요.</p>
+      <p class="subcta" style="margin-top:16px;">급하시면 <a href="tel:1899-7909">☎ 1899-7909</a></p>
+    </div>
+  </section>
+
+  <footer>
+    <b>쌤이다</b> · 초·중·고 1:1 화상과외 · 운영법인 (주)아이스캔<br>
+    고객센터 1899-7909 · iscanbrand@gmail.com<br>
+    경기도 파주시 가람로21번길 43 3층 · 쌤IDA원격학원(제7847호)<br>
+    신청 정보는 상담 목적에 한해 이용되며, 자세한 내용은 개인정보처리방침을 따릅니다.
+  </footer>
+
+</div>
+
+<script>
+  // 기존 랜딩과 동일한 구글 폼(→ 구글시트 연동)으로 전송. source 로 이 페이지 리드 구분.
+  var FORM="https://docs.google.com/forms/d/e/1FAIpQLSda6DIdCIIxTItf3AJuZCTm0rg1KaiuTB2SA_r6Rxfo93VCGA/formResponse";
+  var E={name:"entry.325936465",phone:"entry.1068621225",grade:"entry.1422482810",src:"entry.246110714",utm:"entry.2012739844"};
+
+  function gsend(o){
+    var extra=[];
+    if(o.memo) extra.push('memo='+o.memo);
+    try{
+      var qs=new URLSearchParams(location.search);
+      ['utm_source','utm_medium','utm_campaign'].forEach(function(k){ if(qs.get(k)) extra.push(k+'='+qs.get(k)); });
+    }catch(e){}
+    extra.push('ref='+(document.referrer||''));
+    extra.push('page='+location.pathname);
+    var q=new URLSearchParams();
+    q.append(E.name,o.name||'');
+    q.append(E.phone,o.phone||'');
+    q.append(E.grade,o.grade||'');
+    q.append(E.src,o.source||'');
+    q.append(E.utm,extra.join(' | '));
+    return fetch(FORM,{method:'POST',mode:'no-cors',body:q});
+  }
+
+  async function submitForm(e){
+    e.preventDefault();
+    var f=e.target, btn=document.getElementById('subBtn');
+    if(!f.agree.checked){ alert('개인정보 수집·이용에 동의해 주세요.'); return false; }
+    btn.disabled=true; btn.textContent='신청 중...';
+    var data={
+      name:f.name.value.trim(),
+      grade:f.grade.value,
+      phone:f.phone.value.trim(),
+      source:'전형라인진단',
+      message:f.message.value.trim()
+    };
+    try{
+      await gsend({name:data.name,grade:data.grade,phone:data.phone,source:data.source,memo:data.message});
+    }catch(err){ /* no-cors: 응답 못 읽어도 접수됨 */ }
+    document.getElementById('formView').style.display='none';
+    document.getElementById('okView').style.display='block';
+    document.getElementById('okView').scrollIntoView({behavior:'smooth',block:'center'});
+    return false;
+  }
+</script>
+</body>
+</html>
