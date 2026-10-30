@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>생기부 마감 전 점검 — 쌤로그</title>
+<meta name="description" content="성적 문제가 아니었습니다. 세특 잘 받는 아이들의 공통점과 3단계 방법.">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800;900&display=swap">
+<style>
+:root{--bg:#121412;--bg2:#1A1C1A;--card:#22231F;--panel:#141412;--fg:#F0EDE4;--mint:#D9F24B;--mint2:#B9CE3A;--mut:#8A8D86;--dim:#5C5F58;--line:rgba(240,237,228,.10);--terra:#E8673C;--fn:'Pretendard','Noto Sans KR',-apple-system,sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--fg);font-family:var(--fn);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}a{color:inherit;text-decoration:none}
+nav.shm{position:sticky;top:0;z-index:55;background:rgba(18,20,18,.82);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.shm-in{max-width:1120px;margin:0 auto;height:58px;display:flex;align-items:center;gap:22px;padding-left:max(20px,env(safe-area-inset-left));padding-right:max(20px,env(safe-area-inset-right))}
+.shm-logo{display:inline-flex;align-items:baseline;font-weight:900;color:var(--fg);font-size:20px;letter-spacing:-.03em}.shm-logo span{color:var(--mint)}.shm-logo i{width:7px;height:7px;border-radius:50%;background:var(--mint);align-self:flex-end;margin:0 0 4px 3px}
+.shm-menu{display:flex;gap:20px;margin-left:10px}.shm-menu a{color:#D8D6CC;font-size:14.5px;font-weight:600;transition:color .12s;white-space:nowrap}.shm-menu a:hover{color:var(--mint)}.shm-menu a.cur{color:var(--mint)}
+.shm-right{margin-left:auto;display:flex;align-items:center;gap:12px}
+.shm-cta{background:var(--mint);color:#1A1C1A;font-weight:800;font-size:13.5px;padding:9px 18px;border-radius:999px}.shm-cta:hover{background:#E4FA63}
+.shm-burger{display:none;flex-direction:column;gap:4px;background:none;border:0;cursor:pointer;padding:6px}.shm-burger span{width:22px;height:2px;background:var(--fg);border-radius:2px;transition:.2s}
+@media(max-width:820px){.shm-menu{position:absolute;top:58px;left:0;right:0;flex-direction:column;gap:0;margin:0;background:rgba(18,20,18,.98);border-bottom:1px solid var(--line);max-height:0;overflow:hidden;transition:max-height .25s cubic-bezier(.2,.8,.2,1)}nav.shm.open .shm-menu{max-height:380px}.shm-menu a{padding:14px 22px;border-top:1px solid var(--line);font-size:15px}.shm-burger{display:flex}nav.shm.open .shm-burger span:nth-child(1){transform:translateY(6px) rotate(45deg)}nav.shm.open .shm-burger span:nth-child(2){opacity:0}nav.shm.open .shm-burger span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}}
+.post-wrap{max-width:720px;margin:0 auto;padding:46px max(20px,env(safe-area-inset-left,0px)) 70px}
+.post-head{border-bottom:1px solid var(--line);padding-bottom:22px;margin-bottom:28px}
+.eyebrow{font-size:12px;font-weight:800;letter-spacing:.1em;color:var(--mint);text-transform:uppercase}
+.post-head h1{font-size:clamp(26px,5vw,38px);font-weight:900;letter-spacing:-.03em;line-height:1.25;margin:12px 0 0;word-break:keep-all}
+.pmeta{margin-top:14px;font-size:13px;color:var(--mut);font-variant-numeric:tabular-nums}
+.post-body{font-size:16px;line-height:1.9;color:#D7D3C7;word-break:keep-all}
+.post-body h4{font-size:19px;font-weight:800;color:var(--fg);margin:30px 0 10px;letter-spacing:-.01em}
+.post-body p{margin:0 0 18px}.post-body b{color:var(--fg)}
+.post-body blockquote{border-left:3px solid var(--mint2);padding:2px 0 2px 16px;margin:0 0 18px;color:var(--mut)}
+.backlink{display:inline-block;margin-top:34px;color:var(--mint);font-weight:700;font-size:14px}
+.cta{background:linear-gradient(135deg,var(--mint),var(--mint2));color:#1A1C1A;text-align:center;padding:46px 20px}
+.cta .cta-in{max-width:460px;margin:0 auto}.cta h3{font-size:clamp(21px,4vw,28px);font-weight:900;letter-spacing:-.02em;word-break:keep-all}.cta>.cta-in>p{margin:10px 0 2px;font-size:14px;font-weight:700;opacity:.82}
+.cta .lead{margin-top:18px;background:#1A1C1A;border-radius:16px;padding:20px 18px 18px;text-align:left}
+.cta .lead-tag{font-size:12px;font-weight:800;color:var(--mint);text-align:center;margin-bottom:14px}
+.cta .lf{width:100%;margin-bottom:9px;padding:13px 14px;border-radius:10px;border:1px solid rgba(240,237,228,.14);background:#121412;color:var(--fg);font:inherit;font-size:14.5px}.cta .lf::placeholder{color:#8F8C82}.cta select.lf{appearance:none;-webkit-appearance:none}
+.cta .lagree{display:flex;gap:8px;align-items:flex-start;font-size:11.5px;color:#8A8D86;margin:3px 0 12px;line-height:1.5;cursor:pointer}.cta .lagree input{margin-top:2px;flex:none}
+.cta .lbtn{width:100%;background:var(--mint);color:#1A1C1A;font-weight:800;font-size:15.5px;padding:15px;border:0;border-radius:999px;cursor:pointer}.cta .lbtn:hover{background:#E4FA63}.cta .lbtn:disabled{opacity:.7}
+.cta .lerr{display:none;color:#F0B5A0;font-size:12.5px;margin-top:9px;text-align:center}.cta .lerr.on{display:block}.cta .lok{display:none;color:var(--mint);font-size:13.5px;margin-top:11px;text-align:center;font-weight:700}.cta .lok.on{display:block}
+.foota{background:var(--bg);border-top:1px solid var(--line);padding:26px 0;color:var(--dim);font-size:12px;line-height:1.8;text-align:center}.foota a{color:var(--mut)}
+.qwrap{position:fixed;inset:0;z-index:70;pointer-events:none}
+.qform{position:fixed;top:50%;right:28px;transform:translateY(-50%) translateX(150%);width:316px;background:linear-gradient(165deg,var(--card),var(--bg2));border:1px solid var(--mint2);border-radius:20px;padding:18px 18px 16px;box-shadow:0 24px 70px rgba(0,0,0,.55),0 0 46px rgba(217,242,75,.14);pointer-events:auto;transition:transform .6s cubic-bezier(.2,.8,.2,1);z-index:71}
+.qform.on{transform:translateY(-50%)}
+.qform .qtag{display:flex;gap:6px;justify-content:center;flex-wrap:wrap;font-size:11px;font-weight:800;color:var(--mint);background:var(--bg2);border:1px solid rgba(217,242,75,.4);border-radius:100px;padding:7px 10px;margin-bottom:12px}.qform .qtag i{font-style:normal;color:var(--dim)}
+.qclose{position:absolute;top:10px;right:12px;color:var(--dim);font-size:18px;cursor:pointer;line-height:1;background:none;border:0;padding:4px}.qclose:hover{color:var(--mut)}
+.qtimer{text-align:center;margin-bottom:12px}.qtimer .tl{font-size:11px;color:var(--mut)}.qtimer .tv{font-size:26px;font-weight:900;color:#E8673C;font-variant-numeric:tabular-nums;line-height:1.25}
+.qhd{text-align:center;font-size:15px;font-weight:900;color:var(--fg);margin-bottom:12px;line-height:1.3}
+.qfld{background:var(--bg2);border:1px solid var(--line);border-radius:12px;padding:0 14px;height:46px;color:var(--fg);font:inherit;font-size:14px;width:100%;outline:none;margin-bottom:8px;appearance:none;-webkit-appearance:none}.qfld:focus{border-color:var(--mint2)}
+.qbtn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;background:var(--mint);color:#1A1C1A;font-weight:900;padding:14px;border-radius:100px;font-size:15px;border:0;cursor:pointer;margin-top:2px}.qbtn:hover{background:#E4FA63}.qbtn:disabled{opacity:.7}
+.qagree{display:flex;gap:7px;align-items:flex-start;font-size:11px;color:var(--mut);margin-top:9px;line-height:1.4}.qagree input{margin-top:2px;flex:none}
+.qerr{display:none;margin-top:8px;padding:9px 11px;border-radius:10px;border:1px solid rgba(232,103,60,.5);background:rgba(232,103,60,.08);color:#E8673C;font-size:12px}.qerr.on{display:block}
+.qok{display:none;margin-top:8px;padding:11px 13px;border-radius:10px;border:1px solid rgba(217,242,75,.4);background:rgba(217,242,75,.08);color:var(--fg);font-size:13px}.qok.on{display:block}
+@media(max-width:980px){.qform{display:none}}
+.sform{position:fixed;left:0;right:0;bottom:0;z-index:70;background:linear-gradient(180deg,rgba(18,20,18,0),var(--bg) 22%);padding:14px 16px calc(14px + env(safe-area-inset-bottom,0px));border-top:1px solid var(--line);transform:translateY(140%);transition:transform .5s cubic-bezier(.2,.8,.2,1);box-shadow:0 -14px 40px rgba(0,0,0,.5)}.sform.on{transform:none}
+.sform .stimer{display:flex;align-items:center;justify-content:center;gap:8px;font-size:12px;color:var(--mut);margin-bottom:9px}.sform .stimer b{color:#E8673C;font-weight:900;font-variant-numeric:tabular-nums;font-size:14px}
+.sform .srow{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:7px}.sform .qfld{height:44px;font-size:13.5px;margin-bottom:0}.sform .srow2{display:grid;grid-template-columns:1fr auto;gap:7px;align-items:stretch}.sform .qbtn{padding:0 18px;font-size:14px;white-space:nowrap;margin-top:0}.sform .qagree{font-size:10.5px;margin-top:8px}
+@media(min-width:981px){.sform{display:none}}
+.post-body .pcard{margin:30px 0}.post-body .pcard img{display:block;width:100%;border-radius:16px;border:1px solid var(--line)}
+.spill{position:fixed;right:20px;bottom:calc(20px + env(safe-area-inset-bottom,0px));z-index:60;display:inline-flex;align-items:center;gap:8px;background:var(--mint);color:#1A1C1A;font-weight:800;font-size:15px;padding:14px 22px;border-radius:999px;box-shadow:0 12px 30px rgba(0,0,0,.45),0 0 24px rgba(217,242,75,.22);opacity:0;transform:translateY(16px);pointer-events:none;transition:opacity .3s,transform .3s}.spill.on{opacity:1;transform:none;pointer-events:auto}.spill:hover{background:#E4FA63}.spill span{transition:transform .2s}.spill:hover span{transform:translateX(3px)}@media(max-width:560px){.spill{right:14px;font-size:14px;padding:12px 18px}}
+
+.scard{background:var(--bg2);border:1px solid var(--line);border-radius:18px;padding:30px 26px;margin:30px 0}
+.scard .eye{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;font-weight:800;letter-spacing:.02em;color:var(--mint);margin:0 0 14px}
+.scard .eye::before{content:"";width:7px;height:7px;border-radius:50%;background:currentColor;flex:0 0 auto}
+.scard .eye.tr{color:var(--terra)}.scard .eye.nodot::before{display:none}
+.scard h3{font-size:clamp(22px,4.4vw,28px);line-height:1.3;font-weight:800;letter-spacing:-.02em;margin:0;color:var(--fg);word-break:keep-all;text-wrap:balance}
+.scard h3 em{font-style:normal;color:var(--mint)}.scard h3 .q{color:var(--terra)}
+.scard .mt{color:var(--mint);font-weight:700}.scard .tr{color:var(--terra);font-weight:700}
+.scard .lead{font-size:15px;line-height:1.7;color:var(--mut);margin:14px 0 0}.scard .lead b{color:var(--fg);font-weight:700}
+.scard .row{display:flex;gap:14px;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-radius:13px;padding:17px;margin-top:14px}
+.scard .bdg{flex:0 0 auto;width:32px;height:32px;border-radius:9px;display:grid;place-items:center;font-weight:800;font-size:14px;background:rgba(240,237,228,.07);color:var(--mut)}
+.scard .bdg.on{background:var(--mint);color:#1A1C1A}
+.scard .bdg.x{border-radius:50%;background:rgba(240,237,228,.1);color:var(--mut);font-size:13px}
+.scard .bdg.ok{border-radius:50%;background:var(--mint);color:#1A1C1A;font-size:13px}
+.scard .rt{min-width:0}.scard .rt .rh{font-size:16.5px;font-weight:800;margin:0 0 4px;color:var(--fg)}
+.scard .rt p{font-size:14px;line-height:1.6;color:var(--mut);margin:0}.scard .rt p b{color:var(--fg)}
+.scard .pill{display:inline-block;font-size:12px;font-weight:800;padding:4px 11px;border-radius:999px;background:rgba(240,237,228,.08);color:var(--mut);margin:0 0 9px}
+.scard .pill.on{background:var(--mint);color:#1A1C1A}
+.scard .pblk{background:var(--card);border:1px solid var(--line);border-radius:13px;padding:17px;margin-top:14px}
+.scard .pblk p{margin:0;font-size:15px;line-height:1.7;color:var(--fg)}.scard .pblk.q p{color:var(--mut)}
+.scard .pblk .cap{font-size:13px;font-weight:800;color:var(--mint);margin:0 0 7px}
+.scard .nl{list-style:none;margin:16px 0 0;padding:0;display:flex;flex-direction:column;gap:13px}
+.scard .nl li{display:flex;gap:12px;align-items:center;font-size:15px;color:var(--mut);line-height:1.5}
+.scard .nl li>span+span{min-width:0}
+.scard .nl .n{flex:0 0 auto;width:27px;height:27px;border-radius:50%;display:grid;place-items:center;font-size:13px;font-weight:800;background:rgba(217,242,75,.15);color:var(--mint)}
+.scard .nl b{color:var(--fg)}
+.scard .lrow{background:var(--card);border:1px solid var(--line);border-radius:13px;padding:17px;margin-top:14px}
+.scard .lrow .lb2{font-size:13px;font-weight:800;color:var(--mint);margin:0 0 7px}
+.scard .lrow p{margin:0;font-size:15px;line-height:1.65;color:var(--mut)}.scard .lrow p b{color:var(--fg)}
+.scard .bbox{display:flex;gap:16px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:13px;padding:17px;margin-top:14px}
+.scard .bbox .bn{flex:0 0 auto;font-size:19px;font-weight:900;color:var(--mint)}
+.scard .bbox .bt{min-width:0;font-size:14px;line-height:1.55;color:var(--mut);border-left:1px solid var(--line);padding-left:16px}
+.scard .dtable{margin-top:16px}
+.scard .drow{display:flex;gap:16px;padding:13px 0;border-bottom:1px solid var(--line);flex-wrap:wrap}
+.scard .drow:last-child{border-bottom:0}
+.scard .drow .k{flex:0 0 auto;min-width:78px;color:var(--terra);font-weight:800;font-size:15px}
+.scard .drow .v{flex:1;min-width:0;color:var(--mut);font-size:14.5px;line-height:1.55}
+.scard .note{font-size:14px;line-height:1.7;color:var(--mut);margin:16px 0 0}.scard .note b{color:var(--fg)}
+.scard .src{font-size:12px;line-height:1.6;color:var(--dim);margin:12px 0 0}
+.scard .close{font-size:17.5px;font-weight:800;line-height:1.45;color:var(--fg);margin:18px 0 0}.scard .close em{font-style:normal;color:var(--mint)}
+
+.scard.cover-terra{background:var(--terra);border-color:rgba(255,255,255,.16)}
+.scard.cover-terra .eye,.scard.cover-terra .eye.tr{color:#2A1206}
+.scard.cover-terra .eye::before{background:#2A1206}
+.scard.cover-terra h3{color:#FFF4EC}
+.scard.cover-terra h3 em,.scard.cover-terra h3 .q{color:#2A1206}
+.scard.cover-terra .lead{color:rgba(255,244,236,.85)}.scard.cover-terra .lead b{color:#fff}
+.scard.cover-ivory{background:#F0EDE4;border-color:rgba(26,28,26,.1)}
+.scard.cover-ivory .eye,.scard.cover-ivory .eye.tr{color:var(--terra)}
+.scard.cover-ivory .eye::before{background:var(--terra)}
+.scard.cover-ivory h3{color:#1A1C1A}
+.scard.cover-ivory h3 em,.scard.cover-ivory h3 .q{color:var(--terra)}
+.scard.cover-ivory .lead{color:#6B6E67}.scard.cover-ivory .lead b{color:#1A1C1A}
+</style>
+</head>
+<body>
+<nav class="shm" id="shm"><div class="shm-in">
+  <a class="shm-logo" href="index.html?utm_source=ssamlog&utm_medium=blog&utm_campaign=post_setuk&utm_content=nav">쌤이<span>다</span><i></i></a>
+  <div class="shm-menu" id="shmMenu">
+    <a href="stories.html">합격 스토리</a>
+    <a href="faq.html">FAQ</a>
+    <a class="cur" href="ssamlog.html">쌤로그</a>
+  </div>
+  <div class="shm-right"><a class="shm-cta" href="#apply">무료 상담 신청</a><button class="shm-burger" id="shmBurger" aria-label="메뉴" aria-expanded="false"><span></span><span></span><span></span></button></div>
+</div></nav>
+<script>(function(){var n=document.getElementById("shm"),b=document.getElementById("shmBurger");if(b)b.addEventListener("click",function(){var o=n.classList.toggle("open");b.setAttribute("aria-expanded",o);});document.querySelectorAll("#shmMenu a").forEach(function(a){a.addEventListener("click",function(){n.classList.remove("open");if(b)b.setAttribute("aria-expanded","false");});});})();</script>
+<article class="post-wrap">
+  <div class="post-head">
+    <div class="eyebrow">진로진학 정보</div>
+    <h1>2학년 생기부, 2월에 굳기 전에 딱 10분만 보세요</h1>
+    <div class="pmeta">2026. 10. 30 · 쌤이다</div>
+  </div>
+  <div class="post-body">
+<p>해마다 이맘때면 학부모 단톡방·커뮤니티에 똑같은 글이 올라와요. "학교에서 생기부 확인하라는데, 뭘 봐야 하는지를 모르겠어요." 댓글도 비슷하죠 — "그냥 확인 눌렀는데 괜찮은 거죠?"</p>
+<p>결론부터 — 그 <b>'확인' 버튼이 생각보다 무겁습니다.</b> 2월 넘어서 "이거 고칠 수 있냐"고 뒤늦게 물어오시는 분들을 매년 봐요. 그땐 이미 늦은 경우가 많습니다. 누르기 전, 10분이면 끝나는 점검 포인트를 정리해드릴게요.</p>
+
+<div class="scard"><div class="eye">진로진학 정보</div><h3>'생기부 확인'<br>그냥 누르셨죠?</h3><p class="lead"><b>누르기 전에 봐야 할 네 칸</b> — 세특 · 행특 · 출결 · 오타. 딱 10분이면 됩니다.</p></div>
+
+<h4>왜 11·12월이 중요한 타이밍이냐면</h4>
+<p>생기부 공식 마감일은 <b>2월 말</b>이 맞아요(학교생활기록부 작성·관리지침). 그런데 현직 선생님들 얘기론, 대부분 학교가 실제로는 <b>12월 말~1월 말 사이에 입력을 거의 끝냅니다.</b> 독서·봉사 정도만 2월 말까지 더 넣는 거고요.</p>
+<p>그러니까 담임 선생님이 "생기부 확인하세요" 알림을 보내는 그 시점이, 사실상 <b>손댈 수 있는 마지막 창문</b>이에요. 지금 대충 넘기면 2월엔 되돌리기 어렵습니다.</p>
+
+<div class="scard"><div class="eye">타임라인</div><h3>지금이 마지막 점검 창문</h3><div class="lrow"><div class="lb2">실제 입력 완료</div><p><b>12월 말 ~ 1월 말</b> — 대부분 학교가 이때 거의 끝냅니다.</p></div><div class="lrow"><div class="lb2">공식 마감</div><p>2월 말 (이후엔 독서·봉사 정도만 추가 가능).</p></div><p class="note">담임샘 <b>'확인' 알림 = 사실상 마지막 수정 기회.</b></p></div>
+
+<h4>그럼 뭘 봐야 하나요</h4>
+<p>아이와 함께 생기부를 조회해서, 이 순서로 훑으세요.</p>
+
+<div class="scard"><div class="eye">점검 4칸</div><h3>이 네 곳만 대조하세요</h3><div class="row"><div class="bdg on">1</div><div class="rt"><div class="rh">세특 (교과 세부능력·특기사항)</div><p>지금 입시에서 제일 많이 보는 칸. 발표·보고서가 빠지진 않았는지, 다른 과목 내용이 잘못 섞이진 않았는지.</p></div></div><div class="row"><div class="bdg on">2</div><div class="rt"><div class="rh">행특 (행동특성·종합의견)</div><p>담임이 1년을 요약하는 칸. 2학년 행특은 특히 비중 있게 읽혀요. 실제 모습과 동떨어지진 않았는지.</p></div></div><div class="row"><div class="bdg on">3</div><div class="rt"><div class="rh">출결</div><p>의외로 오류가 잦음. 질병결석을 기타로, 조퇴 횟수 불일치 등. 증빙 있으면 바로잡기 수월.</p></div></div><div class="row"><div class="bdg on">4</div><div class="rt"><div class="rh">이름·숫자·오타</div><p>사소해 보여도 마감 뒤엔 이것도 손대기 번거로워집니다.</p></div></div></div>
+
+<h4>마감 뒤에는 왜 고치기 어렵냐면</h4>
+<p>학년이 끝나면 그 이전 학년 생기부는 <b>원칙적으로 정정이 금지</b>됩니다. 객관적 증빙이 있을 때만 예외적으로 가능하고, 그마저도 활동의 <b>'사실 설명'만</b> 바로잡을 수 있어요(관리지침). 선생님이 평가해 써주는 주관적 코멘트는 나중에 새로 추가할 수가 없습니다.</p>
+<p>쉽게 말해 <b>비어 있는 칸을 2월에 채워 넣는 건 거의 안 된다</b>는 뜻이에요. 그래서 지금 보는 게 중요합니다.</p>
+<p>오해 마시라고 덧붙이면 — 없는 활동을 넣어달라 조르라는 게 아니에요. 이미 한 활동, 이미 적힌 내용에서 <b>빠진 것·틀린 것만</b> 차분히 짚고, 근거 자료와 함께 정중히 말씀드리면 됩니다.</p>
+
+<h4>정리하면요</h4>
+<p>지금 생기부를 열어 <b>세특·행특·출결·오타</b> 이 네 가지만 캡처해두고 하나씩 대조해보세요. 10분이면 충분합니다. '확인' 버튼은 그다음에 눌러도 늦지 않아요. 2월에 후회하는 것보다 지금 10분이 훨씬 쌉니다.</p>
+  </div>
+  <a class="backlink" href="ssamlog.html">← 쌤로그 목록</a>
+</article>
+<section class="cta" id="apply"><div class="cta-in">
+  <h3>우리 아이 입시, 어디서부터 잡을까요?</h3>
+  <p>진단부터 입시 설계까지 — 전담 쌤이 1:1로 길을 잡아드립니다.</p>
+  <form class="lead" onsubmit="return false">
+    <div class="lead-tag">무료 수업 30분 · 진로·진학 상담 · 전액무료</div>
+    <select class="lf" id="lgrade" aria-label="학년"><option value="">학년 선택</option><option>초1</option><option>초2</option><option>초3</option><option>초4</option><option>초5</option><option>초6</option><option>중1</option><option>중2</option><option>중3</option><option>고1</option><option>고2</option><option>고3</option></select>
+    <input class="lf" id="lname" type="text" placeholder="학생 이름" aria-label="학생 이름">
+    <input class="lf" id="lphone" type="tel" placeholder="학부모 연락처 (010-0000-0000)" aria-label="학부모 연락처">
+    <label class="lagree"><input type="checkbox" id="lagree"> [필수] <a href="privacy.html" target="_blank" rel="noopener" onclick="event.stopPropagation()" style="text-decoration:underline">개인정보 수집·이용</a>에 동의합니다 (상담 목적, 만 14세 미만 법정대리인 동의)</label>
+    <button class="lbtn" type="button" id="lsubmit">무료 상담 신청 →</button>
+    <div class="lerr" id="lerr"></div>
+    <div class="lok" id="lok">접수됐습니다. 전화로 수업 일정을 잡아드릴게요.</div>
+  </form>
+</div></section>
+<footer class="foota">쌤이다 · (주)아이스캔 · 1:1 화상과외 &nbsp;|&nbsp; 상담 1544-0953 &nbsp;|&nbsp; <a href="index.html?utm_source=ssamlog&utm_medium=blog&utm_campaign=post_setuk&utm_content=foot">홈</a> · <a href="stories.html">합격 스토리</a> · <a href="faq.html">FAQ</a></footer>
+<a class="spill" id="spill" href="#apply">무료 상담 신청 <span>→</span></a>
+<script>
+(function(){var EP="https://script.google.com/macros/s/AKfycbwH-nwuwcXNWvBKH-D9JfaHAqL4g4G2Pfe2a3cncTVbb7a6NHJ-nMBntCCK1TOfJxw1/exec",SRC="블로그-생기부";var b=document.getElementById("lsubmit");if(!b)return;b.addEventListener("click",function(){var er=document.getElementById("lerr"),ok=document.getElementById("lok");er.classList.remove("on");var g=document.getElementById("lgrade").value,n=document.getElementById("lname").value.trim(),p=document.getElementById("lphone").value.replace(/[^0-9]/g,""),a=document.getElementById("lagree").checked;function e(m){er.textContent=m;er.classList.add("on");}if(!g)return e("학년을 선택해 주세요.");if(!n)return e("학생 이름을 입력해 주세요.");if(!/^01[016789][0-9]{7,8}$/.test(p))return e("연락처를 확인해 주세요. (예: 010-1234-5678)");if(!a)return e("개인정보 수집·이용 동의가 필요해요.");b.disabled=true;b.textContent="접수 중…";var d={time:new Date().toLocaleString("ko-KR",{timeZone:"Asia/Seoul"}),name:n,grade:g,phone:p,message:"",source:SRC};function done(){ok.classList.add("on");b.textContent="접수 완료 ✓";if(typeof window.karrotPixel!=="undefined"){try{window.karrotPixel.track("Lead");}catch(_){}}if(typeof fbq==="function"){try{fbq("track","Lead");}catch(_){}}}window.__gsend({name:n,grade:g,phone:p,source:SRC}).then(done).catch(done);});})();
+</script>
+<script>(function(){var pill=document.getElementById("spill");if(!pill)return;var past=false,bot=false;function sync(){pill.classList.toggle("on",past&&!bot);}function on(){var de=document.documentElement;past=window.scrollY>300;bot=(window.innerHeight+window.scrollY)>=(de.scrollHeight-420);sync();}window.addEventListener("scroll",on,{passive:true});window.addEventListener("resize",on);on();})();</script>
+<script>
+/* 유입(UTM) 캡처 + 구글폼 전송 — 세션 유지 */
+(function(){
+var FORM="https://docs.google.com/forms/d/e/1FAIpQLSda6DIdCIIxTItf3AJuZCTm0rg1KaiuTB2SA_r6Rxfo93VCGA/formResponse";
+var E={name:"entry.325936465",phone:"entry.1068621225",grade:"entry.1422482810",src:"entry.246110714",utm:"entry.2012739844"};
+try{
+var KEY='ss_attr',p=new URLSearchParams(location.search),UK=['utm_source','utm_medium','utm_campaign','utm_content','utm_term'];
+var cur={};try{cur=JSON.parse(sessionStorage.getItem(KEY)||'{}');}catch(e){}
+var fresh=UK.some(function(k){return p.get(k);});
+if(fresh||!cur._init){if(!cur._init)cur={referrer:document.referrer||'',landing:location.pathname+location.search,_init:1};UK.forEach(function(k){var v=p.get(k);if(v&&!cur[k])cur[k]=v;});try{sessionStorage.setItem(KEY,JSON.stringify(cur));}catch(e){}}
+window.__attr=function(){var a={};try{a=JSON.parse(sessionStorage.getItem(KEY)||'{}');}catch(e){}return a;};
+}catch(e){window.__attr=function(){return{};};}
+window.__gsend=function(o){try{
+ var a=window.__attr(),u=[];
+ ['utm_source','utm_medium','utm_campaign','utm_content','utm_term'].forEach(function(k){if(a[k])u.push(k.replace('utm_','')+'='+a[k]);});
+ if(a.referrer)u.push('ref='+a.referrer);
+ u.push('page='+location.pathname);
+ if(o.memo)u.push('memo='+o.memo);
+ var q=new URLSearchParams();
+ q.append(E.name,o.name||'');q.append(E.phone,o.phone||'');q.append(E.grade,o.grade||'');q.append(E.src,o.source||'');q.append(E.utm,u.join(' | '));
+ return fetch(FORM,{method:'POST',mode:'no-cors',body:q});
+}catch(e){return Promise.resolve();}};
+})();
+</script>
+</body>
+</html>
