@@ -99,9 +99,45 @@
   .bottom .btn{margin-top:22px;display:inline-flex;align-items:center;gap:10px;background:var(--citron);color:var(--char);font-weight:900;font-size:clamp(14px,3.6vw,16px);padding:15px 30px;border-radius:100px;text-decoration:none;transition:transform .25s}
   .bottom .btn:hover{transform:translateY(-2px)}
   .foot2{padding:26px 0 48px;color:#5c5f58;font-size:12.5px;text-align:center}
+
+  /* ===== 상단 스티키 메뉴 (글 페이지와 동일) ===== */
+  .shm{position:sticky;top:0;z-index:55;background:rgba(18,20,18,.82);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+  .shm-in{max-width:1180px;margin:0 auto;height:58px;display:flex;align-items:center;gap:22px;padding-left:max(20px,env(safe-area-inset-left));padding-right:max(20px,env(safe-area-inset-right))}
+  .shm-logo{display:inline-flex;align-items:baseline;font-weight:900;color:var(--ivory);font-size:20px;letter-spacing:-.03em;text-decoration:none}
+  .shm-logo span{color:var(--citron)}
+  .shm-logo i{width:7px;height:7px;border-radius:50%;background:var(--citron);align-self:flex-end;margin:0 0 4px 3px}
+  .shm-menu{display:flex;gap:20px;margin-left:10px}
+  .shm-menu a{color:#D8D6CC;font-size:14.5px;font-weight:600;transition:color .12s;white-space:nowrap;text-decoration:none}
+  .shm-menu a:hover{color:var(--citron)}
+  .shm-menu a.cur{color:var(--citron)}
+  .shm-right{margin-left:auto;display:flex;align-items:center;gap:12px}
+  .shm-cta{background:var(--citron);color:#1A1C1A;font-weight:800;font-size:13.5px;padding:9px 18px;border-radius:999px;text-decoration:none}
+  .shm-cta:hover{background:#E4FA63}
+  .shm-burger{display:none;flex-direction:column;gap:4px;background:none;border:0;cursor:pointer;padding:6px}
+  .shm-burger span{width:22px;height:2px;background:var(--ivory);border-radius:2px;transition:.2s}
+  @media(max-width:700px){
+    .shm-menu{position:absolute;top:58px;left:0;right:0;flex-direction:column;gap:0;margin:0;background:rgba(18,20,18,.98);border-bottom:1px solid var(--line);max-height:0;overflow:hidden;transition:max-height .25s cubic-bezier(.2,.8,.2,1)}
+    .shm.open .shm-menu{max-height:380px}
+    .shm-menu a{padding:14px 22px;border-top:1px solid var(--line);font-size:15px}
+    .shm-burger{display:flex}
+    .shm.open .shm-burger span:nth-child(1){transform:translateY(6px) rotate(45deg)}
+    .shm.open .shm-burger span:nth-child(2){opacity:0}
+    .shm.open .shm-burger span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+  }
 </style>
 </head>
 <body>
+
+<nav class="shm" id="shm"><div class="shm-in">
+  <a class="shm-logo" href="index.html?utm_source=ssamlog&utm_medium=blog&utm_campaign=ssamlog_index&utm_content=nav">쌤이<span>다</span><i></i></a>
+  <div class="shm-menu" id="shmMenu">
+    <a href="stories.html">합격 스토리</a>
+    <a href="faq.html">FAQ</a>
+    <a class="cur" href="ssamlog.html">쌤로그</a>
+  </div>
+  <div class="shm-right"><a class="shm-cta" href="ssamida-setuk.html?utm_source=ssamlog&utm_medium=blog&utm_campaign=ssamlog_index&utm_content=nav_cta">무료 상담 신청</a><button class="shm-burger" id="shmBurger" aria-label="메뉴" aria-expanded="false"><span></span><span></span><span></span></button></div>
+</div></nav>
+
 
 <header><div class="wrap">
   <div class="brandline"><span class="dot"></span><span>SSAM LOG</span></div>
@@ -118,7 +154,7 @@
        ③ 텍스트만 교체 ═══ -->
 
   <!-- 10.29 — 2028 경쟁률 (테라) -->
-  <a class="post" href="blog-2028.html">
+  <a class="post" href="blog-2028-susi-shift.html">
     <div class="thumb th-terra">
       <div class="wm">83%</div>
       <div class="tag"><i></i>2028 입시세대 학부모 체크</div>
@@ -135,7 +171,7 @@
   </a>
 
   <!-- 10.28 — 내신 5등급제 (차콜) -->
-  <a class="post" href="blog-5grade.html">
+  <a class="post" href="blog-naesin-5grade.html">
     <div class="thumb th-char">
       <div class="tag"><i></i>2028 내신 개편</div>
       <h3>내신 5등급제<br>한 번 미끄러지면<br><span class="hl">진짜 끝일까?</span></h3>
@@ -151,11 +187,11 @@
   </a>
 
   <!-- 10.27 — 세특 (아이보리) -->
-  <a class="post" href="blog-setuk-diff.html">
+  <a class="post" href="blog-setuk-difference.html">
     <div class="thumb th-ivory">
       <div class="tag"><i></i>세특 이야기</div>
       <h3>같은 수업 듣는데<br><span class="hl">세특이 다른 이유</span></h3>
-      <div class="tsub">성적 문제가 아니었습니다.<br><b>현직 코치가 상담하다 알게 된 것들.</b></div>
+      <div class="tsub">성적 문제가 아니었습니다.<br><b>과목별 세특 준비법, 쉽게 정리했어요.</b></div>
       <div class="foot"><span>쌤이다<span class="bsub">초·중·고 1:1 화상과외</span></span><span class="no">01</span></div>
     </div>
     <div class="meta">
@@ -200,5 +236,6 @@ window.__gsend=function(o){try{
 }catch(e){return Promise.resolve();}};
 })();
 </script>
+<script>(function(){var n=document.getElementById("shm"),b=document.getElementById("shmBurger");if(b)b.addEventListener("click",function(){var o=n.classList.toggle("open");b.setAttribute("aria-expanded",o);});document.querySelectorAll("#shmMenu a").forEach(function(a){a.addEventListener("click",function(){n.classList.remove("open");});});})();</script>
 </body>
 </html>
